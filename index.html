@@ -6,39 +6,147 @@
 <title>Science & Philosophy — Emre Pelit</title>
 <meta name="description" content="Science & Philosophy — bilim, kozmoloji, teknoloji, felsefe ve varoluş üzerine Emre Pelit'in çalışmaları.">
 <style>
+:root{color-scheme:dark}
 body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:#0b1020;color:#eef2ff}
 main{max-width:900px;margin:0 auto;padding:48px 22px}
 .card{background:#151c32;border:1px solid #2a3659;border-radius:16px;padding:22px;margin:18px 0}
 a{color:#9cc5ff}.muted{color:#aeb9d6}
+.live-button{display:inline-flex;align-items:center;gap:9px;border:0;border-radius:12px;padding:12px 16px;background:#e8efff;color:#10172b;font-weight:700;cursor:pointer;box-shadow:0 6px 20px #0004}
+.live-button:hover{filter:brightness(1.06)}
+.live-button:disabled{opacity:.7;cursor:wait}
+.live-dot{width:9px;height:9px;border-radius:50%;background:#28d17c;box-shadow:0 0 0 5px #28d17c22}
+.live-panel{margin-top:16px;border:1px solid #34446e;border-radius:14px;padding:16px;background:#0f1629}
+.live-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}
+.stat{padding:12px;border:1px solid #263555;border-radius:10px;background:#121b30}
+.stat b{display:block;font-size:1.15rem;margin-top:3px}
+.label{font-size:.8rem;color:#aeb9d6}
+.status{font-size:.88rem;color:#aeb9d6;margin-top:10px}
+@media (max-width:600px){main{padding:30px 16px}.live-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main>
 <h1>Science & Philosophy</h1>
 <p class="muted">Emre Pelit — bilim, felsefe, kozmoloji, teknoloji ve varoluş üzerine çalışmalar.</p>
+
 <div class="card">
 <h2>Kaynak site</h2>
 <p><a href="https://science-philosophy.grok.me" rel="noopener">science-philosophy.grok.me</a></p>
 </div>
+
+<div class="card">
+<h2>Live Stats</h2>
+<p class="muted">Düğmeye bastığınızda GitHub'ın güncel herkese açık repository metrikleri alınır. Trafik sayıları ise GitHub'ın güvenli sunucu tarafı toplama sürecindeki en son erişilebilir 14 günlük veridir.</p>
+<button id="liveStatsButton" class="live-button" type="button">
+  <span class="live-dot" aria-hidden="true"></span>
+  Live Stats
+</button>
+<div id="liveStatsPanel" class="live-panel" hidden aria-live="polite"></div>
+</div>
+
 <div class="card">
 <h2>Repository istatistikleri</h2>
 <div id="stats">Yükleniyor…</div>
 </div>
+
 <div class="card">
 <h2>İçerik arşivi</h2>
 <p><a href="content/ARTICLE_CATALOG.md">Makale kataloğunu görüntüle</a></p>
 </div>
 </main>
+
 <script>
-(async()=>{const el=document.getElementById('stats');try{
-const r=await fetch('stats/latest.json',{cache:'no-store'});if(!r.ok)throw new Error();
-const s=await r.json();const v=s.traffic||{},g=s.repository||{};
-el.innerHTML='<strong>Son güncelleme:</strong> '+(s.collected_at||'—')+
-'<br>Yıldız: '+(g.stargazers_count??'—')+
-'<br>Fork: '+(g.forks_count??'—')+
-'<br>Son 14 günlük görüntüleme: '+(v.views_14d??'—')+
-'<br>Son 14 günlük klonlama: '+(v.clones_14d??'—');
-}catch(e){el.textContent='İstatistik dosyası henüz oluşturulmadı.'}})();
+const REPO = 'emrepelit109/science-philosophy';
+const statsEl = document.getElementById('stats');
+const liveButton = document.getElementById('liveStatsButton');
+const livePanel = document.getElementById('liveStatsPanel');
+
+const nf = new Intl.NumberFormat('tr-TR');
+
+function formatDate(value){
+  if(!value) return '—';
+  const d = new Date(value);
+  if(Number.isNaN(d.getTime())) return value;
+  return d.toLocaleString('tr-TR', {dateStyle:'medium', timeStyle:'short'});
+}
+
+function esc(value){
+  return String(value ?? '—').replace(/[&<>"']/g, ch => ({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  }[ch]));
+}
+
+async function loadCachedStats(){
+  try{
+    const r = await fetch('stats/latest.json?ts=' + Date.now(), {cache:'no-store'});
+    if(!r.ok) throw new Error();
+    const s = await r.json();
+    const v = s.traffic || {}, g = s.repository || {};
+    statsEl.innerHTML =
+      '<strong>Son güncelleme:</strong> ' + esc(formatDate(s.collected_at)) +
+      '<br>Yıldız: ' + nf.format(g.stargazers_count ?? 0) +
+      '<br>Fork: ' + nf.format(g.forks_count ?? 0) +
+      '<br>Son 14 günlük görüntüleme: ' + nf.format(v.views_14d ?? 0) +
+      '<br>Son 14 günlük klonlama: ' + nf.format(v.clones_14d ?? 0);
+  }catch(e){
+    statsEl.textContent='İstatistik dosyası henüz oluşturulmadı.';
+  }
+}
+
+async function loadLiveStats(){
+  liveButton.disabled = true;
+  liveButton.querySelector('.live-dot').style.background = '#f4c95d';
+  livePanel.hidden = false;
+  livePanel.innerHTML = '<div>Güncel GitHub verileri alınıyor…</div>';
+
+  try{
+    const response = await fetch('https://api.github.com/repos/' + REPO, {
+      headers:{'Accept':'application/vnd.github+json'},
+      cache:'no-store'
+    });
+    if(!response.ok) throw new Error('GitHub API: ' + response.status);
+    const repo = await response.json();
+
+    let latestCommit = null;
+    try{
+      const cr = await fetch('https://api.github.com/repos/' + REPO + '/commits?per_page=1', {
+        headers:{'Accept':'application/vnd.github+json'},
+        cache:'no-store'
+      });
+      if(cr.ok){
+        const commits = await cr.json();
+        latestCommit = commits[0] || null;
+      }
+    }catch(_){}
+
+    livePanel.innerHTML =
+      '<div class="status">● CANLI — GitHub API\'sinden bu tıklamada alınan güncel veriler</div>' +
+      '<div class="live-grid">' +
+        '<div class="stat"><span class="label">Yıldız</span><b>' + nf.format(repo.stargazers_count ?? 0) + '</b></div>' +
+        '<div class="stat"><span class="label">Fork</span><b>' + nf.format(repo.forks_count ?? 0) + '</b></div>' +
+        '<div class="stat"><span class="label">Watcher</span><b>' + nf.format(repo.subscribers_count ?? 0) + '</b></div>' +
+        '<div class="stat"><span class="label">Açık issue</span><b>' + nf.format(repo.open_issues_count ?? 0) + '</b></div>' +
+        '<div class="stat"><span class="label">Repository boyutu</span><b>' + nf.format(repo.size ?? 0) + ' KB</b></div>' +
+        '<div class="stat"><span class="label">Varsayılan dal</span><b>' + esc(repo.default_branch || '—') + '</b></div>' +
+      '</div>' +
+      '<div class="status">Son commit: ' +
+        (latestCommit
+          ? '<a href="' + esc(latestCommit.html_url) + '" target="_blank" rel="noopener">' + esc((latestCommit.commit?.message || 'Commit').split('\n')[0]) + '</a> · ' + esc(formatDate(latestCommit.commit?.author?.date))
+          : '—') +
+      '</div>' +
+      '<div class="status">Trafik (14 gün): statik sitede token paylaşmamak için son güvenli toplu veriden gösterilir.</div>';
+  }catch(e){
+    livePanel.innerHTML =
+      '<div>Canlı GitHub verileri şu anda alınamadı.</div>' +
+      '<div class="status">Daha sonra tekrar deneyin. Son kayıtlı panel aşağıdaki bölümde kullanılabilir.</div>';
+  }finally{
+    liveButton.disabled = false;
+    liveButton.querySelector('.live-dot').style.background = '#28d17c';
+  }
+}
+
+liveButton.addEventListener('click', loadLiveStats);
+loadCachedStats();
 </script>
 </body>
 </html>
