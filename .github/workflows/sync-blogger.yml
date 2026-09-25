@@ -1,0 +1,26 @@
+name: Sync Blogger articles
+
+on:
+  schedule:
+    - cron: "41 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Sync Blogger feed
+        env:
+          BLOGGER_URL: https://emrepelit7337.blogspot.com
+        run: python scripts/sync_blogger.py
+      - name: Commit synced articles
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add content/blogger
+          if git diff --cached --quiet; then echo "No Blogger changes."; else git commit -m "chore: sync Blogger article archive"; git push; fi
