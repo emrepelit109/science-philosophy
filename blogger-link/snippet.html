@@ -1,8 +1,11 @@
-<!-- Science & Philosophy bağlantısı -->
-<div class="science-philosophy-link" style="margin:20px 0;padding:16px;border:1px solid #ddd;border-radius:10px;">
-  <strong>Science & Philosophy</strong><br>
-  Bilim, felsefe, kozmoloji ve teknoloji yazıları:
-  <a href="https://science-philosophy.grok.me" target="_blank" rel="noopener noreferrer">
-    science-philosophy.grok.me
-  </a>
-</div>
+<!-- Science & Philosophy — Live Stats
+     Blogger: Layout > Gadget Ekle > HTML/JavaScript alanına ekleyebilirsiniz. -->
+<div id="science-philosophy-live-stats"></div>
+<script src="https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/live-stats.js" defer></script>
+<script>
+window.addEventListener('load', function () {
+  if (window.SciencePhilosophyLiveStats) {
+    window.SciencePhilosophyLiveStats.mount('#science-philosophy-live-stats');
+  }
+});
+</script>
