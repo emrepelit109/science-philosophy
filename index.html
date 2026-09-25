@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Science & Philosophy — Emre Pelit</title>
+<meta name="description" content="Science & Philosophy — bilim, kozmoloji, teknoloji, felsefe ve varoluş üzerine Emre Pelit'in çalışmaları.">
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:#0b1020;color:#eef2ff}
+main{max-width:900px;margin:0 auto;padding:48px 22px}
+.card{background:#151c32;border:1px solid #2a3659;border-radius:16px;padding:22px;margin:18px 0}
+a{color:#9cc5ff}.muted{color:#aeb9d6}
+</style>
+</head>
+<body>
+<main>
+<h1>Science & Philosophy</h1>
+<p class="muted">Emre Pelit — bilim, felsefe, kozmoloji, teknoloji ve varoluş üzerine çalışmalar.</p>
+<div class="card">
+<h2>Kaynak site</h2>
+<p><a href="https://science-philosophy.grok.me" rel="noopener">science-philosophy.grok.me</a></p>
+</div>
+<div class="card">
+<h2>Repository istatistikleri</h2>
+<div id="stats">Yükleniyor…</div>
+</div>
+<div class="card">
+<h2>İçerik arşivi</h2>
+<p><a href="content/ARTICLE_CATALOG.md">Makale kataloğunu görüntüle</a></p>
+</div>
+</main>
+<script>
+(async()=>{const el=document.getElementById('stats');try{
+const r=await fetch('stats/latest.json',{cache:'no-store'});if(!r.ok)throw new Error();
+const s=await r.json();const v=s.traffic||{},g=s.repository||{};
+el.innerHTML='<strong>Son güncelleme:</strong> '+(s.collected_at||'—')+
+'<br>Yıldız: '+(g.stargazers_count??'—')+
+'<br>Fork: '+(g.forks_count??'—')+
+'<br>Son 14 günlük görüntüleme: '+(v.views_14d??'—')+
+'<br>Son 14 günlük klonlama: '+(v.clones_14d??'—');
+}catch(e){el.textContent='İstatistik dosyası henüz oluşturulmadı.'}})();
+</script>
+</body>
+</html>
