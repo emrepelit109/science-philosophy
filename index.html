@@ -11,184 +11,47 @@ body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background
 main{max-width:900px;margin:0 auto;padding:48px 22px}
 .card{background:#151c32;border:1px solid #2a3659;border-radius:16px;padding:22px;margin:18px 0}
 a{color:#9cc5ff}.muted{color:#aeb9d6}
-.live-card{position:relative;overflow:hidden}
-.live-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
-.eyebrow{font-size:.72rem;letter-spacing:.14em;color:#8194bd;font-weight:800;margin-bottom:4px}
-.live-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid #314265;border-radius:999px;padding:7px 10px;font-size:.78rem;color:#aeb9d6;white-space:nowrap}
-.live-button,.live-refresh{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;transition:transform .15s ease,filter .15s ease,opacity .15s ease}
-.live-button{background:#e8efff;color:#10172b;box-shadow:0 6px 20px #0004}
-.live-refresh{background:#1d2945;color:#dfe8ff;border:1px solid #34446e}
-.live-button:hover,.live-refresh:hover{filter:brightness(1.08);transform:translateY(-1px)}
-.live-button:disabled,.live-refresh:disabled{opacity:.7;cursor:wait;transform:none}
-.live-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
-.live-dot{width:9px;height:9px;border-radius:50%;background:#28d17c;box-shadow:0 0 0 5px #28d17c22;flex:none}
-.live-panel{margin-top:16px;border:1px solid #34446e;border-radius:14px;padding:16px;background:#0f1629}
-.live-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:14px}
-.stat{padding:13px;border:1px solid #263555;border-radius:10px;background:#121b30}
-.stat b{display:block;font-size:1.15rem;margin-top:3px}
-.label{font-size:.8rem;color:#aeb9d6}
-.status{font-size:.88rem;color:#aeb9d6;margin-top:10px}
-.status a{color:#9cc5ff}
-.live-error{border-color:#70464b}
-@media (max-width:700px){.live-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:600px){main{padding:30px 16px}.live-grid{grid-template-columns:1fr}.live-heading{align-items:stretch;flex-direction:column}.live-badge{align-self:flex-start}}
-@media (max-width:600px){main{padding:30px 16px}.live-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <main>
 <h1>Science & Philosophy</h1>
 <p class="muted">Emre Pelit — bilim, felsefe, kozmoloji, teknoloji ve varoluş üzerine çalışmalar.</p>
-
 <div class="card">
 <h2>Kaynak site</h2>
 <p><a href="https://science-philosophy.grok.me" rel="noopener">science-philosophy.grok.me</a></p>
 </div>
-
-<div class="card live-card">
-<div class="live-heading">
-  <div>
-    <div class="eyebrow">REAL-TIME DATA</div>
-    <h2>Live Stats</h2>
-  </div>
-  <span id="liveBadge" class="live-badge"><span class="live-dot" aria-hidden="true"></span>Hazır</span>
+<div class="card">
+<h2>Live Stats</h2>
+<p class="muted">Canlı istatistikler ekranın sağ alt köşesindeki sabit Live Stats butonundan her zaman erişilebilir.</p>
 </div>
-<p class="muted">Butona bastığınız anda GitHub'ın herkese açık repository metrikleri yeniden okunur. Trafik verileri, GitHub'ın erişilebilir son 14 günlük toplu kaydından gösterilir.</p>
-
-<div class="live-actions">
-  <button id="liveStatsButton" class="live-button" type="button">
-    <span class="live-dot" aria-hidden="true"></span>
-    Live Stats'ı Göster
-  </button>
-  <button id="liveRefreshButton" class="live-refresh" type="button" hidden aria-label="Canlı istatistikleri yenile">↻ Yenile</button>
-</div>
-
-<div id="liveStatsPanel" class="live-panel" hidden aria-live="polite"></div>
-</div>
-
 <div class="card">
 <h2>Repository istatistikleri</h2>
 <div id="stats">Yükleniyor…</div>
 </div>
-
 <div class="card">
 <h2>İçerik arşivi</h2>
 <p><a href="content/ARTICLE_CATALOG.md">Makale kataloğunu görüntüle</a></p>
 </div>
 </main>
-
+<script src="live-stats.js" defer></script>
 <script>
-const REPO = 'emrepelit109/science-philosophy';
-const statsEl = document.getElementById('stats');
-const liveButton = document.getElementById('liveStatsButton');
-const liveRefreshButton = document.getElementById('liveRefreshButton');
-const livePanel = document.getElementById('liveStatsPanel');
-const liveBadge = document.getElementById('liveBadge');
-
-const nf = new Intl.NumberFormat('tr-TR');
-
-function formatDate(value){
-  if(!value) return '—';
-  const d = new Date(value);
-  if(Number.isNaN(d.getTime())) return value;
-  return d.toLocaleString('tr-TR', {dateStyle:'medium', timeStyle:'short'});
-}
-
-function esc(value){
-  return String(value ?? '—').replace(/[&<>"']/g, ch => ({
-    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-  }[ch]));
-}
-
-function setLiveState(label, color='#28d17c'){
-  liveBadge.innerHTML = '<span class="live-dot" aria-hidden="true"></span>' + esc(label);
-  const dot = liveBadge.querySelector('.live-dot');
-  dot.style.background = color;
-  dot.style.boxShadow = '0 0 0 5px ' + color + '22';
-  liveButton.querySelector('.live-dot').style.background = color;
-}
-
-async function fetchJson(url){
-  const response = await fetch(url, {
-    headers:{'Accept':'application/vnd.github+json'},
-    cache:'no-store'
-  });
-  if(!response.ok) throw new Error('HTTP ' + response.status);
-  return response.json();
-}
-
-async function loadCachedStats(){
-  try{
-    const s = await fetchJson('stats/latest.json?ts=' + Date.now());
-    const v = s.traffic || {}, g = s.repository || {};
-    statsEl.innerHTML =
-      '<strong>Son güncelleme:</strong> ' + esc(formatDate(s.collected_at)) +
-      '<br>Yıldız: ' + nf.format(g.stargazers_count ?? 0) +
-      '<br>Fork: ' + nf.format(g.forks_count ?? 0) +
-      '<br>Son 14 günlük görüntüleme: ' + nf.format(v.views_14d ?? 0) +
-      '<br>Son 14 günlük klonlama: ' + nf.format(v.clones_14d ?? 0);
-  }catch(e){
-    statsEl.textContent='İstatistik dosyası henüz oluşturulmadı.';
-  }
-}
-
-function renderLivePanel(repo, latestCommit, cached){
-  const traffic = cached?.traffic || {};
-  livePanel.innerHTML =
-    '<div class="status">● CANLI — GitHub API üzerinden bu tıklamada alınan güncel repository verileri</div>' +
-    '<div class="live-grid">' +
-      '<div class="stat"><span class="label">Yıldız</span><b>' + nf.format(repo.stargazers_count ?? 0) + '</b></div>' +
-      '<div class="stat"><span class="label">Fork</span><b>' + nf.format(repo.forks_count ?? 0) + '</b></div>' +
-      '<div class="stat"><span class="label">Watcher</span><b>' + nf.format(repo.subscribers_count ?? 0) + '</b></div>' +
-      '<div class="stat"><span class="label">Açık issue</span><b>' + nf.format(repo.open_issues_count ?? 0) + '</b></div>' +
-      '<div class="stat"><span class="label">Repository boyutu</span><b>' + nf.format(repo.size ?? 0) + ' KB</b></div>' +
-      '<div class="stat"><span class="label">Varsayılan dal</span><b>' + esc(repo.default_branch || '—') + '</b></div>' +
-      '<div class="stat"><span class="label">14 günlük görüntüleme</span><b>' + nf.format(traffic.views_14d ?? 0) + '</b></div>' +
-      '<div class="stat"><span class="label">14 günlük benzersiz</span><b>' + nf.format(traffic.unique_views_14d ?? 0) + '</b></div>' +
-      '<div class="stat"><span class="label">14 günlük klonlama</span><b>' + nf.format(traffic.clones_14d ?? 0) + '</b></div>' +
-    '</div>' +
-    '<div class="status"><strong>Son veri çekme:</strong> ' + esc(formatDate(new Date().toISOString())) + '</div>' +
-    '<div class="status"><strong>Son kayıtlı trafik güncellemesi:</strong> ' + esc(formatDate(cached?.collected_at)) + '</div>' +
-    '<div class="status"><strong>Son commit:</strong> ' +
-      (latestCommit
-        ? '<a href="' + esc(latestCommit.html_url) + '" target="_blank" rel="noopener">' + esc((latestCommit.commit?.message || 'Commit').split('\n')[0]) + '</a> · ' + esc(formatDate(latestCommit.commit?.author?.date))
-        : '—') +
-    '</div>';
-}
-
-async function loadLiveStats(){
-  liveButton.disabled = true;
-  liveRefreshButton.disabled = true;
-  setLiveState('Yükleniyor…','#f4c95d');
-  livePanel.hidden = false;
-  liveRefreshButton.hidden = false;
-  livePanel.classList.remove('live-error');
-  livePanel.innerHTML = '<div>Güncel repository verileri alınıyor…</div>';
-
-  try{
-    const [repo, commits, cachedResponse] = await Promise.all([
-      fetchJson('https://api.github.com/repos/' + REPO),
-      fetchJson('https://api.github.com/repos/' + REPO + '/commits?per_page=1'),
-      fetchJson('stats/latest.json?ts=' + Date.now()).catch(() => null)
-    ]);
-    const latestCommit = Array.isArray(commits) ? commits[0] : null;
-    renderLivePanel(repo, latestCommit, cachedResponse);
-    setLiveState('CANLI','#28d17c');
-  }catch(e){
-    livePanel.classList.add('live-error');
-    livePanel.innerHTML =
-      '<div>Canlı GitHub verileri şu anda alınamadı.</div>' +
-      '<div class="status">Bağlantıyı kontrol edip "↻ Yenile" düğmesine tekrar basın.</div>';
-    setLiveState('Bağlantı hatası','#ef6b73');
-  }finally{
-    liveButton.disabled = false;
-    liveRefreshButton.disabled = false;
-  }
-}
-
-liveButton.addEventListener('click', loadLiveStats);
-liveRefreshButton.addEventListener('click', loadLiveStats);
-loadCachedStats();
-</script>>
+window.addEventListener('load',function(){
+  const el=document.getElementById('stats');
+  fetch('stats/latest.json?ts='+Date.now(),{cache:'no-store'})
+    .then(r=>{if(!r.ok)throw new Error();return r.json()})
+    .then(s=>{
+      const v=s.traffic||{},g=s.repository||{};
+      const n=new Intl.NumberFormat('tr-TR');
+      const d=s.collected_at?new Date(s.collected_at).toLocaleString('tr-TR',{dateStyle:'medium',timeStyle:'short'}):'—';
+      el.innerHTML='<strong>Son güncelleme:</strong> '+d+
+        '<br>Yıldız: '+n.format(g.stargazers_count??0)+
+        '<br>Fork: '+n.format(g.forks_count??0)+
+        '<br>Son 14 günlük görüntüleme: '+n.format(v.views_14d??0)+
+        '<br>Son 14 günlük klonlama: '+n.format(v.clones_14d??0);
+    })
+    .catch(()=>el.textContent='İstatistik dosyası henüz oluşturulamadı.');
+});
+</script>
 </body>
 </html>
