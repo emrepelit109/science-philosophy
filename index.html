@@ -108,17 +108,17 @@ a{color:#9cc5ff}.muted{color:#aeb9d6}
       const [source,pages,baseline,history]=await Promise.all([
         counter(COUNTERS.source),
         counter(COUNTERS.pages),
-        fetch('stats/read-baseline.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json()),
+        fetch('stats/latest.json?ts='+Date.now(),{cache:'no-store'}),
         fetch('stats/history-summary.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json())
       ]);
 
-      const baseRaw=baseline.blogger_net_reads;
+      const baseRaw=baseline.reads?.blogger_net_reads;
       const base=(baseRaw===null||baseRaw===undefined||baseRaw==='')?null:Number(baseRaw);
       const web=source+pages;
       sourceEl.textContent=n.format(source);
       pagesEl.textContent=n.format(pages);
       webEl.textContent=n.format(web);
-      netEl.textContent=(Number.isFinite(base))?n.format(base+web):'—';
+      const synchronized=Number(baseline.reads?.net_reads);\n      netEl.textContent=Number.isFinite(synchronized)?n.format(synchronized):(Number.isFinite(base)?n.format(base+web):'—');
 
       const observations=Number(history.observations??0);
       const delta=Number(history.web_total_delta??0);
