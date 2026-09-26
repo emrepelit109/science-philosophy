@@ -2,7 +2,12 @@
 
 **Emre Pelit — science-philosophy**
 
-Kaynak website: https://science-philosophy.grok.me
+## Bağlantılar
+
+- Kaynak website: https://science-philosophy.grok.me
+- GitHub: https://github.com/emrepelit109/science-philosophy
+- GitHub Pages: https://emrepelit109.github.io/science-philosophy
+- Blogger: https://emrepelit7337.blogspot.com
 
 Bu repository, Science & Philosophy sitesinin arşivi, statik web kabuğu ve GitHub etkileşim istatistikleri için oluşturulmuştur.
 
@@ -13,16 +18,11 @@ Bu repository, Science & Philosophy sitesinin arşivi, statik web kabuğu ve Git
 - `stats/latest.json` — son GitHub metrikleri
 - `stats/history.csv` — zaman serisi
 - `scripts/update_stats.py` — istatistik toplayıcı
-- `.github/workflows/update-stats.yml` — otomatik güncelleme
+- `.github/workflows/update-stats.yml` — 5 dakikada bir istatistik güncelleme
+- `.github/workflows/sync-blogger.yml` — 5 dakikada bir Blogger arşiv senkronu
 
 ## Etkileşim istatistikleri
 
-GitHub Actions, repository'nin GitHub API üzerinden erişilebilen trafik ve etkileşim metriklerini **6 saatte bir** toplar ve `stats/` altında geçmişini saklar.
+GitHub Actions, repository'nin GitHub API üzerinden erişilebilen trafik ve etkileşim metriklerini **5 dakikada bir** toplar ve `stats/` altında geçmişini saklar.
 
-GitHub traffic API rolling bir pencere ve gecikmeli veri sağlayabildiğinden, panel "en güncel erişilebilir GitHub verisi" mantığıyla çalışır; sıfır gecikmeli gerçek zamanlı ölçüm değildir.
-
-## İçerik aktarım durumu
-
-Kaynak `science-philosophy.grok.me` bu çalışma ortamından okunabilir HTML içeriği döndürmediği için, kaynak sitedeki tam makale metinlerinin birebir kopyası şu aşamada doğrulanarak alınamamıştır. Bu nedenle repository, erişilebilen içerik kataloğunu ve yayın altyapısını içerir; tam metin arşivi olduğu iddia edilmez.
-
-Kaynak site/export dosyaları erişilebilir olduğunda `content/` altında birebir arşiv eklenebilir.
+Blogger yönetim paneli istatistikleri (blogger.com/u/0/blog/posts/...) dışarıdan okunamaz. Senkron, herkese açık Blogger feed'i (`emrepelit7337.blogspot.com`) ile GitHub arşivi ve sitedeki sayım katmanı üzerinden yapılır.
