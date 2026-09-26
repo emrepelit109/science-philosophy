@@ -1,0 +1,283 @@
+# Blogger Makale Arşivi
+
+Kaynak: https://emrepelit7337.blogspot.com
+
+- [Die Kunst des Erschaffens und was möglich ist](./die-kunst-des-erschaffens-und-was-möglich-ist-58216618.html) — 2026-09-23
+- [L'art de la création et ce qui peut être accompli](./lart-de-la-création-et-ce-qui-peut-être-accompli-13629879.html) — 2026-09-23
+- [ El arte de la creación y lo que se puede hacer](./el-arte-de-la-creación-y-lo-que-se-puede-hacer-46371995.html) — 2026-09-23
+- [The Art of Creation and What Can Be Done](./the-art-of-creation-and-what-can-be-done-90959025.html) — 2026-09-23
+- [Yaratma Sanatı ve Yapılabilecekler](./yaratma-sanatı-ve-yapılabilecekler-88267248.html) — 2026-09-23
+- [Le boson de Higgs en tant que forme d'énergie](./le-boson-de-higgs-en-tant-que-forme-dénergie-64337736.html) — 2026-09-20
+- [Higgs als eine Form von Energie](./higgs-als-eine-form-von-energie-20345449.html) — 2026-09-19
+- [ Higgs como una Forma de Energía](./higgs-como-una-forma-de-energía-25906055.html) — 2026-09-19
+- [HIGGS Particle as a Form of Energy](./higgs-particle-as-a-form-of-energy-52429183.html) — 2026-09-19
+- [Bir Enerji Formu Olarak HIGGS Parçacığı](./bir-enerji-formu-olarak-higgs-parçacığı-66363827.html) — 2026-09-18
+- [  La esencia de la diferencia entre el cerebro y el corazón en los seres humanos y otros seres vivos](./la-esencia-de-la-diferencia-entre-el-cerebro-y-el-corazón-en-los-seres-humanos-y-otros-seres-vivos-39975511.html) — 2026-09-16
+- [The Essence of the Difference Between the Brain and the Heart in Humans and Other Living Beings](./the-essence-of-the-difference-between-the-brain-and-the-heart-in-humans-and-other-living-beings-53123201.html) — 2026-09-16
+- [Beyin ve Kalp Arasındaki Farkın İnsan ile Diğer Canlılardaki Mahiyeti](./beyin-ve-kalp-arasındaki-farkın-insan-ile-diğer-canlılardaki-mahiyeti-30259848.html) — 2026-09-16
+- [ Proportion Parfaite dans l'Univers et ses Réflexions](./proportion-parfaite-dans-lunivers-et-ses-réflexions-88220288.html) — 2026-09-15
+- [ La continuité de l'Islam et notre situation générale](./la-continuité-de-lislam-et-notre-situation-générale-94708450.html) — 2026-09-15
+- [ De quelle matière le Créateur a-t-il formé l'Âme ?](./de-quelle-matière-le-créateur-a-t-il-formé-lâme-94612461.html) — 2026-09-15
+- [Les voies du développement de l'esprit humain et les obstacles actuels](./les-voies-du-développement-de-lesprit-humain-et-les-obstacles-actuels-33187880.html) — 2026-09-15
+- [Sur les Sciences Positives](./sur-les-sciences-positives-91298670.html) — 2026-09-15
+- [ L'Illimitation du Cerveau Humain](./lillimitation-du-cerveau-humain-97877790.html) — 2026-09-15
+- [Le Rôle des Trous Noirs dans le Logiciel de l'Univers](./le-rôle-des-trous-noirs-dans-le-logiciel-de-lunivers-25148827.html) — 2026-09-15
+- [Intrication Quantique et Trous de Vers](./intrication-quantique-et-trous-de-vers-71094853.html) — 2026-09-15
+- [La Sagesse Principale du Sommeil comme Temps Particulier et son Importance dans le Mécanisme de Dialogue avec l'Âme à travers les Rêves](./la-sagesse-principale-du-sommeil-comme-temps-particulier-et-son-importance-dans-le-mécanisme-de-dial-06239239.html) — 2026-09-15
+- [ Notre Moyen de Raccourcir le Délai d'Exaucement de Nos Prières](./notre-moyen-de-raccourcir-le-délai-dexaucement-de-nos-prières-25081020.html) — 2026-09-15
+- [Les Informations Essentielles d'Allah et le Sens Fondamental de la Foi](./les-informations-essentielles-dallah-et-le-sens-fondamental-de-la-foi-83256139.html) — 2026-09-15
+- [ La Matière Noire de l'Univers Est-Elle en Réalité les Bibliothèques Non Activées du Logiciel de l'Univers ?](./la-matière-noire-de-lunivers-est-elle-en-réalité-les-bibliothèques-non-activées-du-logiciel-de-luniv-61782960.html) — 2026-09-14
+- [Les Significations du Coran Visibles au Premier Coup d'Œil et Celles qui Ne Peuvent Être Comprises Sans une Profonde Réflexion](./les-significations-du-coran-visibles-au-premier-coup-dœil-et-celles-qui-ne-peuvent-être-comprises-sa-44439090.html) — 2026-09-14
+- [L'Espace-Temps et la Multidimensionnalité de l'Univers](./lespace-temps-et-la-multidimensionnalité-de-lunivers-69803359.html) — 2026-09-14
+- [L’Origine de la Perception du Temps et l’Univers Holographique](./lorigine-de-la-perception-du-temps-et-lunivers-holographique-41046678.html) — 2026-09-14
+- [L'illusion de la réalité et propositions pour y faire face](./lillusion-de-la-réalité-et-propositions-pour-y-faire-face-02985429.html) — 2026-09-13
+- [La nature bidirectionnelle du temps](./la-nature-bidirectionnelle-du-temps-75821556.html) — 2026-09-13
+- [La conscience humaine peut-elle être transférée aux robots ?](./la-conscience-humaine-peut-elle-être-transférée-aux-robots-63907524.html) — 2026-09-13
+- [En réalité, le libre arbitre n'existe pas Par : Emre Pelit](./en-réalité-le-libre-arbitre-nexiste-pas-par-emre-pelit-96358669.html) — 2026-09-13
+- [CONSTRUIRE UN ÊTRE HUMAIN À PARTIR DE ZÉRO](./construire-un-être-humain-à-partir-de-zéro-94090697.html) — 2026-09-13
+- [ASSISTANT INTELLIGENT DE NUTRITION ET DE SANTÉ BASÉ SUR L'INTELLIGENCE ARTIFICIELLE](./assistant-intelligent-de-nutrition-et-de-santé-basé-sur-lintelligence-artificielle-97174017.html) — 2026-09-13
+- [Les Formations Apparues Après le Big Bang et Leur Nature](./les-formations-apparues-après-le-big-bang-et-leur-nature-82092208.html) — 2026-09-13
+- [ Le Temps et les Questions Qui Font Réfléchir](./le-temps-et-les-questions-qui-font-réfléchir-08665824.html) — 2026-09-13
+- [La Facilité de Créer un Être Humain Parfait Par Rapport à un Être Humain Imparfait et la Preuve du Créateur](./la-facilité-de-créer-un-être-humain-parfait-par-rapport-à-un-être-humain-imparfait-et-la-preuve-du-c-59309517.html) — 2026-09-13
+- [Robot Assistant Anthropomorphe Neuro-Adaptatif (RAANA)](./robot-assistant-anthropomorphe-neuro-adaptatif-raana-72849487.html) — 2026-09-13
+- [Billet de Sortie de la Gravité et de la Dimension Temporelle](./billet-de-sortie-de-la-gravité-et-de-la-dimension-temporelle-02224568.html) — 2026-09-13
+- [Conséquences Attendues de l'Expansion de l'Univers et l'Épuisement du Temps](./conséquences-attendues-de-lexpansion-de-lunivers-et-lépuisement-du-temps-49339136.html) — 2026-09-13
+- [FITRAH ET LA LOGIQUE DE L'ALGORITHME PRÉ-ENTRAÎNÉ](./fitrah-et-la-logique-de-lalgorithme-pré-entraîné-17738339.html) — 2026-09-13
+- [Dilemme entre Matière et Conscience : La Télépathie est-elle Possible ?](./dilemme-entre-matière-et-conscience-la-télépathie-est-elle-possible-42824892.html) — 2026-09-13
+- [ Superposition Quantique et Prise de Décision](./superposition-quantique-et-prise-de-décision-97157339.html) — 2026-09-13
+- [Intrication Quantique et Tissu de l'Univers : L'Illusion de l'Espace-Temps](./intrication-quantique-et-tissu-de-lunivers-lillusionde-lespace-temps-93942296.html) — 2026-09-13
+- [La Variabilité Quantique et l'Effet de l'Observateur](./la-variabilité-quantique-et-leffet-de-lobservateur-15060684.html) — 2026-09-13
+- [ La Thèse de l'Univers Dynamique de John Wheeler et son Interprétation](./la-thèse-de-lunivers-dynamique-de-john-wheeler-et-son-interprétation-58665302.html) — 2026-09-13
+- [Les Parallélismes entre le Principe Holographique et l'Allégorie de la Caverne de Platon](./les-parallélismes-entre-le-principe-holographique-et-lallégorie-de-la-caverne-de-platon-21039367.html) — 2026-09-13
+- [ La Symétrie du Big Bang : La Transformation Matière- Énergie et l'Origine de l'Existence](./la-symétrie-du-big-bang-la-transformation-matière--énergie-et-lorigine-de-lexistence-83701152.html) — 2026-09-13
+- [La Nature Discrète du Temps et le Processus de la Création](./la-nature-discrète-du-temps-et-le-processus-de-la-création-03407708.html) — 2026-09-13
+- [Quel Temps Vivons-Nous et Resterions-Nous les Mêmes si Nous Voyagions dans le Temps ?](./quel-temps-vivons-nous-et-resterions-nous-les-mêmes-si-nous-voyagions-dans-le-temps-74655963.html) — 2026-09-13
+- [La Réalité est Unidimensionnelle et Aucune Force ne Peut la Détruire](./la-réalité-est-unidimensionnelle-et-aucune-force-ne-peut-la-détruire-26209711.html) — 2026-09-13
+- [ La Conception du Circuit Fermé de l’Univers et l’Évacuation des Charges Excédentaires](./la-conception-du-circuit-fermé-de-lunivers-et-lévacuation-des-charges-excédentaires-26075966.html) — 2026-09-13
+- [Jésus de Nazareth et la Perception Historique de Son Message](./jésus-de-nazareth-et-la-perception-historique-de-son-message-75272611.html) — 2026-09-13
+- [Jesus von Nazareth und die historische Wahrnehmung seiner Botschaft](./jesus-von-nazareth-und-die-historische-wahrnehmung-seiner-botschaft-63799075.html) — 2026-09-13
+- [Jesús de Nazaret y la Percepción Histórica de Su Mensaje](./jesús-de-nazaret-y-la-percepción-histórica-de-su-mensaje-12091274.html) — 2026-09-13
+- [Jesus of Nazareth and the Historical Perception of His Message](./jesus-of-nazareth-and-the-historical-perception-of-his-message-55742755.html) — 2026-09-13
+- [ Nasıralı İsa ve Tarih Boyunca Mesajının Algılanışı](./nasıralı-isa-ve-tarih-boyunca-mesajının-algılanışı-64624933.html) — 2026-09-13
+- [Das geschlossene Schaltkreis-Design des Universums und die Ableitung überschüssiger Ladungen aus dem System](./das-geschlossene-schaltkreis-design-des-universums-und-die-ableitung-überschüssiger-ladungen-aus-dem-42684661.html) — 2026-09-07
+- [El diseño de circuito cerrado del universo y la eliminación de las cargas excesivas del sistema](./el-diseño-de-circuito-cerrado-del-universo-y-la-eliminación-de-las-cargas-excesivas-del-sistema-66473762.html) — 2026-09-07
+- [ The Closed-Circuit Design of the Universe and the Removal of Excess Loads from the System](./the-closed-circuit-design-of-the-universe-and-the-removal-of-excess-loads-from-the-system-76915453.html) — 2026-09-07
+- [ Evrenin Kapalı Devre Tasarımı ve Fazla Yüklerin Sistemden Uzaklaştırılması](./evrenin-kapalı-devre-tasarımı-ve-fazla-yüklerin-sistemden-uzaklaştırılması-98647393.html) — 2026-09-07
+- [Ist die Realität eindimensional und unzerstörbar?](./ist-die-realität-eindimensional-und-unzerstörbar-65296974.html) — 2026-09-04
+- [¿Es la Realidad Unidimensional e Indestructible?](./es-la-realidad-unidimensional-e-indestructible-70851996.html) — 2026-09-04
+- [Is Reality One-Dimensional and Indestructible?](./is-reality-one-dimensional-and-indestructible-02998126.html) — 2026-09-04
+- [Gerçeklik Tek Boyutludur ve Onu Hiçbir Güç Yok Edemez](./gerçeklik-tek-boyutludur-ve-onu-hiçbir-güç-yok-edemez-74739963.html) — 2026-09-04
+- [Welche Zeit leben wir und blieben wir dieselben, wenn wir durch die Zeit reisen würden?](./welche-zeit-leben-wir-und-blieben-wir-dieselben-wenn-wir-durch-die-zeit-reisen-würden-13111870.html) — 2026-09-02
+- [¿En qué tiempo vivimos y, si viajáramos en el tiempo, seguiríamos siendo nosotros mismos?](./en-qué-tiempo-vivimos-y-si-viajáramos-en-el-tiempo-seguiríamos-siendo-nosotros-mismos-80033548.html) — 2026-09-02
+- [ Which Time Are We Living In and Would We Remain Ourselves If We Traveled Through Time?](./which-time-are-we-living-in-and-would-we-remain-ourselves-if-we-traveled-through-time-36510186.html) — 2026-09-02
+- [Hangi Zamanı Yaşamaktayız ve Zamanda Yolculuk Yapsak Biz Olarak Kalır Mıyız](./hangi-zamanı-yaşamaktayız-ve-zamanda-yolculuk-yapsak-biz-olarak-kalır-mıyız-67301629.html) — 2026-09-02
+- [Die diskrete Struktur der Zeit und der Schöpfungsprozess](./die-diskrete-struktur-der-zeit-und-derschöpfungsprozess-27066141.html) — 2026-08-19
+- [La Estructura Discreta del Tiempo y el Proceso de la Creación](./la-estructura-discreta-del-tiempo-y-el-proceso-de-la-creación-19197250.html) — 2026-08-19
+- [The Discrete Structure of Time and the Process of Creation](./the-discrete-structure-of-time-and-the-process-of-creation-91669810.html) — 2026-08-19
+- [Zamanın Ayrık Yapısı ve Yaratılış Süreci](./zamanın-ayrık-yapısı-ve-yaratılış-süreci-97015391.html) — 2026-08-19
+- [Die Symmetrie des Urknalls: Materie-Energie-Umwandlung und der Ursprung des Daseins](./die-symmetrie-des-urknalls-materie-energie-umwandlung-und-der-ursprung-des-daseins-01877250.html) — 2026-08-18
+- [ La simetría del Big Bang: Conversión de materia-energía y el origen de la existencia](./la-simetría-del-big-bang-conversión-de-materia-energía-y-el-origen-de-la-existencia-37088733.html) — 2026-08-18
+- [The Symmetry of the Big Bang: Matter-Energy Conversion and the Origin of Existence](./the-symmetry-of-the-big-bang-matter-energyconversion-and-the-origin-of-existence-25880134.html) — 2026-08-18
+- [ Big Bang'in Simetrisi: Madde-Enerji Dönüşümü ve Varoluşun Kökeni ](./big-bangin-simetrisi-madde-enerji-dönüşümü-ve-varoluşun-kökeni-37195142.html) — 2026-08-18
+- [Parallelen zwischen dem holografischen Prinzip und Platon's Höhlengleichnis](./parallelen-zwischen-dem-holografischen-prinzip-und-platons-höhlengleichnis-00762641.html) — 2026-08-03
+- [Paralelas entre el Principio Holográfico y la Alegoría de la Cueva de Platon](./paralelas-entre-el-principio-holográfico-y-la-alegoría-de-la-cueva-de-platon-96873910.html) — 2026-08-03
+- [Parallels Between the Holographic Principle and Plato's Cave Allegory](./parallels-between-the-holographic-principle-and-platos-cave-allegory-55771212.html) — 2026-08-03
+- [Holografik İlke ve Plato’nun Mağara Alegorisi Arasındaki Paralellikler ](./holografik-ilke-ve-platonun-mağara-alegorisi-arasındaki-paralellikler-16944647.html) — 2026-08-03
+- [ John Wheelers These vom dynamischen Universum und ihre Interpretation](./john-wheelers-these-vom-dynamischen-universum-und-ihre-interpretation-50825669.html) — 2026-08-03
+- [Quantenvariabilität und der Beobachtereffekt](./quantenvariabilität-und-der-beobachtereffekt-35654175.html) — 2026-08-03
+- [Quantenverschränkung und das Gewebe des Universums: Die Raum-Zeit-Illusion](./quantenverschränkung-und-das-gewebe-des-universums-die-raum-zeit-illusion-36350046.html) — 2026-08-03
+- [Quantenüberlagerung und Entscheidungsfindung](./quantenüberlagerung-und-entscheidungsfindung-29075729.html) — 2026-08-03
+- [Das Dilemma von Materie und Bewusstsein: Ist Telepathie möglich?](./das-dilemma-von-materie-und-bewusstsein-ist-telepathie-möglich-12197478.html) — 2026-08-03
+- [Fitrat und die Logik vortrainierter Algorithmen](./fitrat-und-die-logik-vortrainierter-algorithmen-58866145.html) — 2026-08-03
+- [Die erwarteten Folgen der Expansion des Universums  und das Ablaufen der Zeit](./die-erwarteten-folgen-der-expansion-des-universums-und-das-ablaufen-der-zeit-84987776.html) — 2026-08-03
+- [Das Ticket aus der Schwerkraft und der Zeitdimension](./das-ticket-aus-der-schwerkraft-und-der-zeitdimension-21090462.html) — 2026-08-03
+- [Neuro-adaptiver anthropomorpher Assistenzroboter (NAAAR)](./neuro-adaptiver-anthropomorpher-assistenzroboter-naaar-68643622.html) — 2026-08-03
+- [Die Leichtigkeit, einen vollkommenen Menschen zu erschaffen, im Vergleich zur Erschaffung eines unvollkommenen, und der Beweis für den Schöpfer](./die-leichtigkeit-einen-vollkommenen-menschen-zu-erschaffen-im-vergleich-zur-erschaffung-eines-unvoll-64763746.html) — 2026-08-03
+- [Zeit und nachdenklich stimmende Fragen](./zeit-und-nachdenklich-stimmende-fragen-96737492.html) — 2026-08-03
+- [Die Entwicklungen nach dem Urknall und ihre Wesenheit](./die-entwicklungen-nach-dem-urknall-und-ihre-wesenheit-15923320.html) — 2026-08-03
+- [KI-BASIERTE INTELLIGENTE ERNÄHRUNGS- UND GESUNDHEITSASSISTENTIN](./ki-basierte-intelligente-ernährungs--und-gesundheitsassistentin-65199178.html) — 2026-08-03
+- [EINEN MENSCHEN VON NULL AUF KONSTRUIEREN](./einen-menschen-von-null-auf-konstruieren-01126874.html) — 2026-08-03
+- [Eigentlich gibt es keinen freien Willen](./eigentlich-gibt-es-keinen-freien-willen-50564411.html) — 2026-08-03
+- [Kann das menschliche Bewusstsein auf Roboter übertragen werden?](./kann-das-menschliche-bewusstsein-auf-roboter-übertragen-werden-24401103.html) — 2026-08-03
+- [Die bidirektionale Natur der Zeit](./die-bidirektionale-natur-der-zeit-15145118.html) — 2026-08-03
+- [Die Illusion der Realität und Empfehlungen zum Umgang damit](./die-illusion-der-realität-und-empfehlungen-zum-umgang-damit-37208594.html) — 2026-08-03
+- [Der Ursprung der Zeitwahrnehmung und das holografische Universum](./der-ursprung-der-zeitwahrnehmung-und-das-holografische-universum-57628057.html) — 2026-08-03
+- [Raum-Zeit und die Mehrdimensionalität des Universums](./raum-zeit-und-die-mehrdimensionalität-des-universums-98477975.html) — 2026-08-03
+- [Die auf den ersten Blick erkennbaren und ohne Nachdenken nicht zu verstehenden Bedeutungen des Korans](./die-auf-den-ersten-blick-erkennbaren-und-ohne-nachdenken-nicht-zu-verstehenden-bedeutungen-des-koran-40653162.html) — 2026-08-03
+- [Ist die Dunkle Materie im Universum eigentlich eine nicht aktivierte Bibliothek der Universum-Software?](./ist-die-dunkle-materie-im-universum-eigentlich-eine-nicht-aktivierte-bibliothek-der-universum-softwa-26317745.html) — 2026-08-02
+- [ Allahs wesenhaftes Wissen und die fundamentale Bedeutung des Glaubens](./allahs-wesenhaftes-wissen-und-die-fundamentale-bedeutung-des-glaubens-45092084.html) — 2026-08-02
+- [Unser Weg, die Zeit bis zur Erfüllung unserer Gebete zu verkürzen](./unser-weg-die-zeit-bis-zur-erfüllung-unserer-gebete-zu-verkürzen-63614287.html) — 2026-08-02
+- [Die Hauptweisheit darüber, warum der Schlaf eine besondere Zeit ist, und seine Bedeutung für die Mechanik der Kommunikation von Träumen mit der Seele](./die-hauptweisheit-darüber-warum-der-schlaf-eine-besondere-zeit-ist-und-seine-bedeutung-für-die-mecha-48166480.html) — 2026-08-02
+- [ Quantenverschränkung und Wurmlöcher](./quantenverschränkung-und-wurmlöcher-12576648.html) — 2026-08-02
+- [ Die Funktion von Schwarzen Löchern in der Universums-Software](./die-funktion-von-schwarzen-löchern-in-der-universums-software-42959642.html) — 2026-08-02
+- [Die Unendlichkeit des menschlichen Gehirns](./die-unendlichkeit-des-menschlichen-gehirns-47421791.html) — 2026-08-02
+- [Über die positiven Wissenschaften](./über-die-positiven-wissenschaften-99426066.html) — 2026-08-02
+- [Die Wege der Entwicklung des menschlichen Geistes und die heutigen Hindernisse dafür](./die-wege-der-entwicklung-des-menschlichen-geistes-und-die-heutigen-hindernisse-dafür-71853933.html) — 2026-08-02
+- [Aus welchem Material hat der Schöpfer die Seele erschaffen?](./aus-welchem-material-hat-der-schöpfer-die-seele-erschaffen-85639150.html) — 2026-08-02
+- [Die Kontinuität des Islam und unser allgemeiner Zustand](./die-kontinuität-des-islam-und-unser-allgemeiner-zustand-78605210.html) — 2026-08-02
+- [Die perfekte Proportionalität im Universum und ihre Reflexionen](./die-perfekte-proportionalität-im-universum-und-ihre-reflexionen-99776409.html) — 2026-08-02
+- [Bereuen und das Leben neu beginnen](./bereuen-und-das-leben-neu-beginnen-79312797.html) — 2026-08-02
+- [Die Natur der Gottesdienste vor dem Schöpfer und ihre Bedeutung für die Kommunikation mit der Seele](./die-natur-der-gottesdienste-vor-dem-schöpfer-und-ihre-bedeutung-für-die-kommunikation-mit-der-seele-46108205.html) — 2026-08-02
+- [Die Chiffren des Einheitsglaubens (Vahdet İnancı)](./die-chiffren-des-einheitsglaubens-vahdet-inancı-20919928.html) — 2026-08-02
+- [Wie die Fitra eigentlich der Existenz im Wege steht](./wie-die-fitra-eigentlich-der-existenz-im-wege-steht-12096257.html) — 2026-08-02
+- [Entsprechen künstliche Organtransplantationen der Ethik und eine ontologische Analyse](./entsprechen-künstliche-organtransplantationen-der-ethik-und-eine-ontologische-analyse-07072112.html) — 2026-08-02
+- [Quantencomputer: Logik und Entwicklungsvorschläge](./quantencomputer-logik-und-entwicklungsvorschläge-24346997.html) — 2026-08-02
+- [Der Islam bedeutet, sich hinzugeben](./der-islam-bedeutet-sich-hinzugeben-25642671.html) — 2026-08-02
+- [Wenn wir alle Charaktere eines Computerspiels sind, warum wurden wir dann auf die Erde geschickt?](./wenn-wir-alle-charaktere-eines-computerspiels-sind-warum-wurden-wir-dann-auf-die-erde-geschickt-25457306.html) — 2026-08-02
+- [Sind wir Statisten in einem Computerspiel?](./sind-wir-statisten-in-einem-computerspiel-08825725.html) — 2026-08-02
+- [Gedanken zur Teleportation](./gedanken-zur-teleportation-78215096.html) — 2026-08-02
+- [Besteht das Leben aus einer Simulation?](./besteht-das-leben-aus-einer-simulation-42213145.html) — 2026-08-02
+- [Roboterprojekt für jeden Bedarf im Leben](./roboterprojekt-für-jeden-bedarf-im-leben-97100225.html) — 2026-08-02
+- [Die Veränderungen, die Umweltfaktoren heute in der mentalen Struktur bewirken](./die-veränderungen-die-umweltfaktoren-heute-in-der-mentalen-struktur-bewirken-88184859.html) — 2026-08-02
+- [Wo die Schöpfung begann: Das Herz](./wo-die-schöpfung-begann-das-herz-13518440.html) — 2026-08-02
+- [Das Paradoxon des Zeitflusses](./das-paradoxon-des-zeitflusses-65668829.html) — 2026-08-02
+- [Leben Menschen ihre eigenen Entscheidungen oder das, was ihnen auferlegt wird?](./leben-menschen-ihre-eigenen-entscheidungen-oder-das-was-ihnen-auferlegt-wird-79964694.html) — 2026-08-02
+- [Menschliche Zustände](./menschliche-zustände-73168906.html) — 2026-08-02
+- [Die Theorie von Allem](./die-theorie-von-allem-82103831.html) — 2026-08-02
+- [Eine Untersuchung zur Quantenmechanik](./eine-untersuchung-zur-quantenmechanik-69612865.html) — 2026-08-02
+- [DIE PERFEKTE HARMONIE AM HIMMEL](./die-perfekte-harmonie-am-himmel-54956312.html) — 2026-08-02
+- [ZEIT IST EIGENTLICH EIN VERNACHLÄSSIGBARES KONZEPT](./zeit-ist-eigentlich-ein-vernachlässigbares-konzept-22707444.html) — 2026-08-02
+- [App für gesunde Ernährung](./app-für-gesunde-ernährung-22396895.html) — 2026-08-02
+- [Die bodenlosen Brunnen des Universums: Wurmlöcher](./die-bodenlosen-brunnen-des-universums-wurmlöcher-15584351.html) — 2026-08-02
+- [Der Weg zur Gründung eines neuen Lebens im Weltraum](./der-weg-zur-gründung-eines-neuen-lebens-im-weltraum-05610682.html) — 2026-08-02
+- [La Tesis del Universo Dinámico de John Wheeler y su Interpretación](./la-tesis-del-universo-dinámico-de-john-wheeler-y-su-interpretación-05632819.html) — 2026-07-19
+- [John Wheeler’s Theory of the Dynamic Universe and Its Interpretation](./john-wheelers-theory-of-the-dynamic-universe-and-its-interpretation-50949669.html) — 2026-07-19
+- [John Wheeler’ın Dinamik Evren Tezi ve Bunun Yorumu](./john-wheelerın-dinamik-evren-tezi-ve-bunun-yorumu-09110349.html) — 2026-07-19
+- [Variabilidad Cuántica y el Efecto del Observador](./variabilidad-cuántica-y-el-efecto-del-observador-30093990.html) — 2026-07-17
+- [Quantum Variability and the Observer Effect](./quantum-variability-and-the-observer-effect-49879420.html) — 2026-07-17
+- [Kuantum Değişkenliği ve Gözlemci Etkisi](./kuantum-değişkenliği-ve-gözlemci-etkisi-63612271.html) — 2026-07-17
+- [Entrelazamiento Cuántico y el Tejido del Universo: La Ilusión del Espacio-Tiempo](./entrelazamiento-cuántico-y-el-tejido-del-universo-la-ilusión-del-espacio-tiempo-63795664.html) — 2026-07-16
+- [Quantum Entanglement and the Fabric of the Universe: The Space-Time Illusion](./quantum-entanglement-and-the-fabric-of-the-universe-the-space-time-illusion-32613913.html) — 2026-07-16
+- [Kuantum Dolanıklılık ve Evrenin Dokusu: Uzay-Zaman İllüzyonu ](./kuantum-dolanıklılık-ve-evrenin-dokusu-uzay-zaman-illüzyonu-15436086.html) — 2026-07-16
+- [Relación entre la Superposición Cuántica y la Toma de Decisiones](./relación-entre-la-superposición-cuántica-y-la-toma-de-decisiones-22172831.html) — 2026-07-15
+- [Kuantum Süperpozisyonu ve Karar Alma İlişkisi](./kuantum-süperpozisyonu-ve-karar-alma-ilişkisi-67440687.html) — 2026-07-15
+- [Quantum Superposition and the Act of Decision-Making](./quantum-superposition-and-the-act-of-decision-making-36110070.html) — 2026-07-15
+- [El Dilema de la Materia y la Conciencia: ¿Es Posible la Telepatía?](./el-dilema-de-la-materia-y-la-conciencia-es-posible-la-telepatía-92938510.html) — 2026-07-12
+- [Matter and Consciousness Dilemma: Is Telepathy Possible?](./matter-and-consciousness-dilemma-is-telepathy-possible-05850943.html) — 2026-07-12
+- [Madde ve Bilinç İkilemi: Telepati Mümkün mü?](./madde-ve-bilinç-ikilemi-telepati-mümkün-mü-76521509.html) — 2026-07-12
+- [Lógica de la Fitrat (Naturaleza Innata) y los Algoritmos Pre-entrenados](./lógica-de-la-fitrat-naturaleza-innata-y-los-algoritmos-pre-entrenados-61652433.html) — 2026-07-10
+- [THE LOGIC OF FITRAT AND PRE-TRAINED ALGORITHMS](./the-logic-of-fitrat-and-pre-trained-algorithms-56479880.html) — 2026-07-10
+- [FITRAT VE PRE-TRAİNED ALGORİTMA MANTIĞI](./fitrat-ve-pre-trained-algoritma-mantiği-03325322.html) — 2026-07-10
+- [ Consecuencias Esperadas de la Expansión del Universo y el Agotamiento del Tiempo](./consecuencias-esperadas-de-la-expansión-del-universo-y-el-agotamiento-del-tiempo-53409123.html) — 2026-07-07
+- [ The Expected Consequences of the Expansion of the Universe and the Exhaustion of Time](./the-expected-consequences-of-the-expansion-of-the-universe-and-the-exhaustion-of-time-14514606.html) — 2026-07-06
+- [ Evrenin Genişlemesinin Beklenen Sonuçları ve Zamanın Tükenmesi](./evrenin-genişlemesinin-beklenen-sonuçları-ve-zamanın-tükenmesi-41548905.html) — 2026-07-06
+- [EL TIEMPO ES, EN REALIDAD, UN CONCEPTO QUE PUEDE CONSIDERARSE INEXISTENTE](./el-tiempo-es-en-realidad-un-concepto-que-puede-considerarse-inexistente-52633890.html) — 2026-07-05
+- [Aplicación para una Alimentación Saludable](./aplicación-para-una-alimentación-saludable-06546634.html) — 2026-07-05
+- [Los Pozos Sin Fondo del Universo: Agujeros de Gusano](./los-pozos-sin-fondo-del-universo-agujeros-de-gusano-99129838.html) — 2026-07-05
+- [Proyecto de Robot Adaptable a las Necesidades en Todos los Ámbitos de la Vida](./proyecto-de-robot-adaptable-a-las-necesidades-en-todos-los-ámbitos-de-la-vida-03913577.html) — 2026-07-02
+- [Mis reflexiones sobre la teletransportación](./mis-reflexiones-sobre-la-teletransportación-32969842.html) — 2026-07-02
+- [Si todos somos personajes de un videojuego, ¿por qué fuimos enviados a la Tierra?](./si-todos-somos-personajes-de-un-videojuego-por-qué-fuimos-enviados-a-la-tierra-16917272.html) — 2026-07-02
+- [Billete de Salida de la Gravedad y de la Dimensión Temporal](./billete-de-salida-de-la-gravedad-y-de-la-dimensión-temporal-82212623.html) — 2026-07-01
+- [Ticket to Exit Gravity and the Dimension of Time](./ticket-to-exit-gravity-and-the-dimension-of-time-13175243.html) — 2026-07-01
+- [Kütle Çekim  ve Zaman Boyutundan Çıkış Bileti](./kütle-çekim-ve-zaman-boyutundan-çıkış-bileti-08775956.html) — 2026-07-01
+- [Robot Asistente Antropomórfico Neuro-Adaptativo (RAANA)](./robot-asistente-antropomórfico-neuro-adaptativo-raana-36664321.html) — 2026-06-30
+- [Neuro-Adaptive Anthropomorphic Helper Robot (NAAYR)](./neuro-adaptive-anthropomorphic-helper-robot-naayr-29768667.html) — 2026-06-30
+- [Nöro-Adaptif Antropomorfik Yardımcı Robot (NAAYR)](./nöro-adaptif-antropomorfik-yardımcı-robot-naayr-10212975.html) — 2026-06-30
+- [La Infinitud del Cerebro Humano](./la-infinitud-del-cerebro-humano-72335482.html) — 2026-06-29
+- [Entrelazamiento cuántico y agujeros de gusano](./entrelazamiento-cuántico-y-agujeros-de-gusano-28176492.html) — 2026-06-29
+- [El origen de la percepción del tiempo y el universo holográfico](./el-origen-de-la-percepción-del-tiempo-y-el-universo-holográfico-87434042.html) — 2026-06-29
+- [ESPACIO-TIEMPO Y LA MULTIDIMENSIONALIDAD DEL UNIVERSO](./espacio-tiempo-y-la-multidimensionalidad-del-universo-51886204.html) — 2026-06-29
+- [El origen de la percepción del tiempo y el universo holográfico](./el-origen-de-la-percepción-del-tiempo-y-el-universo-holográfico-24305200.html) — 2026-06-29
+- [La naturaleza bidireccional del tiempo](./la-naturaleza-bidireccional-del-tiempo-40533130.html) — 2026-06-29
+- [¿Se Puede Transferir la Conciencia Humana a los Robots?](./se-puede-transferir-la-conciencia-humana-a-los-robots-13115710.html) — 2026-06-29
+- [En Realidad, No Existe el Libre Albedrío](./en-realidad-no-existe-el-libre-albedrío-94369801.html) — 2026-06-29
+- [Construir un Ser Humano desde Cero](./construir-un-ser-humano-desde-cero-38724674.html) — 2026-06-29
+- [Formaciones Post-Big Bang y sus Naturalezas](./formaciones-post-big-bang-y-sus-naturalezas-07504792.html) — 2026-06-29
+- [El Tiempo y Preguntas para Reflexionar](./el-tiempo-y-preguntas-para-reflexionar-34297537.html) — 2026-06-29
+- [La Facilidad de Crear un Ser Humano Perfecto en Comparación con Crear uno Imperfecto, y la Prueba  del Creador](./la-facilidad-de-crear-un-ser-humano-perfecto-en-comparación-con-crear-uno-imperfecto-y-la-prueba-del-25197202.html) — 2026-06-29
+- [The Ease of Creating a Perfect Human Compared to Creating an Imperfect Human and the Proof of the Creator](./the-ease-of-creating-a-perfect-human-compared-to-creating-an-imperfect-human-and-the-proof-of-the-cr-81101974.html) — 2026-06-29
+- [Kusursuz İnsan Var Etmenin Kusurlu İnsan Oluşturmaya Nazaran Kolaylığı ve Yaratıcının Delili](./kusursuz-insan-var-etmenin-kusurlu-insan-oluşturmaya-nazaran-kolaylığı-ve-yaratıcının-delili-23236883.html) — 2026-06-29
+- [Time and Thought-Provoking Questions](./time-and-thought-provoking-questions-55412040.html) — 2026-06-28
+- [  Zaman ve Düşündürücü Sorular](./zaman-ve-düşündürücü-sorular-27516656.html) — 2026-06-28
+- [Formations After the Big Bang and Their Nature](./formations-after-the-big-bang-and-their-nature-92929104.html) — 2026-06-25
+- [Big Bang Sonrası Oluşumlar ve Bunların Mahiyeti](./big-bang-sonrası-oluşumlar-ve-bunların-mahiyeti-20915884.html) — 2026-06-25
+- [AI-BASED SMART NUTRITION AND HEALTH ASSISTANT](./ai-based-smart-nutrition-and-health-assistant-95869355.html) — 2026-06-25
+- [ YAPAY ZEKÂ TABANLI AKILLI BESLENME VE SAĞLIK ASISTANI](./yapay-zekâ-tabanli-akilli-beslenme-ve-sağlik-asistani-09333471.html) — 2026-06-25
+- [BUILDING A HUMAN FROM SCRATCH](./building-a-human-from-scratch-17761572.html) — 2026-06-23
+- [SIFIRDAN BİR İNSAN İNŞA ETMEK ](./sifirdan-bir-insan-inşa-etmek-79760488.html) — 2026-06-23
+- [In Reality, There Is No Such Thing as Free Will](./in-reality-there-is-no-such-thing-as-free-will-43790314.html) — 2026-06-22
+- [ Aslında Özgür İrade Diye Bir Şey Yoktur](./aslında-özgür-irade-diye-bir-şey-yoktur-70937445.html) — 2026-06-22
+- [Can Human Consciousness be Transferred to Robots?](./can-human-consciousness-be-transferred-to-robots-76822406.html) — 2026-06-22
+- [İnsan Bilinci Robotlara Aktarılabilir mi?](./insan-bilinci-robotlara-aktarılabilir-mi-92244017.html) — 2026-06-22
+- [The Dual Nature of Time](./the-dual-nature-of-time-57672960.html) — 2026-06-13
+- [ Zamanın Çift Yönlü Doğası](./zamanın-çift-yönlü-doğası-77121921.html) — 2026-06-13
+- [Gerçeklik Yanılgısı ve Bununla Başa Çıkmak için Öneriler ](./gerçeklik-yanılgısı-ve-bununla-başa-çıkmak-için-öneriler-68621556.html) — 2026-06-09
+- [The Illusion of Reality and Suggestions for Coping with It](./the-illusion-of-reality-and-suggestions-for-coping-with-it-99779861.html) — 2026-06-09
+- [The Origin of Time Perception and the Holographic Universe](./the-origin-of-time-perception-and-the-holographic-universe-72618985.html) — 2026-06-02
+- [Zaman Algısının Kökeni ve Holografik Evren](./zaman-algısının-kökeni-ve-holografik-evren-67968211.html) — 2026-06-02
+- [Space-Time and the Multidimensionality of the Universe](./space-time-and-the-multidimensionality-of-the-universe-13407308.html) — 2026-05-30
+- [Uzay-Zaman ve Evrenin Çok Boyutluluğu](./uzay-zaman-ve-evrenin-çok-boyutluluğu-32100342.html) — 2026-05-30
+- [The Surface and Profound Meanings of the Quran: Eternal Guidance Across Eras](./the-surface-and-profound-meanings-of-the-quran-eternal-guidance-across-eras-55239728.html) — 2026-05-10
+- [Kur’an'ın İlk Bakışta Görülebilen ve Üzerinde Düşünülmeden Anlaşılamayacak Anlamları](./kuranın-ilk-bakışta-görülebilen-ve-üzerinde-düşünülmeden-anlaşılamayacak-anlamları-53008722.html) — 2026-05-10
+- [The Software of the Universe: Comment Lines and Libraries](./the-software-of-the-universe-comment-lines-and-libraries-64082285.html) — 2026-05-10
+- [Evrendeki Kara Madde Aslında Evren Yazılımının Aktif Edilmemiş Kütüphaneleri mı](./evrendeki-kara-madde-aslında-evren-yazılımının-aktif-edilmemiş-kütüphaneleri-mı-85678128.html) — 2026-05-10
+- [The Knowledge of Allah's Person and the Primary Meaning of Belief](./the-knowledge-of-allahs-person-and-the-primary-meaning-of-belief-72274461.html) — 2026-05-09
+- [Allah'ın Zati Bilgileri Ve İmanın Temeldeki Anlamı](./allahın-zati-bilgileri-ve-imanın-temeldeki-anlamı-53805086.html) — 2026-05-09
+- [Dualarımızın Kabul Olma Süresini                                                                    Kısaltma Yolumuz](./dualarımızın-kabul-olma-süresini-kısaltma-yolumuz-53216897.html) — 2026-05-08
+- [The Way to Shorten the Acceptance Time of Our Prayers](./the-way-to-shorten-the-acceptance-time-of-our-prayers-67963437.html) — 2026-05-08
+- [The Primary Wisdom Behind Sleep Being a Special Time and the Importance of Dreams in the Mechanics of Speaking with the Soul](./the-primary-wisdom-behind-sleep-being-a-special-time-and-the-importance-of-dreams-in-the-mechanics-o-68091049.html) — 2026-05-08
+- [Uykunun Özel Bir Zaman Olmasının Başlıca Hikmeti ve Rüyaların Ruhla Konuşma Mekaniğindeki Önemi](./uykunun-özel-bir-zaman-olmasının-başlıca-hikmeti-ve-rüyaların-ruhla-konuşma-mekaniğindeki-önemi-85567335.html) — 2026-05-08
+- [Quantum Entanglement and Wormholes](./quantum-entanglement-and-wormholes-67785404.html) — 2026-05-07
+- [Kuantum Dolanıklılık ve Solucan Delikleri ](./kuantum-dolanıklılık-ve-solucan-delikleri-06263618.html) — 2026-05-07
+- [The Function of Black Holes in the Universe Software](./the-function-of-black-holes-in-the-universe-software-69563273.html) — 2026-05-07
+- [Evren Yazılımında Karadeliklerin İşlevi](./evren-yazılımında-karadeliklerin-işlevi-73986672.html) — 2026-05-07
+- [The Limits Of Human Brain](./the-limits-of-human-brain-15075623.html) — 2026-05-07
+- [İnsan Beyninin Sınırsızlığı](./insan-beyninin-sınırsızlığı-86905883.html) — 2026-05-07
+- [On the Positive Sciences](./on-the-positive-sciences-76753088.html) — 2026-05-06
+- [Pozitif Bilimler Üzerine](./pozitif-bilimler-üzerine-49918372.html) — 2026-05-06
+- [Pathways of Human Mind's Development and Present-Day Factors Obstructing It](./pathways-of-human-minds-development-and-present-day-factors-obstructing-it-97382447.html) — 2026-05-06
+- [İnsan Zihninin Gelişim Yolları ve Günümüzdeki Buna Engel Olan Unsurlar](./insan-zihninin-gelişim-yolları-ve-günümüzdeki-buna-engel-olan-unsurlar-28556761.html) — 2026-05-06
+- [From Which Material Did the Creator Bring the Soul into Existence](./from-which-material-did-the-creator-bring-the-soul-into-existence-17798503.html) — 2026-05-06
+- [Yaratıcı Ruhu Hangi Malzemeden Var Etmiştir ](./yaratıcı-ruhu-hangi-malzemeden-var-etmiştir-82384652.html) — 2026-05-06
+- [ İslam’ın Süreklilği ve Bizim Genel Durumumuz](./islamın-süreklilği-ve-bizim-genel-durumumuz-07540118.html) — 2026-05-05
+- [The Continuity of Islam and Our General Situation](./the-continuity-of-islam-and-our-general-situation-43695894.html) — 2026-05-05
+- [Perfect Proportionality in the Universe and Its Reflections](./perfect-proportionality-in-the-universe-and-its-reflections-70989883.html) — 2026-05-05
+- [Evrendeki Kusursuz Orantısallık ve Bunun Yansımaları](./evrendeki-kusursuz-orantısallıkve-bunun-yansımaları-68730609.html) — 2026-05-05
+- [Repentance and Starting Life Anew](./repentance-and-starting-life-anew-57113496.html) — 2026-05-05
+- [Tövbe Etmek ve Hayata Yeniden Başlamak](./tövbe-etmek-ve-hayata-yeniden-başlamak-80483783.html) — 2026-05-05
+- [İbadetlerin Yaratıcı Nezdindeki Mahiyeti ve Ruhla İletişim Kurmadaki Önemi](./ibadetlerin-yaratıcı-nezdindeki-mahiyeti-ve-ruhla-iletişim-kurmadaki-önemi-03094492.html) — 2026-05-04
+- [The Nature of Worship in the Eyes of the Creator and Its Importance in Communicating with the Soul](./the-nature-of-worship-in-the-eyes-of-the-creator-and-its-importance-in-communicating-with-the-soul-46633075.html) — 2026-05-04
+- [The Codes of the Belief in Oneness](./the-codes-of-the-belief-in-oneness-87157751.html) — 2026-05-04
+- [Vahdet İnancının Şifreleri](./vahdet-inancının-şifreleri-89863528.html) — 2026-05-04
+- [How Fitra Actually Constrains Existence](./how-fitra-actually-constrains-existence-60079401.html) — 2026-05-04
+- [Fıtrat Aslında Varlığa Nasıl Engel Olur ](./fıtrat-aslında-varlığa-nasıl-engel-olur-37134123.html) — 2026-05-04
+- [Artificial Organ Transplantation: An Ethical and Existential Analysis](./artificial-organ-transplantation-an-ethical-and-existential-analysis-21977259.html) — 2026-05-03
+- [Yapay Organ Nakli Etiğe Uyar Mı ve Varlıksal Analiz](./yapay-organ-nakli-etiğe-uyar-mı-ve-varlıksal-analiz-79804132.html) — 2026-05-03
+- [Quantum Computing Logic and Development Proposals](./quantum-computing-logic-and-development-proposals-98402812.html) — 2026-05-03
+- [Kuantum Bilgisayar Mantığı ve Gelişim Önerileri ](./kuantum-bilgisayar-mantığı-ve-gelişim-önerileri-93483809.html) — 2026-05-03
+- [İslam is Submission](./islam-is-submission-59569078.html) — 2026-05-03
+- [İslam Teslim Olmaktır](./islam-teslim-olmaktır-70105694.html) — 2026-05-03
+- [If We Are All Characters in a Computer Game, Why Were We Sent to Earth?](./if-we-are-all-characters-in-a-computer-game-why-were-we-sent-to-earth-53791798.html) — 2026-05-03
+- [ Hepimiz Bilgisayar Oyununun Karakterleriysek Niçin Dünya’ya Gönderildik](./hepimiz-bilgisayar-oyununun-karakterleriysek-niçin-dünyaya-gönderildik-10375504.html) — 2026-05-03
+- [The Path to Establishing a New Life in Space](./the-path-to-establishing-a-new-life-in-space-58537119.html) — 2026-05-02
+- [The Bottomless Pits of the Universe: Wormholes](./the-bottomless-pits-of-the-universe-wormholes-28073938.html) — 2026-05-02
+- [Healthy Eating Application](./healthy-eating-application-25902831.html) — 2026-05-02
+- [Time is Actually a Phenomenon That Can Be Considered Nonexistent](./time-is-actually-a-phenomenon-that-can-be-considered-nonexistent-92623143.html) — 2026-05-02
+- [The Perfect Harmony in the Sky](./the-perfect-harmony-in-the-sky-54662691.html) — 2026-05-02
+- [An Examination of Quantum Mechanics](./an-examination-of-quantum-mechanics-10883984.html) — 2026-05-02
+- [The Theory of Everything](./the-theory-of-everything-00850546.html) — 2026-05-02
+- [Human Conditions](./human-conditions-60589190.html) — 2026-05-02
+- [Do People Live Their Own Decisions or What Is Imposed Upon Them?](./do-people-live-their-own-decisions-or-what-is-imposed-upon-them-03587728.html) — 2026-05-02
+- [The Paradox of the Flow of Time](./the-paradox-of-the-flow-of-time-13536995.html) — 2026-05-02
+- [The Place Where Creation Begins: The Heart](./the-place-where-creation-begins-the-heart-66106985.html) — 2026-05-02
+- [Changes in Mental Structure Caused by Modern Environmental Factors](./changes-in-mental-structure-caused-by-modern-environmental-factors-09877187.html) — 2026-05-02
+- [Universal Multi-Purpose Robot Project: Solutions for Every Aspect of Life](./universal-multi-purpose-robot-project-solutions-for-every-aspect-of-life-17607346.html) — 2026-05-02
+- [Is Life Merely a Simulation?](./is-life-merely-a-simulation-59021358.html) — 2026-05-02
+- [Thoughts on Teleportation](./thoughts-on-teleportation-28364108.html) — 2026-05-02
+- [Are We Just Background Characters in a Computer Game?](./are-we-just-background-characters-in-a-computer-game-09783415.html) — 2026-05-02
+- [Bir Bilgisayar Oyununun Figüranları mıyız](./bir-bilgisayar-oyununun-figüranları-mıyız-00371201.html) — 2026-05-02
+- [Işınlanma Hakkında Düşüncelerim](./işınlanma-hakkında-düşüncelerim-28371251.html) — 2026-05-02
+- [ Hayat Bir Simülasyondan Mı İbaret](./hayat-bir-simülasyondan-mı-ibaret-20662993.html) — 2026-05-02
+- [Hayatın Her Alanında İhtiyaca Göre  Robot Projesi](./hayatın-her-alanında-ihtiyaca-göre-robot-projesi-09854611.html) — 2026-05-01
+- [Günümüzde  Çevresel Etkenlerin Zihin Yapısında Oluşturduğu Değişimler](./günümüzde-çevresel-etkenlerin-zihin-yapısında-oluşturduğu-değişimler-63093664.html) — 2026-05-01
+- [Yaratılışın Başladığı Yer: Kalp](./yaratılışın-başladığı-yer-kalp-02805238.html) — 2026-04-30
+- [ Zamanın Akışı Paradoksu](./zamanın-akışı-paradoksu-85274306.html) — 2026-04-29
+- [İnsanlar Kendi Kararlarını mı Yaşar Yoksa Kendilerine Dayatılanı Mı](./insanlar-kendi-kararlarını-mı-yaşar-yoksa-kendilerine-dayatılanı-mı-38536732.html) — 2026-04-29
+- [İnsani Durumlar](./insani-durumlar-12013820.html) — 2026-04-28
+- [Her Şeyin Teorisi](./her-şeyin-teorisi-61956499.html) — 2026-04-27
+- [Kuantum Mekaniği Üzerine Bir İnceleme](./kuantum-mekaniği-üzerine-bir-inceleme-07657506.html) — 2026-04-27
+- [GÖKYÜZÜNDEKİ KUSURSUZ AHENK](./gökyüzündeki-kusursuz-ahenk-14504506.html) — 2026-04-24
+- [ ZAMAN ASLINDA YOK  SAYILABİLECEK BİR MEVHUMDUR  ](./zaman-aslinda-yok-sayilabilecek-bir-mevhumdur-24186927.html) — 2026-04-24
+- [Sağlıklı Beslenme için Uygulama](./sağlıklı-beslenme-için-uygulama-52720735.html) — 2026-04-24
+- [Evrenin Dipsiz Kuyuları: Solucan Delikleri](./evrenin-dipsiz-kuyuları-solucan-delikleri-89219858.html) — 2026-04-24
+- [Uzayda Yeni Bir Hayat Kurmanın Yolu](./uzayda-yeni-bir-hayat-kurmanın-yolu-29943076.html) — 2026-04-24
