@@ -17,6 +17,8 @@ token=os.environ["GITHUB_TOKEN"]
 COUNTERS={
     "source":"science-philosophy-grokme-web-reads-2026-09-26-7c2f9a",
     "pages":"science-philosophy-github-pages-web-reads-2026-09-26-41a6d2",
+    "source_views":"science-philosophy-grokme-page-views-2026-09-26-8e4d1c",
+    "pages_views":"science-philosophy-github-pages-page-views-2026-09-26-5b7a2e",
 }
 
 def api(path):
@@ -44,7 +46,10 @@ def counter_value(key):
 meta=api(f"/repos/{repo}")
 source_web_reads=counter_value(COUNTERS["source"])
 pages_web_reads=counter_value(COUNTERS["pages"])
+source_page_views=counter_value(COUNTERS["source_views"])
+pages_page_views=counter_value(COUNTERS["pages_views"])
 web_reads=source_web_reads+pages_web_reads
+page_views=source_page_views+pages_page_views
 
 baseline={}
 if (STATS/"read-baseline.json").exists():
@@ -89,6 +94,9 @@ s={
         "source_web_reads":source_web_reads,
         "pages_web_reads":pages_web_reads,
         "web_reads":web_reads,
+        "source_page_views":source_page_views,
+        "pages_page_views":pages_page_views,
+        "page_views":page_views,
         "authoritative_net_reads":authoritative_net_reads,
         "blogger_net_reads":blogger_net_reads,
         "net_reads":net_reads,
@@ -128,6 +136,9 @@ summary={
     "web_total_delta":web_reads-first_web,
     "source_web_reads":source_web_reads,
     "pages_web_reads":pages_web_reads,
+    "source_page_views":source_page_views,
+    "pages_page_views":pages_page_views,
+    "page_views":page_views,
     "authoritative_net_reads":authoritative_net_reads,
     "blogger_net_reads":blogger_net_reads,
     "net_reads":net_reads,
