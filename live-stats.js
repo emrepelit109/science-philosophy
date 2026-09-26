@@ -85,14 +85,6 @@
     return r.json();
   }
 
-  function counterForCurrentHost() {
-    const host=window.location.hostname;
-    for (const [name,counter] of Object.entries(CONFIG.webCounter.counters)) {
-      if (counter.hosts.includes(host)) return {name,...counter};
-    }
-    return null;
-  }
-
   function isTrackedWebsite() {
     return Boolean(counterForCurrentHost());
   }
@@ -119,14 +111,23 @@
     try { localStorage.setItem(readKey(),'1'); } catch(e) {}
   }
 
-  async function hitWebCounter() {
-    const counter=counterForCurrentHost();
+  function counterForCurrentHost(kind='net') {
+    const host=window.location.hostname;
+    const suffix=kind==='views' ? 'Views' : 'Net';
+    for (const [name,counter] of Object.entries(CONFIG.webCounter.counters)) {
+      if (counter.hosts.includes(host) && name.endsWith(suffix)) return {name,...counter};
+    }
+    return null;
+  }
+
+  async function hitCounter(kind='net', mark=false) {
+    const counter=counterForCurrentHost(kind);
     if(!counter) throw new Error('Untracked host');
     const url=CONFIG.webCounter.base+'/hit/'+encodeURIComponent(counter.key);
     const result=await json(url);
     const value=Number(result.value);
     if(!Number.isFinite(value)) throw new Error('Invalid counter value');
-    markTracked();
+    if(mark) markTracked();
     return value;
   }
 
@@ -141,17 +142,25 @@
   }
 
   async function getWebCounters() {
-    const [source,pages]=await Promise.all([
-      getCounterValue(CONFIG.webCounter.counters.source.key),
-      getCounterValue(CONFIG.webCounter.counters.pages.key)
+    const c=CONFIG.webCounter.counters;
+    const [sourceNet,pagesNet,sourceViews,pagesViews]=await Promise.all([
+      getCounterValue(c.sourceNet.key),
+      getCounterValue(c.pagesNet.key),
+      getCounterValue(c.sourceViews.key),
+      getCounterValue(c.pagesViews.key)
     ]);
-    return {source,pages};
+    return {sourceNet,pagesNet,sourceViews,pagesViews};
   }
 
   function initWebTracking() {
     if (window.__spWebReadTrackedPromise) return window.__spWebReadTrackedPromise;
     window.__spWebReadTrackedPromise = (async()=>{
-      if(!isLikelyArticlePage() || alreadyTracked()) return null;
+      if(!isLikelyArticlePage()) return null;
+
+      // A page view is counted immediately when the article page is opened.
+      hitCounter('views',false).catch(()=>{});
+
+      if(alreadyTracked()) return null;
 
       let visibleStarted=Date.now();
       let accumulated=0;
@@ -161,7 +170,7 @@
       const tryCount=()=>{
         if(counted || alreadyTracked() || document.hidden) return;
         counted=true;
-        hitWebCounter().catch(()=>{ counted=false; });
+        hitCounter('net',true).catch(()=>{ counted=false; });
       };
 
       const schedule=()=>{
@@ -212,15 +221,18 @@
       const baseRaw=baseline?.blogger_net_reads ?? cached?.reads?.blogger_net_reads;
       const base=(baseRaw===null || baseRaw===undefined || baseRaw==='') ? null : Number(baseRaw);
 
-      const sourceWeb=webCounters.source===null
+      const sourceWeb=webCounters.sourceNet===null
         ? Number(cached?.reads?.source_web_reads ?? cached?.reads?.web_reads ?? 0)
-        : Number(webCounters.source ?? 0);
+        : Number(webCounters.sourceNet ?? 0);
 
-      const pagesWeb=webCounters.pages===null
+      const pagesWeb=webCounters.pagesNet===null
         ? Number(cached?.reads?.pages_web_reads ?? 0)
-        : Number(webCounters.pages ?? 0);
+        : Number(webCounters.pagesNet ?? 0);
 
       const web=sourceWeb+pagesWeb;
+      const sourceViews=webCounters.sourceViews===null ? Number(cached?.reads?.source_page_views ?? 0) : Number(webCounters.sourceViews ?? 0);
+      const pagesViews=webCounters.pagesViews===null ? Number(cached?.reads?.pages_page_views ?? 0) : Number(webCounters.pagesViews ?? 0);
+      const totalViews=sourceViews+pagesViews;
       const synced=Number(cached?.reads?.net_reads);\n      const total=Number.isFinite(synced) ? synced : ((Number.isFinite(base)&&Number.isFinite(web)) ? base+web : null);
       const historyCount=Number(history?.observations ?? 0);
       const historyDelta=Number(history?.web_total_delta ?? 0);
@@ -231,6 +243,7 @@
         '<div class="sp-live-stat read-highlight"><small>Kaynak site okunması</small><strong>'+nf.format(Number.isFinite(sourceWeb)?sourceWeb:0)+'</strong></div>'+
         '<div class="sp-live-stat read-highlight"><small>GitHub Pages okunması</small><strong>'+nf.format(Number.isFinite(pagesWeb)?pagesWeb:0)+'</strong></div>'+
         '<div class="sp-live-stat read-highlight"><small>Birleşik web okunması</small><strong>'+nf.format(Number.isFinite(web)?web:0)+'</strong></div>'+
+        '<div class="sp-live-stat read-highlight"><small>Toplam görüntüleme</small><strong>'+nf.format(Number.isFinite(totalViews)?totalViews:0)+'</strong></div>'+
         '<div class="sp-live-stat read-highlight"><small>Net okunma</small><strong>'+ (total===null?'—':nf.format(total)) +'</strong></div>'+
         '<div class="sp-live-stat"><small>GitHub yıldız</small><strong>'+nf.format(repo.stargazers_count??0)+'</strong></div>'+
         '<div class="sp-live-stat"><small>GitHub fork</small><strong>'+nf.format(repo.forks_count??0)+'</strong></div>'+
@@ -241,7 +254,8 @@
         '</div>'+
         '<div id="sp-live-note"><strong>Blogger net okunma tabanı:</strong> '+(base===null?'Ayarlanmadı':nf.format(base))+
         '<br><strong>Net okunma hesabı:</strong> Blogger net okunma + kaynak site + GitHub Pages web okunması; senkron değer varsa latest.json içindeki doğrulanmış toplam kullanılır.'+
-        '<br><strong>Okuma kuralı:</strong> iki yayında da makale sayfasında en az '+nf.format(CONFIG.webCounter.minimumReadSeconds)+' saniye görünür kalma; aynı sayfa/tarayıcı günde bir kez.'+
+        '<br><strong>Görüntüleme kuralı:</strong> makale sayfası açılır açılmaz toplam görüntülemeye eklenir.'+
+        '<br><strong>Net okuma kuralı:</strong> makale sayfasında en az '+nf.format(CONFIG.webCounter.minimumReadSeconds)+' saniye görünür kalırsa net okunmaya eklenir; aynı sayfa/tarayıcı günde bir kez.'+
         '<br><strong>Geçmiş istatistik:</strong> '+nf.format(historyCount)+' kayıt · ilk kayıttan son kayda web okunması değişimi '+nf.format(historyDelta)+'.'+
         '<br><strong>Son makale:</strong> '+esc(title)+(published?' · '+esc(date(published)):'')+
         '<br><strong>GitHub trafik kaydı:</strong> son kayıtlı 14 günde '+nf.format(t.views_14d??0)+' görüntüleme, '+nf.format(t.unique_views_14d??0)+' benzersiz ziyaret.'+
