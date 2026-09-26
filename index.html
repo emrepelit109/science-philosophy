@@ -36,7 +36,15 @@ a{color:#9cc5ff}.muted{color:#aeb9d6}
 <h2>Okunma İstatistikleri</h2>
 <div class="read-grid">
   <div class="read-stat">
-    <small>Şu ana kadarki web okunması</small>
+    <small>Kaynak site okunması</small>
+    <strong id="source-web-reads">—</strong>
+  </div>
+  <div class="read-stat">
+    <small>GitHub Pages okunması</small>
+    <strong id="pages-web-reads">—</strong>
+  </div>
+  <div class="read-stat">
+    <small>Birleşik web okunması</small>
     <strong id="web-reads">—</strong>
   </div>
   <div class="read-stat">
@@ -44,7 +52,10 @@ a{color:#9cc5ff}.muted{color:#aeb9d6}
     <strong id="net-reads">—</strong>
   </div>
 </div>
-<div id="read-status" class="status">Sayaç yükleniyor…</div>
+<div id="history-info" class="status">Geçmiş istatistikler yükleniyor…</div>
+<div id="read-status" class="status">Canlı sayaç yükleniyor…</div>
+</div>
+
 </div>
 
 <div class="card">
@@ -71,36 +82,66 @@ a{color:#9cc5ff}.muted{color:#aeb9d6}
 <script src="live-stats.js" defer></script>
 <script>
 (function(){
-  const COUNTER='https://countapi.mileshilliard.com/api/v1/get/science-philosophy-grokme-web-reads-2026-09-26-7c2f9a';
+  const API='https://countapi.mileshilliard.com/api/v1';
+  const COUNTERS={
+    source:'science-philosophy-grokme-web-reads-2026-09-26-7c2f9a',
+    pages:'science-philosophy-github-pages-web-reads-2026-09-26-41a6d2'
+  };
   const n=new Intl.NumberFormat('tr-TR');
+  const sourceEl=document.getElementById('source-web-reads');
+  const pagesEl=document.getElementById('pages-web-reads');
   const webEl=document.getElementById('web-reads');
   const netEl=document.getElementById('net-reads');
+  const historyEl=document.getElementById('history-info');
   const statusEl=document.getElementById('read-status');
+
+  async function counter(key){
+    const r=await fetch(API+'/get/'+encodeURIComponent(key)+'?ts='+Date.now(),{cache:'no-store'});
+    if(!r.ok)throw new Error('counter');
+    const j=await r.json();
+    const v=Number(j.value??0);
+    return Number.isFinite(v)?v:0;
+  }
 
   async function loadReads(){
     try{
-      const results=await Promise.all([
-        fetch(COUNTER+'?ts='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}),
-        fetch('stats/read-baseline.json?ts='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()})
+      const [source,pages,baseline,history]=await Promise.all([
+        counter(COUNTERS.source),
+        counter(COUNTERS.pages),
+        fetch('stats/read-baseline.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json()),
+        fetch('stats/history-summary.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json())
       ]);
-      const web=Number(results[0].value??0);
-      const baseRaw=results[1].blogger_net_reads;
+
+      const baseRaw=baseline.blogger_net_reads;
       const base=(baseRaw===null||baseRaw===undefined||baseRaw==='')?null:Number(baseRaw);
-      webEl.textContent=n.format(Number.isFinite(web)?web:0);
-      netEl.textContent=(Number.isFinite(base)&&Number.isFinite(web))?n.format(base+web):'—';
-      statusEl.textContent='● Güncel web sayacı · Son kontrol: '+new Date().toLocaleString('tr-TR',{dateStyle:'medium',timeStyle:'short'});
+      const web=source+pages;
+      sourceEl.textContent=n.format(source);
+      pagesEl.textContent=n.format(pages);
+      webEl.textContent=n.format(web);
+      netEl.textContent=(Number.isFinite(base))?n.format(base+web):'—';
+
+      const observations=Number(history.observations??0);
+      const delta=Number(history.web_total_delta??0);
+      historyEl.textContent='Geçmiş kayıt: '+n.format(Number.isFinite(observations)?observations:0)+
+        ' · Kayıtlara göre web okunması değişimi: '+n.format(Number.isFinite(delta)?delta:0);
+
+      statusEl.textContent='● Canlı toplam · Son kontrol: '+new Date().toLocaleString('tr-TR',{dateStyle:'medium',timeStyle:'short'});
     }catch(e){
       fetch('stats/latest.json?ts='+Date.now(),{cache:'no-store'})
         .then(r=>r.json())
         .then(s=>{
-          const web=Number(s.reads?.web_reads??0);
-          const baseRaw=s.blogger_net_reads;
-          const base=Number(baseRaw);
+          const source=Number(s.reads?.source_web_reads??s.reads?.web_reads??0);
+          const pages=Number(s.reads?.pages_web_reads??0);
+          const base=Number(s.blogger_net_reads);
+          const web=source+pages;
+          sourceEl.textContent=n.format(Number.isFinite(source)?source:0);
+          pagesEl.textContent=n.format(Number.isFinite(pages)?pages:0);
           webEl.textContent=n.format(Number.isFinite(web)?web:0);
-          netEl.textContent=Number.isFinite(base)&&Number.isFinite(web)?n.format(base+web):'—';
-          statusEl.textContent='● Son kayıtlı istatistik gösteriliyor';
+          netEl.textContent=Number.isFinite(base)?n.format(base+web):'—';
+          historyEl.textContent='Son kayıtlı geçmiş istatistik gösteriliyor.';
+          statusEl.textContent='● Son kayıtlı istatistik · Canlı sayaç geçici olarak alınamadı';
         })
-        .catch(()=>{statusEl.textContent='Sayaç şu anda alınamadı.';});
+        .catch(()=>{statusEl.textContent='İstatistikler şu anda alınamadı.';});
     }
   }
 
@@ -117,8 +158,7 @@ a{color:#9cc5ff}.muted{color:#aeb9d6}
         el.innerHTML='<strong>Son güncelleme:</strong> '+d+
           '<br>Yıldız: '+n.format(g.stargazers_count??0)+
           '<br>Fork: '+n.format(g.forks_count??0)+
-          '<br>Son 14 günlük görüntüleme: '+n.format(v.views_14d??0)+
-          '<br>Son 14 günlük klonlama: '+n.format(v.clones_14d??0);
+          '<br>GitHub trafik verisi: yeni sistemde web okunmaları ayrı sayaçlardan toplanır.';
       })
       .catch(()=>el.textContent='İstatistik dosyası henüz oluşturulamadı.');
   });
