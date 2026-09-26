@@ -1,6 +1,6 @@
 {
   "repository": "emrepelit109/science-philosophy",
-  "collected_at": "2026-09-26T14:56:30.864804+00:00",
+  "collected_at": "2026-09-26T15:16:44.472500+00:00",
   "github": {
     "stargazers": 0,
     "forks": 0,
@@ -13,9 +13,10 @@
   },
   "blogger": {
     "site": "https://emrepelit7337.blogspot.com",
-    "native_net_reads": 42257,
-    "synchronized_net_reads": 42258,
-    "formula": "Blogger native net reads + website reads",
+    "authoritative_net_reads": 21839,
+    "native_net_reads": null,
+    "synchronized_net_reads": 21839,
+    "formula": "Authoritative website net reads",
     "native_counter_write": "not_supported"
   }
 }
