@@ -1,10 +1,13 @@
 {
-  "generated_at": "2026-09-26T00:00:00.000Z",
-  "observations": 1,
+  "generated_at": "2026-09-26T14:56:30.864804+00:00",
+  "observations": 3,
   "first_recorded_web_total": 0,
-  "latest_recorded_web_total": 0,
-  "web_total_delta": 0,
+  "latest_recorded_web_total": 1,
+  "web_total_delta": 1,
   "source_web_reads": 0,
-  "pages_web_reads": 0,
-  "note": "Geçmiş kayıtlar yalnızca sistemin ölçmeye başladığı andan itibaren doğrulanmış sayaç değerlerini temsil eder; mevcut sayaç ayrıca canlı olarak okunur."
+  "pages_web_reads": 1,
+  "blogger_net_reads": 42257,
+  "net_reads": 42258,
+  "sync_interval_minutes": 5,
+  "note": "Blogger native net reads are read-only here; the synchronized net metric adds verified website reads to the manually established Blogger baseline."
 }

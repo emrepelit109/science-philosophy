@@ -1,17 +1,21 @@
 {
   "repository": "emrepelit109/science-philosophy",
+  "collected_at": "2026-09-26T14:56:30.864804+00:00",
   "github": {
     "stargazers": 0,
     "forks": 0,
     "open_issues": 0
   },
   "web_reads": {
-    "total": 0,
-    "counter_key": "science-philosophy-grokme-web-reads-2026-09-26-7c2f9a",
-    "source": "science-philosophy.grok.me"
+    "source_site": 0,
+    "github_pages": 1,
+    "total": 1
   },
   "blogger": {
     "site": "https://emrepelit7337.blogspot.com",
-    "note": "Blogger native counters are not programmatically incremented by this workflow."
+    "native_net_reads": 42257,
+    "synchronized_net_reads": 42258,
+    "formula": "Blogger native net reads + website reads",
+    "native_counter_write": "not_supported"
   }
 }
