@@ -157,24 +157,26 @@
       const sv = sourceViews ?? Number(stats?.reads?.source_page_views ?? 0);
       const pn = pagesNet ?? Number(stats?.reads?.pages_web_reads ?? 0);
       const pv = pagesViews ?? Number(stats?.reads?.pages_page_views ?? 0);
-      const webNet = sn + pn;
-      const totalViews = sv + pv;
-      const net = Number(stats?.reads?.net_reads ?? baseline?.authoritative_net_reads);
+      const webNet = Number(baseline?.website_net_read_baseline ?? baseline?.authoritative_net_reads ?? 0) + sn +
+        Number(baseline?.github_pages_net_read_baseline ?? 0) + pn;
+      const totalViews = Number(baseline?.website_page_views_baseline ?? 0) + sv +
+        Number(baseline?.github_pages_page_views_baseline ?? 0) + pv;
+      const net = Number(stats?.reads?.net_reads ?? baseline?.authoritative_net_reads ?? 0) + sn + pn;
 
       panel.innerHTML =
         '<strong>Science & Philosophy — Live Stats</strong>' +
         '<div id="sp-live-grid">' +
-        '<div class="sp-live-stat"><small>Website görüntüleme</small><strong>' + nf.format(sv) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>GitHub Pages görüntüleme</small><strong>' + nf.format(pv) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>Website görüntüleme</small><strong>' + nf.format(Number(baseline?.website_page_views_baseline ?? 0) + sv) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>GitHub Pages görüntüleme</small><strong>' + nf.format(Number(baseline?.github_pages_page_views_baseline ?? 0) + pv) + '</strong></div>' +
         '<div class="sp-live-stat"><small>Toplam görüntüleme</small><strong>' + nf.format(totalViews) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>Website net okunma</small><strong>' + nf.format(sn) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>GitHub Pages net okunma</small><strong>' + nf.format(pn) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>Website net okunma</small><strong>' + nf.format(Number(baseline?.website_net_read_baseline ?? baseline?.authoritative_net_reads ?? 0) + sn) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>GitHub Pages net okunma</small><strong>' + nf.format(Number(baseline?.github_pages_net_read_baseline ?? 0) + pn) + '</strong></div>' +
         '<div class="sp-live-stat"><small>Birleşik web net okunma</small><strong>' + nf.format(webNet) + '</strong></div>' +
         '<div class="sp-live-stat"><small>Senkronize net okunma</small><strong>' + (Number.isFinite(net) ? nf.format(net) : '—') + '</strong></div>' +
         '<div class="sp-live-stat"><small>GitHub yıldız</small><strong>' + nf.format(repo.stargazers_count ?? 0) + '</strong></div>' +
         '</div>' +
         '<div id="sp-live-note">' +
-        '<strong>Görüntüleme:</strong> Website sayfası açıldığında hemen +1.<br>' +
+        '<strong>Görüntüleme:</strong> 41.198 başlangıç değerinin üzerine her yeni sayfa açılışında +1.<br>' +
         '<strong>Net okunma:</strong> Sayfa en az 10 saniye görünür kaldığında +1. Aynı sayfa/tarayıcı için günde en fazla 1 net okuma.<br>' +
         '<strong>Otomatik senkron:</strong> 5 dakika aralıkla.' +
         '</div>';
