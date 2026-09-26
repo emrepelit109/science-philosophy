@@ -9,8 +9,16 @@
     readBaselineUrl: 'https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/read-baseline.json',
     webCounter: {
       base: 'https://countapi.mileshilliard.com/api/v1',
-      key: 'science-philosophy-grokme-web-reads-2026-09-26-7c2f9a',
-      trackedHosts: ['science-philosophy.grok.me', 'www.science-philosophy.grok.me'],
+      counters: {
+        source: {
+          key: 'science-philosophy-grokme-web-reads-2026-09-26-7c2f9a',
+          hosts: ['science-philosophy.grok.me', 'www.science-philosophy.grok.me']
+        },
+        pages: {
+          key: 'science-philosophy-github-pages-web-reads-2026-09-26-41a6d2',
+          hosts: ['emrepelit109.github.io']
+        }
+      },
       minimumReadSeconds: 10,
       perPagePerDay: true
     }
@@ -77,8 +85,16 @@
     return r.json();
   }
 
+  function counterForCurrentHost() {
+    const host=window.location.hostname;
+    for (const [name,counter] of Object.entries(CONFIG.webCounter.counters)) {
+      if (counter.hosts.includes(host)) return {name,...counter};
+    }
+    return null;
+  }
+
   function isTrackedWebsite() {
-    return CONFIG.webCounter.trackedHosts.includes(window.location.hostname);
+    return Boolean(counterForCurrentHost());
   }
 
   function isLikelyArticlePage() {
@@ -104,7 +120,9 @@
   }
 
   async function hitWebCounter() {
-    const url=CONFIG.webCounter.base+'/hit/'+encodeURIComponent(CONFIG.webCounter.key);
+    const counter=counterForCurrentHost();
+    if(!counter) throw new Error('Untracked host');
+    const url=CONFIG.webCounter.base+'/hit/'+encodeURIComponent(counter.key);
     const result=await json(url);
     const value=Number(result.value);
     if(!Number.isFinite(value)) throw new Error('Invalid counter value');
@@ -112,15 +130,22 @@
     return value;
   }
 
-  async function getWebCounter() {
-    const url=CONFIG.webCounter.base+'/get/'+encodeURIComponent(CONFIG.webCounter.key);
+  async function getCounterValue(key) {
     try {
-      const result=await json(url);
+      const result=await json(CONFIG.webCounter.base+'/get/'+encodeURIComponent(key));
       const value=Number(result.value);
       return Number.isFinite(value) ? value : 0;
     } catch(e) {
       return null;
     }
+  }
+
+  async function getWebCounters() {
+    const [source,pages]=await Promise.all([
+      getCounterValue(CONFIG.webCounter.counters.source.key),
+      getCounterValue(CONFIG.webCounter.counters.pages.key)
+    ]);
+    return {source,pages};
   }
 
   function initWebTracking() {
@@ -169,12 +194,13 @@
     panel.classList.add('open');
 
     try{
-      const [repo,blog,cached,baseline,webReads]=await Promise.all([
+      const [repo,blog,cached,baseline,webCounters,history]=await Promise.all([
         json(CONFIG.api+'/repos/'+CONFIG.repo),
         bloggerFeed().catch(()=>null),
         json(CONFIG.statsUrl+'?ts='+Date.now()).catch(()=>null),
         json(CONFIG.readBaselineUrl+'?ts='+Date.now()).catch(()=>({})),
-        getWebCounter()
+        getWebCounters(),
+        json('https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/history-summary.json?ts='+Date.now()).catch(()=>null)
       ]);
 
       const feed=blog?.feed||{};
@@ -186,16 +212,25 @@
       const baseRaw=baseline?.blogger_net_reads;
       const base=(baseRaw===null || baseRaw===undefined || baseRaw==='') ? null : Number(baseRaw);
 
-      const web = webReads===null
-        ? Number(cached?.reads?.web_reads ?? 0)
-        : Number(webReads);
+      const sourceWeb=webCounters.source===null
+        ? Number(cached?.reads?.source_web_reads ?? cached?.reads?.web_reads ?? 0)
+        : Number(webCounters.source ?? 0);
 
+      const pagesWeb=webCounters.pages===null
+        ? Number(cached?.reads?.pages_web_reads ?? 0)
+        : Number(webCounters.pages ?? 0);
+
+      const web=sourceWeb+pagesWeb;
       const total=(Number.isFinite(base)&&Number.isFinite(web)) ? base+web : null;
+      const historyCount=Number(history?.observations ?? 0);
+      const historyDelta=Number(history?.web_total_delta ?? 0);
 
       panel.innerHTML=
         '<div id="sp-live-head"><strong>Live Stats</strong><span id="sp-live-status">● CANLI</span></div>'+
         '<div id="sp-live-grid">'+
-        '<div class="sp-live-stat read-highlight"><small>Web okunma</small><strong>'+nf.format(Number.isFinite(web)?web:0)+'</strong></div>'+
+        '<div class="sp-live-stat read-highlight"><small>Kaynak site okunması</small><strong>'+nf.format(Number.isFinite(sourceWeb)?sourceWeb:0)+'</strong></div>'+
+        '<div class="sp-live-stat read-highlight"><small>GitHub Pages okunması</small><strong>'+nf.format(Number.isFinite(pagesWeb)?pagesWeb:0)+'</strong></div>'+
+        '<div class="sp-live-stat read-highlight"><small>Birleşik web okunması</small><strong>'+nf.format(Number.isFinite(web)?web:0)+'</strong></div>'+
         '<div class="sp-live-stat read-highlight"><small>Net okunma</small><strong>'+ (total===null?'—':nf.format(total)) +'</strong></div>'+
         '<div class="sp-live-stat"><small>GitHub yıldız</small><strong>'+nf.format(repo.stargazers_count??0)+'</strong></div>'+
         '<div class="sp-live-stat"><small>GitHub fork</small><strong>'+nf.format(repo.forks_count??0)+'</strong></div>'+
@@ -205,8 +240,9 @@
         '<div class="sp-live-stat"><small>Dal</small><strong>'+esc(repo.default_branch||'—')+'</strong></div>'+
         '</div>'+
         '<div id="sp-live-note"><strong>Blogger net okunma tabanı:</strong> '+(base===null?'Ayarlanmadı':nf.format(base))+
-        '<br><strong>Net okunma hesabı:</strong> Blogger net okunma + Science & Philosophy web okunması.'+
-        '<br><strong>Okuma kuralı:</strong> makale sayfasında en az '+nf.format(CONFIG.webCounter.minimumReadSeconds)+' saniye görünür kalma; aynı sayfa/tarayıcı günde bir kez.'+
+        '<br><strong>Net okunma hesabı:</strong> Blogger net okunma + kaynak site + GitHub Pages web okunması.'+
+        '<br><strong>Okuma kuralı:</strong> iki yayında da makale sayfasında en az '+nf.format(CONFIG.webCounter.minimumReadSeconds)+' saniye görünür kalma; aynı sayfa/tarayıcı günde bir kez.'+
+        '<br><strong>Geçmiş istatistik:</strong> '+nf.format(historyCount)+' kayıt · ilk kayıttan son kayda web okunması değişimi '+nf.format(historyDelta)+'.'+
         '<br><strong>Son makale:</strong> '+esc(title)+(published?' · '+esc(date(published)):'')+
         '<br><strong>GitHub trafik kaydı:</strong> son kayıtlı 14 günde '+nf.format(t.views_14d??0)+' görüntüleme, '+nf.format(t.unique_views_14d??0)+' benzersiz ziyaret.'+
         '<br><strong>Veri çekme:</strong> '+esc(date(new Date().toISOString()))+
