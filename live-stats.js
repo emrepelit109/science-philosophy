@@ -209,7 +209,7 @@
       const title=latest?.title?.$t || '—';
       const published=latest?.published?.$t || null;
       const t=cached?.traffic||{};
-      const baseRaw=baseline?.blogger_net_reads;
+      const baseRaw=baseline?.blogger_net_reads ?? cached?.reads?.blogger_net_reads;
       const base=(baseRaw===null || baseRaw===undefined || baseRaw==='') ? null : Number(baseRaw);
 
       const sourceWeb=webCounters.source===null
@@ -221,7 +221,7 @@
         : Number(webCounters.pages ?? 0);
 
       const web=sourceWeb+pagesWeb;
-      const total=(Number.isFinite(base)&&Number.isFinite(web)) ? base+web : null;
+      const synced=Number(cached?.reads?.net_reads);\n      const total=Number.isFinite(synced) ? synced : ((Number.isFinite(base)&&Number.isFinite(web)) ? base+web : null);
       const historyCount=Number(history?.observations ?? 0);
       const historyDelta=Number(history?.web_total_delta ?? 0);
 
@@ -240,12 +240,12 @@
         '<div class="sp-live-stat"><small>Dal</small><strong>'+esc(repo.default_branch||'—')+'</strong></div>'+
         '</div>'+
         '<div id="sp-live-note"><strong>Blogger net okunma tabanı:</strong> '+(base===null?'Ayarlanmadı':nf.format(base))+
-        '<br><strong>Net okunma hesabı:</strong> Blogger net okunma + kaynak site + GitHub Pages web okunması.'+
+        '<br><strong>Net okunma hesabı:</strong> Blogger net okunma + kaynak site + GitHub Pages web okunması; senkron değer varsa latest.json içindeki doğrulanmış toplam kullanılır.'+
         '<br><strong>Okuma kuralı:</strong> iki yayında da makale sayfasında en az '+nf.format(CONFIG.webCounter.minimumReadSeconds)+' saniye görünür kalma; aynı sayfa/tarayıcı günde bir kez.'+
         '<br><strong>Geçmiş istatistik:</strong> '+nf.format(historyCount)+' kayıt · ilk kayıttan son kayda web okunması değişimi '+nf.format(historyDelta)+'.'+
         '<br><strong>Son makale:</strong> '+esc(title)+(published?' · '+esc(date(published)):'')+
         '<br><strong>GitHub trafik kaydı:</strong> son kayıtlı 14 günde '+nf.format(t.views_14d??0)+' görüntüleme, '+nf.format(t.unique_views_14d??0)+' benzersiz ziyaret.'+
-        '<br><strong>Veri çekme:</strong> '+esc(date(new Date().toISOString()))+
+        '<br><strong>Senkron aralığı:</strong> 5 dakika (GitHub Actions; zamanlama gecikmesi olabilir).'+\n        '<br><strong>Veri çekme:</strong> '+esc(date(new Date().toISOString()))+
         '</div>';
 
       status.textContent='● CANLI';
