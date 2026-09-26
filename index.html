@@ -10,48 +10,112 @@
 body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;background:#0b1020;color:#eef2ff}
 main{max-width:900px;margin:0 auto;padding:48px 22px}
 .card{background:#151c32;border:1px solid #2a3659;border-radius:16px;padding:22px;margin:18px 0}
+.read-card{border-color:#3b82f6;background:linear-gradient(145deg,#17213b,#11192d)}
+.read-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+.read-stat{padding:16px;border:1px solid #30436b;border-radius:14px;background:#0f1629}
+.read-stat small{display:block;color:#aeb9d6;font-size:.82rem}
+.read-stat strong{display:block;margin-top:4px;font-size:2rem;letter-spacing:-.03em}
+.status{margin-top:10px;font-size:.8rem;color:#aeb9d6}
 a{color:#9cc5ff}.muted{color:#aeb9d6}
+@media(max-width:560px){main{padding:32px 16px}.read-grid{grid-template-columns:1fr}.read-stat strong{font-size:1.7rem}}
 </style>
 </head>
 <body>
 <main>
 <h1>Science & Philosophy</h1>
 <p class="muted">Emre Pelit — bilim, felsefe, kozmoloji, teknoloji ve varoluş üzerine çalışmalar.</p>
+
+<div class="card read-card" aria-live="polite">
+<h2>Okunma İstatistikleri</h2>
+<div class="read-grid">
+  <div class="read-stat">
+    <small>Şu ana kadarki web okunması</small>
+    <strong id="web-reads">—</strong>
+  </div>
+  <div class="read-stat">
+    <small>Net okunma</small>
+    <strong id="net-reads">—</strong>
+  </div>
+</div>
+<div id="read-status" class="status">Sayaç yükleniyor…</div>
+</div>
+
 <div class="card">
 <h2>Kaynak site</h2>
 <p><a href="https://science-philosophy.grok.me" rel="noopener">science-philosophy.grok.me</a></p>
 </div>
+
 <div class="card">
 <h2>Live Stats</h2>
 <p class="muted">Canlı istatistikler ekranın sağ alt köşesindeki sabit Live Stats butonundan her zaman erişilebilir.</p>
 </div>
+
 <div class="card">
 <h2>Repository istatistikleri</h2>
 <div id="stats">Yükleniyor…</div>
 </div>
+
 <div class="card">
 <h2>İçerik arşivi</h2>
 <p><a href="content/ARTICLE_CATALOG.md">Makale kataloğunu görüntüle</a></p>
 </div>
 </main>
+
 <script src="live-stats.js" defer></script>
 <script>
-window.addEventListener('load',function(){
-  const el=document.getElementById('stats');
-  fetch('stats/latest.json?ts='+Date.now(),{cache:'no-store'})
-    .then(r=>{if(!r.ok)throw new Error();return r.json()})
-    .then(s=>{
-      const v=s.traffic||{},g=s.repository||{};
-      const n=new Intl.NumberFormat('tr-TR');
-      const d=s.collected_at?new Date(s.collected_at).toLocaleString('tr-TR',{dateStyle:'medium',timeStyle:'short'}):'—';
-      el.innerHTML='<strong>Son güncelleme:</strong> '+d+
-        '<br>Yıldız: '+n.format(g.stargazers_count??0)+
-        '<br>Fork: '+n.format(g.forks_count??0)+
-        '<br>Son 14 günlük görüntüleme: '+n.format(v.views_14d??0)+
-        '<br>Son 14 günlük klonlama: '+n.format(v.clones_14d??0);
-    })
-    .catch(()=>el.textContent='İstatistik dosyası henüz oluşturulamadı.');
-});
+(function(){
+  const COUNTER='https://countapi.mileshilliard.com/api/v1/get/science-philosophy-grokme-web-reads-2026-09-26-7c2f9a';
+  const n=new Intl.NumberFormat('tr-TR');
+  const webEl=document.getElementById('web-reads');
+  const netEl=document.getElementById('net-reads');
+  const statusEl=document.getElementById('read-status');
+
+  async function loadReads(){
+    try{
+      const results=await Promise.all([
+        fetch(COUNTER+'?ts='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()}),
+        fetch('stats/read-baseline.json?ts='+Date.now(),{cache:'no-store'}).then(r=>{if(!r.ok)throw new Error();return r.json()})
+      ]);
+      const web=Number(results[0].value??0);
+      const baseRaw=results[1].blogger_net_reads;
+      const base=(baseRaw===null||baseRaw===undefined||baseRaw==='')?null:Number(baseRaw);
+      webEl.textContent=n.format(Number.isFinite(web)?web:0);
+      netEl.textContent=(Number.isFinite(base)&&Number.isFinite(web))?n.format(base+web):'—';
+      statusEl.textContent='● Güncel web sayacı · Son kontrol: '+new Date().toLocaleString('tr-TR',{dateStyle:'medium',timeStyle:'short'});
+    }catch(e){
+      fetch('stats/latest.json?ts='+Date.now(),{cache:'no-store'})
+        .then(r=>r.json())
+        .then(s=>{
+          const web=Number(s.reads?.web_reads??0);
+          const baseRaw=s.blogger_net_reads;
+          const base=Number(baseRaw);
+          webEl.textContent=n.format(Number.isFinite(web)?web:0);
+          netEl.textContent=Number.isFinite(base)&&Number.isFinite(web)?n.format(base+web):'—';
+          statusEl.textContent='● Son kayıtlı istatistik gösteriliyor';
+        })
+        .catch(()=>{statusEl.textContent='Sayaç şu anda alınamadı.';});
+    }
+  }
+
+  loadReads();
+  setInterval(loadReads,60000);
+
+  window.addEventListener('load',function(){
+    const el=document.getElementById('stats');
+    fetch('stats/latest.json?ts='+Date.now(),{cache:'no-store'})
+      .then(r=>{if(!r.ok)throw new Error();return r.json()})
+      .then(s=>{
+        const v=s.traffic||{},g=s.repository||{};
+        const d=s.collected_at?new Date(s.collected_at).toLocaleString('tr-TR',{dateStyle:'medium',timeStyle:'short'}):'—';
+        el.innerHTML='<strong>Son güncelleme:</strong> '+d+
+          '<br>Yıldız: '+n.format(g.stargazers_count??0)+
+          '<br>Fork: '+n.format(g.forks_count??0)+
+          '<br>Son 14 günlük görüntüleme: '+n.format(v.views_14d??0)+
+          '<br>Son 14 günlük klonlama: '+n.format(v.clones_14d??0);
+      })
+      .catch(()=>el.textContent='İstatistik dosyası henüz oluşturulamadı.');
+  });
+})();
 </script>
 </body>
 </html>
