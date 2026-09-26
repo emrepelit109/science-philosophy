@@ -18,15 +18,13 @@ def api(path):
         "Authorization":f"Bearer {token}",
         "X-GitHub-Api-Version":"2022-11-28",
         "User-Agent":"science-philosophy-stats"})
-    with urlopen(req,timeout=30) as r: return json.load(r)
+    with urlopen(req,timeout=30) as r:return json.load(r)
 
 def public_json(url):
     req=Request(url,headers={"Accept":"application/json","User-Agent":"science-philosophy-stats"})
     with urlopen(req,timeout=30) as r:return json.load(r)
 
 meta=api(f"/repos/{repo}")
-views=api(f"/repos/{repo}/traffic/views")
-clones=api(f"/repos/{repo}/traffic/clones")
 try:
     web_reads=int(public_json(COUNTER_URL).get("value",0))
 except Exception:
@@ -44,10 +42,10 @@ s={
 "subscribers_count":meta.get("subscribers_count",0),
 "size_kb":meta.get("size",0)},
 "traffic":{
-"views_14d":views.get("count",0),
-"unique_views_14d":views.get("uniques",0),
-"clones_14d":clones.get("count",0),
-"unique_clones_14d":clones.get("uniques",0)},
+"views_14d":None,
+"unique_views_14d":None,
+"clones_14d":None,
+"unique_clones_14d":None},
 "reads":{
 "web_reads":web_reads}}
 
