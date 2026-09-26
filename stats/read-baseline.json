@@ -1,5 +1,6 @@
 {
-  "blogger_net_reads": 42257,
-  "description": "Current Blogger net-read total. Set this to the value shown in Blogger Stats; website reads are added automatically.",
-  "last_updated": "2026-09-26T17:53:00+03:00"
+  "authoritative_net_reads": 21839,
+  "source": "science-philosophy.grok.me",
+  "description": "Authoritative net-read total shown by the Science & Philosophy website. This value is used directly for the synchronized net-read display.",
+  "last_updated": "2026-09-26T17:55:00+03:00"
 }
