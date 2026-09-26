@@ -1,6 +1,10 @@
 {
   "authoritative_net_reads": 21839,
+  "website_net_read_baseline": 21839,
+  "website_page_views_baseline": 41198,
+  "github_pages_net_read_baseline": 0,
+  "github_pages_page_views_baseline": 0,
   "source": "science-philosophy.grok.me",
-  "description": "Authoritative net-read total shown by the Science & Philosophy website. This value is used directly for the synchronized net-read display.",
+  "description": "Website counters start from the displayed baseline values. New website/GitHub Pages page views and 10-second net reads are added to these baselines.",
   "last_updated": "2026-09-26T17:55:00+03:00"
 }
