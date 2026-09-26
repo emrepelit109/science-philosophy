@@ -52,13 +52,19 @@ if (STATS/"read-baseline.json").exists():
         baseline=json.loads((STATS/"read-baseline.json").read_text(encoding="utf-8"))
     except Exception:
         baseline={}
+raw_authoritative=baseline.get("authoritative_net_reads")
+try:
+    authoritative_net_reads=int(raw_authoritative) if raw_authoritative not in (None,"") else None
+except Exception:
+    authoritative_net_reads=None
+
 raw_baseline=baseline.get("blogger_net_reads")
 try:
     blogger_net_reads=int(raw_baseline) if raw_baseline not in (None,"") else None
 except Exception:
     blogger_net_reads=None
 
-net_reads=(blogger_net_reads+web_reads) if blogger_net_reads is not None else None
+net_reads=authoritative_net_reads if authoritative_net_reads is not None else ((blogger_net_reads+web_reads) if blogger_net_reads is not None else None)
 now=datetime.now(timezone.utc).isoformat()
 
 traffic={
@@ -83,9 +89,10 @@ s={
         "source_web_reads":source_web_reads,
         "pages_web_reads":pages_web_reads,
         "web_reads":web_reads,
+        "authoritative_net_reads":authoritative_net_reads,
         "blogger_net_reads":blogger_net_reads,
         "net_reads":net_reads,
-        "net_reads_formula":"Blogger native net reads + verified website reads"
+        "net_reads_formula":"Authoritative website net reads" if authoritative_net_reads is not None else "Blogger native net reads + verified website reads"
     }}
 
 LATEST.write_text(json.dumps(s,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
@@ -121,10 +128,11 @@ summary={
     "web_total_delta":web_reads-first_web,
     "source_web_reads":source_web_reads,
     "pages_web_reads":pages_web_reads,
+    "authoritative_net_reads":authoritative_net_reads,
     "blogger_net_reads":blogger_net_reads,
     "net_reads":net_reads,
     "sync_interval_minutes":5,
-    "note":"Blogger native net reads are read-only here; the synchronized net metric adds verified website reads to the manually established Blogger baseline."
+    "note":"When authoritative_net_reads is present, the website net-read total is used directly; otherwise the legacy Blogger baseline plus verified website reads is used."
 }
 SUMMARY.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
@@ -143,9 +151,10 @@ bridge={
     },
     "blogger":{
         "site":"https://emrepelit7337.blogspot.com",
+        "authoritative_net_reads":authoritative_net_reads,
         "native_net_reads":blogger_net_reads,
         "synchronized_net_reads":net_reads,
-        "formula":"Blogger native net reads + website reads",
+        "formula":"Authoritative website net reads" if authoritative_net_reads is not None else "Blogger native net reads + website reads",
         "native_counter_write":"not_supported"
     }
 }
