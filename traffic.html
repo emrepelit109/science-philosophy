@@ -12,16 +12,15 @@
 <p>Bilim, felsefe, kozmoloji ve teknoloji yazıları.</p>
 <p><a href="https://emrepelit7337.blogspot.com" rel="noopener">Blogger'daki tüm makalelere git</a></p>
 <p><a href="https://science-philosophy.grok.me" rel="noopener">Science & Philosophy sitesini aç</a></p>
-<p id="stats">GitHub verisi yükleniyor…</p>
+<p id="stats">İstatistikler yükleniyor…</p>
 </main>
+<script src="https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/live-stats.js" defer></script>
 <script>
-fetch('stats/traffic-bridge.json',{cache:'no-store'})
+fetch('https://countapi.mileshilliard.com/api/v1/get/science-philosophy-grokme-web-reads-2026-09-26-7c2f9a',{cache:'no-store'})
 .then(r=>r.json())
 .then(s=>{
-  const g=s.github||{};
   document.getElementById('stats').textContent =
-    'GitHub son 14 gün: '+(g.views_14d??0)+' görüntüleme · '+
-    (g.unique_views_14d??0)+' benzersiz ziyaret.';
+    'Net web okunma: '+(s.value??0)+' · Bu değer Live Stats paneline de yansır.';
 })
 .catch(()=>{});
 </script>
