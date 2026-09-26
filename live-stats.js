@@ -7,313 +7,222 @@
     api: 'https://api.github.com',
     statsUrl: 'https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/latest.json',
     readBaselineUrl: 'https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/read-baseline.json',
-    webCounter: {
-      base: 'https://countapi.mileshilliard.com/api/v1',
-      counters: {
-        source: {
-          key: 'science-philosophy-grokme-web-reads-2026-09-26-7c2f9a',
-          hosts: ['science-philosophy.grok.me', 'www.science-philosophy.grok.me']
-        },
-        pages: {
-          key: 'science-philosophy-github-pages-web-reads-2026-09-26-41a6d2',
-          hosts: ['emrepelit109.github.io']
-        }
-      },
-      minimumReadSeconds: 10,
-      perPagePerDay: true
-    }
+    counterBase: 'https://countapi.mileshilliard.com/api/v1',
+    counters: {
+      sourceNet: 'science-philosophy-grokme-web-reads-2026-09-26-7c2f9a',
+      sourceViews: 'science-philosophy-grokme-page-views-2026-09-26-8e4d1c',
+      pagesNet: 'science-philosophy-github-pages-web-reads-2026-09-26-41a6d2',
+      pagesViews: 'science-philosophy-github-pages-page-views-2026-09-26-5b7a2e'
+    },
+    minimumReadSeconds: 10,
+    perPagePerDay: true
   };
 
   const nf = new Intl.NumberFormat('tr-TR');
 
-  function esc(value) {
-    return String(value ?? '—').replace(/[&<>"']/g, ch => ({
-      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  function esc(v) {
+    return String(v ?? '—').replace(/[&<>"']/g, ch => ({
+      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
     }[ch]));
   }
 
-  function date(value) {
-    if (!value) return '—';
-    const d = new Date(value);
-    return Number.isNaN(d.getTime()) ? String(value) :
-      d.toLocaleString('tr-TR', {dateStyle:'medium', timeStyle:'short'});
-  }
-
-  function addStyle() {
-    if (document.getElementById('sp-live-style')) return;
-    const s=document.createElement('style');
-    s.id='sp-live-style';
-    s.textContent=[
-      '#sp-live-root{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,sans-serif}',
-      '#sp-live-toggle{border:0;border-radius:999px;padding:12px 16px;background:#111827;color:#fff;font-weight:800;box-shadow:0 8px 28px #0005;cursor:pointer;border:1px solid #3b82f6;display:inline-flex;align-items:center;gap:8px}',
-      '#sp-live-toggle:hover{filter:brightness(1.08);transform:translateY(-1px)}',
-      '#sp-live-dot{width:8px;height:8px;border-radius:50%;background:#28d17c;box-shadow:0 0 0 4px #28d17c22}',
-      '#sp-live-panel{display:none;width:min(410px,calc(100vw - 36px));margin-bottom:10px;background:#0f1629;color:#eef2ff;border:1px solid #34446e;border-radius:16px;padding:14px;box-shadow:0 16px 45px #0007}',
-      '#sp-live-panel.open{display:block}',
-      '#sp-live-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}',
-      '#sp-live-status{font-size:.75rem;color:#aeb9d6}',
-      '#sp-live-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}',
-      '.sp-live-stat{padding:10px;border:1px solid #263555;border-radius:10px;background:#121b30}',
-      '.sp-live-stat.read-highlight{border-color:#3b82f6}',
-      '.sp-live-stat small{display:block;color:#aeb9d6;font-size:.74rem}',
-      '.sp-live-stat strong{display:block;margin-top:3px;font-size:1rem}',
-      '#sp-live-note{margin-top:10px;color:#aeb9d6;font-size:.78rem;line-height:1.45}',
-      '#sp-live-refresh{margin-top:10px;width:100%;border:1px solid #34446e;background:#1d2945;color:#dfe8ff;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}',
-      '#sp-live-refresh:disabled,#sp-live-toggle:disabled{opacity:.65;cursor:wait}',
-      '@media(max-width:560px){#sp-live-root{right:12px;bottom:12px}#sp-live-panel{width:min(380px,calc(100vw - 24px))}}'
-    ].join('');
-    document.head.appendChild(s);
-  }
-
-  function bloggerFeed() {
-    return new Promise((resolve,reject)=>{
-      const cb='__spBloggerStats_'+Date.now()+'_'+Math.random().toString(36).slice(2);
-      const s=document.createElement('script');
-      const timer=setTimeout(()=>{cleanup();reject(new Error('Blogger feed timeout'));},10000);
-      function cleanup(){clearTimeout(timer);delete window[cb];s.remove();}
-      window[cb]=p=>{cleanup();resolve(p);};
-      s.src=CONFIG.blog+'/feeds/posts/default?alt=json-in-script&max-results=1&callback='+encodeURIComponent(cb);
-      s.async=true;
-      document.head.appendChild(s);
-      s.onerror=()=>{cleanup();reject(new Error('Blogger feed error'));};
-    });
-  }
-
-  async function json(url, options={}) {
-    const r=await fetch(url,{cache:'no-store',...options});
-    if(!r.ok) throw new Error('HTTP '+r.status);
+  async function json(url) {
+    const r = await fetch(url, {cache:'no-store'});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
     return r.json();
   }
 
-  function isTrackedWebsite() {
-    return Boolean(counterForCurrentHost());
-  }
-
-  function isLikelyArticlePage() {
-    if (!isTrackedWebsite()) return false;
-    if (/^(admin|login|account|dashboard)\b/i.test(window.location.pathname.replace(/^\/+/,''))) return false;
-    const article = document.querySelector('article, [itemtype*="Article"], [itemprop="articleBody"]');
-    return Boolean(article) || Boolean(document.querySelector('main'));
-  }
-
-  function readKey() {
-    const day = new Date().toISOString().slice(0,10);
-    const path = window.location.pathname || '/';
-    return 'sp:webread:' + day + ':' + path;
-  }
-
-  function alreadyTracked() {
-    if (!CONFIG.webCounter.perPagePerDay) return false;
-    try { return localStorage.getItem(readKey()) === '1'; } catch(e) { return false; }
-  }
-
-  function markTracked() {
-    try { localStorage.setItem(readKey(),'1'); } catch(e) {}
-  }
-
-  function counterForCurrentHost(kind='net') {
-    const host=window.location.hostname;
-    const suffix=kind==='views' ? 'Views' : 'Net';
-    for (const [name,counter] of Object.entries(CONFIG.webCounter.counters)) {
-      if (counter.hosts.includes(host) && name.endsWith(suffix)) return {name,...counter};
+  function trackedHost() {
+    const h = window.location.hostname;
+    if (h === 'science-philosophy.grok.me' || h === 'www.science-philosophy.grok.me') {
+      return 'source';
     }
+    if (h === 'emrepelit109.github.io') return 'pages';
     return null;
   }
 
-  async function hitCounter(kind='net', mark=false) {
-    const counter=counterForCurrentHost(kind);
-    if(!counter) throw new Error('Untracked host');
-    const url=CONFIG.webCounter.base+'/hit/'+encodeURIComponent(counter.key);
-    const result=await json(url);
-    const value=Number(result.value);
-    if(!Number.isFinite(value)) throw new Error('Invalid counter value');
-    if(mark) markTracked();
-    return value;
+  function counterKey(kind) {
+    const host = trackedHost();
+    if (!host) return null;
+    return CONFIG.counters[host + (kind === 'views' ? 'Views' : 'Net')];
   }
 
-  async function getCounterValue(key) {
+  function storageKey() {
+    const day = new Date().toISOString().slice(0,10);
+    return 'sp:netread:' + day + ':' + (location.pathname || '/');
+  }
+
+  function alreadyRead() {
+    if (!CONFIG.perPagePerDay) return false;
+    try { return localStorage.getItem(storageKey()) === '1'; } catch(e) { return false; }
+  }
+
+  function markRead() {
+    try { localStorage.setItem(storageKey(), '1'); } catch(e) {}
+  }
+
+  async function hit(kind) {
+    const key = counterKey(kind);
+    if (!key) return null;
+    const result = await json(CONFIG.counterBase + '/hit/' + encodeURIComponent(key));
+    const value = Number(result.value);
+    return Number.isFinite(value) ? value : null;
+  }
+
+  async function getCounter(key) {
     try {
-      const result=await json(CONFIG.webCounter.base+'/get/'+encodeURIComponent(key));
-      const value=Number(result.value);
+      const result = await json(CONFIG.counterBase + '/get/' + encodeURIComponent(key));
+      const value = Number(result.value);
       return Number.isFinite(value) ? value : 0;
     } catch(e) {
       return null;
     }
   }
 
-  async function getWebCounters() {
-    const c=CONFIG.webCounter.counters;
-    const [sourceNet,pagesNet,sourceViews,pagesViews]=await Promise.all([
-      getCounterValue(c.sourceNet.key),
-      getCounterValue(c.pagesNet.key),
-      getCounterValue(c.sourceViews.key),
-      getCounterValue(c.pagesViews.key)
-    ]);
-    return {sourceNet,pagesNet,sourceViews,pagesViews};
+  function initTracking() {
+    if (window.__spTrackingStarted || !trackedHost()) return;
+    window.__spTrackingStarted = true;
+
+    // Every opened website page increments the page-view counter immediately.
+    hit('views').catch(() => {});
+
+    // A net read requires at least 10 seconds of visible time.
+    if (alreadyRead()) return;
+
+    let visibleStarted = Date.now();
+    let accumulated = 0;
+    let timer = null;
+    let counted = false;
+
+    function countNet() {
+      if (counted || alreadyRead() || document.hidden) return;
+      counted = true;
+      hit('net').then(markRead).catch(() => { counted = false; });
+    }
+
+    function schedule() {
+      if (timer) clearTimeout(timer);
+      const remaining = Math.max(0, CONFIG.minimumReadSeconds * 1000 - accumulated);
+      timer = setTimeout(countNet, remaining);
+    }
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        accumulated += Date.now() - visibleStarted;
+        if (timer) { clearTimeout(timer); timer = null; }
+      } else {
+        visibleStarted = Date.now();
+        if (accumulated >= CONFIG.minimumReadSeconds * 1000) countNet();
+        else schedule();
+      }
+    }, {passive:true});
+
+    schedule();
   }
 
-  function initWebTracking() {
-    if (window.__spWebReadTrackedPromise) return window.__spWebReadTrackedPromise;
-    window.__spWebReadTrackedPromise = (async()=>{
-      if(!isLikelyArticlePage()) return null;
-
-      // A page view is counted immediately when the article page is opened.
-      hitCounter('views',false).catch(()=>{});
-
-      if(alreadyTracked()) return null;
-
-      let visibleStarted=Date.now();
-      let accumulated=0;
-      let timer=null;
-      let counted=false;
-
-      const tryCount=()=>{
-        if(counted || alreadyTracked() || document.hidden) return;
-        counted=true;
-        hitCounter('net',true).catch(()=>{ counted=false; });
-      };
-
-      const schedule=()=>{
-        if(timer) clearTimeout(timer);
-        const remaining=Math.max(0,(CONFIG.webCounter.minimumReadSeconds*1000)-accumulated);
-        timer=setTimeout(tryCount,remaining);
-      };
-
-      document.addEventListener('visibilitychange',()=>{
-        if(document.hidden){
-          accumulated += Date.now()-visibleStarted;
-          if(timer) { clearTimeout(timer); timer=null; }
-        } else {
-          visibleStarted=Date.now();
-          if(accumulated >= CONFIG.webCounter.minimumReadSeconds*1000) tryCount();
-          else schedule();
-        }
-      },{passive:true});
-
-      schedule();
-      return null;
-    })();
-    return window.__spWebReadTrackedPromise;
+  function addStyle() {
+    if (document.getElementById('sp-live-style')) return;
+    const s = document.createElement('style');
+    s.id = 'sp-live-style';
+    s.textContent =
+      '#sp-live-root{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,sans-serif}' +
+      '#sp-live-toggle{border:0;border-radius:999px;padding:12px 16px;background:#111827;color:#fff;font-weight:800;box-shadow:0 8px 28px #0005;cursor:pointer;border:1px solid #3b82f6;display:inline-flex;align-items:center;gap:8px}' +
+      '#sp-live-dot{width:8px;height:8px;border-radius:50%;background:#28d17c;box-shadow:0 0 0 4px #28d17c22}' +
+      '#sp-live-panel{display:none;width:min(420px,calc(100vw - 36px));margin-bottom:10px;background:#0f1629;color:#eef2ff;border:1px solid #34446e;border-radius:16px;padding:14px;box-shadow:0 16px 45px #0007}' +
+      '#sp-live-panel.open{display:block}' +
+      '#sp-live-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}' +
+      '.sp-live-stat{padding:10px;border:1px solid #263555;border-radius:10px;background:#121b30}' +
+      '.sp-live-stat small{display:block;color:#aeb9d6;font-size:.74rem}' +
+      '.sp-live-stat strong{display:block;margin-top:3px;font-size:1rem}' +
+      '#sp-live-note{margin-top:10px;color:#aeb9d6;font-size:.78rem;line-height:1.45}' +
+      '#sp-live-refresh{margin-top:10px;width:100%;border:1px solid #34446e;background:#1d2945;color:#dfe8ff;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}' +
+      '@media(max-width:560px){#sp-live-root{right:12px;bottom:12px}#sp-live-panel{width:min(380px,calc(100vw - 24px))}}';
+    document.head.appendChild(s);
   }
 
-  async function load(panel,toggle,status,refresh){
-    toggle.disabled=true;
-    refresh.disabled=true;
-    status.textContent='Veriler alınıyor…';
-    panel.classList.add('open');
-
-    try{
-      const [repo,blog,cached,baseline,webCounters,history]=await Promise.all([
-        json(CONFIG.api+'/repos/'+CONFIG.repo),
-        bloggerFeed().catch(()=>null),
-        json(CONFIG.statsUrl+'?ts='+Date.now()).catch(()=>null),
-        json(CONFIG.readBaselineUrl+'?ts='+Date.now()).catch(()=>({})),
-        getWebCounters(),
-        json('https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/history-summary.json?ts='+Date.now()).catch(()=>null)
+  async function load(panel, status, refresh) {
+    refresh.disabled = true;
+    status.textContent = 'Veriler alınıyor…';
+    try {
+      const c = CONFIG.counters;
+      const [repo, stats, baseline, sourceNet, sourceViews, pagesNet, pagesViews] = await Promise.all([
+        json(CONFIG.api + '/repos/' + CONFIG.repo),
+        json(CONFIG.statsUrl + '?ts=' + Date.now()).catch(() => null),
+        json(CONFIG.readBaselineUrl + '?ts=' + Date.now()).catch(() => ({})),
+        getCounter(c.sourceNet), getCounter(c.sourceViews),
+        getCounter(c.pagesNet), getCounter(c.pagesViews)
       ]);
 
-      const feed=blog?.feed||{};
-      const posts=feed['openSearch$totalResults']?.$t ?? '—';
-      const latest=Array.isArray(feed.entry)?feed.entry[0]:null;
-      const title=latest?.title?.$t || '—';
-      const published=latest?.published?.$t || null;
-      const t=cached?.traffic||{};
-      const baseRaw=baseline?.blogger_net_reads ?? cached?.reads?.blogger_net_reads;
-      const base=(baseRaw===null || baseRaw===undefined || baseRaw==='') ? null : Number(baseRaw);
+      const sn = sourceNet ?? Number(stats?.reads?.source_web_reads ?? 0);
+      const sv = sourceViews ?? Number(stats?.reads?.source_page_views ?? 0);
+      const pn = pagesNet ?? Number(stats?.reads?.pages_web_reads ?? 0);
+      const pv = pagesViews ?? Number(stats?.reads?.pages_page_views ?? 0);
+      const webNet = sn + pn;
+      const totalViews = sv + pv;
+      const net = Number(stats?.reads?.net_reads ?? baseline?.authoritative_net_reads);
 
-      const sourceWeb=webCounters.sourceNet===null
-        ? Number(cached?.reads?.source_web_reads ?? cached?.reads?.web_reads ?? 0)
-        : Number(webCounters.sourceNet ?? 0);
-
-      const pagesWeb=webCounters.pagesNet===null
-        ? Number(cached?.reads?.pages_web_reads ?? 0)
-        : Number(webCounters.pagesNet ?? 0);
-
-      const web=sourceWeb+pagesWeb;
-      const sourceViews=webCounters.sourceViews===null ? Number(cached?.reads?.source_page_views ?? 0) : Number(webCounters.sourceViews ?? 0);
-      const pagesViews=webCounters.pagesViews===null ? Number(cached?.reads?.pages_page_views ?? 0) : Number(webCounters.pagesViews ?? 0);
-      const totalViews=sourceViews+pagesViews;
-      const synced=Number(cached?.reads?.net_reads);\n      const total=Number.isFinite(synced) ? synced : ((Number.isFinite(base)&&Number.isFinite(web)) ? base+web : null);
-      const historyCount=Number(history?.observations ?? 0);
-      const historyDelta=Number(history?.web_total_delta ?? 0);
-
-      panel.innerHTML=
-        '<div id="sp-live-head"><strong>Live Stats</strong><span id="sp-live-status">● CANLI</span></div>'+
-        '<div id="sp-live-grid">'+
-        '<div class="sp-live-stat read-highlight"><small>Kaynak site okunması</small><strong>'+nf.format(Number.isFinite(sourceWeb)?sourceWeb:0)+'</strong></div>'+
-        '<div class="sp-live-stat read-highlight"><small>GitHub Pages okunması</small><strong>'+nf.format(Number.isFinite(pagesWeb)?pagesWeb:0)+'</strong></div>'+
-        '<div class="sp-live-stat read-highlight"><small>Birleşik web okunması</small><strong>'+nf.format(Number.isFinite(web)?web:0)+'</strong></div>'+
-        '<div class="sp-live-stat read-highlight"><small>Toplam görüntüleme</small><strong>'+nf.format(Number.isFinite(totalViews)?totalViews:0)+'</strong></div>'+
-        '<div class="sp-live-stat read-highlight"><small>Net okunma</small><strong>'+ (total===null?'—':nf.format(total)) +'</strong></div>'+
-        '<div class="sp-live-stat"><small>GitHub yıldız</small><strong>'+nf.format(repo.stargazers_count??0)+'</strong></div>'+
-        '<div class="sp-live-stat"><small>GitHub fork</small><strong>'+nf.format(repo.forks_count??0)+'</strong></div>'+
-        '<div class="sp-live-stat"><small>Açık issue</small><strong>'+nf.format(repo.open_issues_count??0)+'</strong></div>'+
-        '<div class="sp-live-stat"><small>Watcher</small><strong>'+nf.format(repo.subscribers_count??0)+'</strong></div>'+
-        '<div class="sp-live-stat"><small>Blogger makale</small><strong>'+esc(posts)+'</strong></div>'+
-        '<div class="sp-live-stat"><small>Dal</small><strong>'+esc(repo.default_branch||'—')+'</strong></div>'+
-        '</div>'+
-        '<div id="sp-live-note"><strong>Blogger net okunma tabanı:</strong> '+(base===null?'Ayarlanmadı':nf.format(base))+
-        '<br><strong>Net okunma hesabı:</strong> Blogger net okunma + kaynak site + GitHub Pages web okunması; senkron değer varsa latest.json içindeki doğrulanmış toplam kullanılır.'+
-        '<br><strong>Görüntüleme kuralı:</strong> makale sayfası açılır açılmaz toplam görüntülemeye eklenir.'+
-        '<br><strong>Net okuma kuralı:</strong> makale sayfasında en az '+nf.format(CONFIG.webCounter.minimumReadSeconds)+' saniye görünür kalırsa net okunmaya eklenir; aynı sayfa/tarayıcı günde bir kez.'+
-        '<br><strong>Geçmiş istatistik:</strong> '+nf.format(historyCount)+' kayıt · ilk kayıttan son kayda web okunması değişimi '+nf.format(historyDelta)+'.'+
-        '<br><strong>Son makale:</strong> '+esc(title)+(published?' · '+esc(date(published)):'')+
-        '<br><strong>GitHub trafik kaydı:</strong> son kayıtlı 14 günde '+nf.format(t.views_14d??0)+' görüntüleme, '+nf.format(t.unique_views_14d??0)+' benzersiz ziyaret.'+
-        '<br><strong>Senkron aralığı:</strong> 5 dakika (GitHub Actions; zamanlama gecikmesi olabilir).'+\n        '<br><strong>Veri çekme:</strong> '+esc(date(new Date().toISOString()))+
+      panel.innerHTML =
+        '<strong>Science & Philosophy — Live Stats</strong>' +
+        '<div id="sp-live-grid">' +
+        '<div class="sp-live-stat"><small>Website görüntüleme</small><strong>' + nf.format(sv) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>GitHub Pages görüntüleme</small><strong>' + nf.format(pv) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>Toplam görüntüleme</small><strong>' + nf.format(totalViews) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>Website net okunma</small><strong>' + nf.format(sn) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>GitHub Pages net okunma</small><strong>' + nf.format(pn) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>Birleşik web net okunma</small><strong>' + nf.format(webNet) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>Senkronize net okunma</small><strong>' + (Number.isFinite(net) ? nf.format(net) : '—') + '</strong></div>' +
+        '<div class="sp-live-stat"><small>GitHub yıldız</small><strong>' + nf.format(repo.stargazers_count ?? 0) + '</strong></div>' +
+        '</div>' +
+        '<div id="sp-live-note">' +
+        '<strong>Görüntüleme:</strong> Website sayfası açıldığında hemen +1.<br>' +
+        '<strong>Net okunma:</strong> Sayfa en az 10 saniye görünür kaldığında +1. Aynı sayfa/tarayıcı için günde en fazla 1 net okuma.<br>' +
+        '<strong>Otomatik senkron:</strong> 5 dakika aralıkla.' +
         '</div>';
 
-      status.textContent='● CANLI';
-      status.style.color='#28d17c';
-    }catch(e){
-      panel.innerHTML='<div>Canlı istatistikler şu anda alınamadı.</div><div id="sp-live-note">Bağlantıyı kontrol edip Yenile düğmesine basın.</div>';
-      status.textContent='● HATA';
-      status.style.color='#ef6b73';
-    }finally{
-      toggle.disabled=false;
-      refresh.disabled=false;
+      status.textContent = '● CANLI';
+      status.style.color = '#28d17c';
+    } catch(e) {
+      panel.innerHTML = '<div>Canlı istatistikler şu anda alınamadı.</div>';
+      status.textContent = '● HATA';
+      status.style.color = '#ef6b73';
+    } finally {
+      refresh.disabled = false;
     }
   }
 
-  function mount(){
-    if(document.getElementById('sp-live-root')) return;
+  function mount() {
+    if (document.getElementById('sp-live-root')) return;
     addStyle();
-    initWebTracking();
+    initTracking();
 
-    const root=document.createElement('div');
-    root.id='sp-live-root';
-    root.innerHTML=
-      '<div id="sp-live-panel" aria-live="polite">'+
-      '<div id="sp-live-head"><strong>Science & Philosophy</strong><span id="sp-live-status">Hazır</span></div>'+
-      '<div>Güncel istatistikleri görmek için aşağıdaki butona basın.</div>'+
-      '<button id="sp-live-refresh" type="button">↻ Yenile</button>'+
-      '</div>'+
+    const root = document.createElement('div');
+    root.id = 'sp-live-root';
+    root.innerHTML =
+      '<div id="sp-live-panel">' +
+      '<div id="sp-live-status">Hazır</div>' +
+      '<button id="sp-live-refresh" type="button">↻ Yenile</button>' +
+      '</div>' +
       '<button id="sp-live-toggle" type="button" aria-expanded="false"><span id="sp-live-dot"></span>Live Stats</button>';
 
     document.body.appendChild(root);
+    const panel = root.querySelector('#sp-live-panel');
+    const toggle = root.querySelector('#sp-live-toggle');
+    const refresh = root.querySelector('#sp-live-refresh');
+    const status = root.querySelector('#sp-live-status');
 
-    const panel=root.querySelector('#sp-live-panel');
-    const toggle=root.querySelector('#sp-live-toggle');
-    const refresh=root.querySelector('#sp-live-refresh');
-    const status=root.querySelector('#sp-live-status');
-    const run=()=>load(panel,toggle,status,refresh);
-
-    toggle.addEventListener('click',()=>{
-      if(panel.classList.contains('open')){
-        panel.classList.remove('open');
-        toggle.setAttribute('aria-expanded','false');
-      }else{
-        toggle.setAttribute('aria-expanded','true');
-        run();
-      }
+    toggle.addEventListener('click', () => {
+      const open = panel.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) load(panel, status, refresh);
     });
-    refresh.addEventListener('click',run);
+    refresh.addEventListener('click', () => load(panel, status, refresh));
   }
 
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',mount,{once:true});
-  }else{
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mount, {once:true});
+  } else {
     mount();
   }
 
-  window.SciencePhilosophyLiveStats={mount};
+  window.SciencePhilosophyLiveStats = {mount};
 })();
