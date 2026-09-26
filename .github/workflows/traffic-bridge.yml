@@ -1,8 +1,6 @@
 name: Sync GitHub-to-Blogger traffic bridge
 
 on:
-  schedule:
-    - cron: "29 */6 * * *"
   workflow_dispatch:
 
 permissions:
