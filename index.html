@@ -85,7 +85,9 @@ a{color:#9cc5ff}.muted{color:#aeb9d6}
   const API='https://countapi.mileshilliard.com/api/v1';
   const COUNTERS={
     source:'science-philosophy-grokme-web-reads-2026-09-26-7c2f9a',
-    pages:'science-philosophy-github-pages-web-reads-2026-09-26-41a6d2'
+    pages:'science-philosophy-github-pages-web-reads-2026-09-26-41a6d2',
+    sourceViews:'science-philosophy-grokme-page-views-2026-09-26-8e4d1c',
+    pagesViews:'science-philosophy-github-pages-page-views-2026-09-26-5b7a2e'
   };
   const n=new Intl.NumberFormat('tr-TR');
   const sourceEl=document.getElementById('source-web-reads');
@@ -105,9 +107,11 @@ a{color:#9cc5ff}.muted{color:#aeb9d6}
 
   async function loadReads(){
     try{
-      const [source,pages,baseline,history]=await Promise.all([
+      const [source,pages,sourceViews,pagesViews,baseline,history]=await Promise.all([
         counter(COUNTERS.source),
         counter(COUNTERS.pages),
+        counter(COUNTERS.sourceViews),
+        counter(COUNTERS.pagesViews),
         fetch('stats/latest.json?ts='+Date.now(),{cache:'no-store'}),
         fetch('stats/history-summary.json?ts='+Date.now(),{cache:'no-store'}).then(r=>r.json())
       ]);
@@ -115,10 +119,14 @@ a{color:#9cc5ff}.muted{color:#aeb9d6}
       const baseRaw=baseline.reads?.blogger_net_reads;
       const base=(baseRaw===null||baseRaw===undefined||baseRaw==='')?null:Number(baseRaw);
       const web=source+pages;
+      const totalViews=sourceViews+pagesViews;
       sourceEl.textContent=n.format(source);
       pagesEl.textContent=n.format(pages);
       webEl.textContent=n.format(web);
       const synchronized=Number(baseline.reads?.net_reads);\n      netEl.textContent=Number.isFinite(synchronized)?n.format(synchronized):(Number.isFinite(base)?n.format(base+web):'—');
+      let viewsEl=document.getElementById('page-views');
+      if(!viewsEl){ viewsEl=document.createElement('div'); viewsEl.id='page-views'; viewsEl.className='status'; netEl.parentElement.parentElement.appendChild(viewsEl); }
+      viewsEl.innerHTML='<strong>Toplam görüntüleme:</strong> '+n.format(totalViews)+' · Sayfa açılışında hemen artar. Net okunma ise en az 10 saniye görünür kalma sonrasında artar.';
 
       const observations=Number(history.observations??0);
       const delta=Number(history.web_total_delta??0);
