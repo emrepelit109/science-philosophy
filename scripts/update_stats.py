@@ -9,6 +9,8 @@ STATS=ROOT/"stats"; STATS.mkdir(exist_ok=True)
 LATEST=STATS/"latest.json"; HISTORY=STATS/"history.csv"
 repo=os.environ.get("GITHUB_REPOSITORY","emrepelit109/science-philosophy")
 token=os.environ["GITHUB_TOKEN"]
+COUNTER_KEY="science-philosophy-grokme-web-reads-2026-09-26-7c2f9a"
+COUNTER_URL=f"https://countapi.mileshilliard.com/api/v1/get/{COUNTER_KEY}"
 
 def api(path):
     req=Request("https://api.github.com"+path,headers={
@@ -18,9 +20,18 @@ def api(path):
         "User-Agent":"science-philosophy-stats"})
     with urlopen(req,timeout=30) as r: return json.load(r)
 
+def public_json(url):
+    req=Request(url,headers={"Accept":"application/json","User-Agent":"science-philosophy-stats"})
+    with urlopen(req,timeout=30) as r:return json.load(r)
+
 meta=api(f"/repos/{repo}")
 views=api(f"/repos/{repo}/traffic/views")
 clones=api(f"/repos/{repo}/traffic/clones")
+try:
+    web_reads=int(public_json(COUNTER_URL).get("value",0))
+except Exception:
+    web_reads=0
+
 now=datetime.now(timezone.utc).isoformat()
 s={
 "collected_at":now,
@@ -36,9 +47,12 @@ s={
 "views_14d":views.get("count",0),
 "unique_views_14d":views.get("uniques",0),
 "clones_14d":clones.get("count",0),
-"unique_clones_14d":clones.get("uniques",0)}}
+"unique_clones_14d":clones.get("uniques",0)},
+"reads":{
+"web_reads":web_reads}}
+
 LATEST.write_text(json.dumps(s,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-row={"collected_at":now,**s["repository"],**s["traffic"]}
+row={"collected_at":now,**s["repository"],**s["traffic"],**s["reads"]}
 exists=HISTORY.exists()
 with HISTORY.open("a",newline="",encoding="utf-8") as f:
     w=csv.DictWriter(f,fieldnames=row.keys())
