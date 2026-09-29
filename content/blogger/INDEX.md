@@ -2,6 +2,11 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [ La structure de simulation du temps et la perception neuronale du temps](./la-structure-de-simulation-du-temps-et-la-perception-neuronale-du-temps-83967531.html) — 2026-09-28
+- [Die Simulationsstruktur der Zeit und die neuronale Zeitwahrnehmung](./die-simulationsstruktur-der-zeit-und-die-neuronale-zeitwahrnehmung-09274702.html) — 2026-09-28
+- [La estructura de simulación del tiempo y la percepción neuronal del tiempo](./la-estructura-de-simulación-del-tiempo-y-la-percepción-neuronal-del-tiempo-38427364.html) — 2026-09-28
+- [The Simulation Structure of Time and Neuronal Time Perception](./the-simulation-structure-of-time-and-neuronal-time-perception-65878465.html) — 2026-09-28
+- [Zamanın Simülasyon Yapısı ve Nöronal Zaman Algısı](./zamanın-simülasyon-yapısı-ve-nöronal-zaman-algısı-34648239.html) — 2026-09-28
 - [Die Kunst des Erschaffens und was möglich ist](./die-kunst-des-erschaffens-und-was-möglich-ist-58216618.html) — 2026-09-23
 - [L'art de la création et ce qui peut être accompli](./lart-de-la-création-et-ce-qui-peut-être-accompli-13629879.html) — 2026-09-23
 - [ El arte de la creación y lo que se puede hacer](./el-arte-de-la-creación-y-lo-que-se-puede-hacer-46371995.html) — 2026-09-23
