@@ -1,12 +1,12 @@
 {
   "blogger_post_reads_baseline": 23500,
   "blogger_page_views_baseline": 0,
-  "website_web_reads_baseline": 21839,
+  "website_web_reads_baseline": 0,
   "website_app_reads_baseline": 0,
-  "website_page_views_baseline": 41198,
+  "website_page_views_baseline": 0,
   "github_pages_net_read_baseline": 0,
   "github_pages_page_views_baseline": 0,
   "source": "science-philosophy.grok.me + emrepelit7337.blogspot.com",
-  "description": "Unified net-read formula: Blogger historical total + new Blogger net reads + GitHub reads + website web reads + website app reads.",
-  "last_updated": "2026-09-30T20:48:00Z"
+  "description": "Unified net-read formula: Blogger historical total + new Blogger net reads + real website/GitHub/app net-read counters. No fabricated website starting value.",
+  "last_updated": "2026-09-30T21:05:00Z"
 }
