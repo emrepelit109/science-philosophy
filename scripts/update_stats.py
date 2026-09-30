@@ -15,12 +15,13 @@ BRIDGE=STATS/"traffic-bridge.json"
 repo=os.environ.get("GITHUB_REPOSITORY","emrepelit109/science-philosophy")
 token=os.environ["GITHUB_TOKEN"]
 COUNTERS={
-    "source":"science-philosophy-grokme-web-reads-2026-09-26-7c2f9a",
-    "pages":"science-philosophy-github-pages-web-reads-2026-09-26-41a6d2",
-    "source_views":"science-philosophy-grokme-page-views-2026-09-26-8e4d1c",
-    "pages_views":"science-philosophy-github-pages-page-views-2026-09-26-5b7a2e",
+    "website_web":"science-philosophy-grokme-web-reads-2026-09-26-7c2f9a",
+    "github":"science-philosophy-github-pages-web-reads-2026-09-26-41a6d2",
+    "website_views":"science-philosophy-grokme-page-views-2026-09-26-8e4d1c",
+    "github_views":"science-philosophy-github-pages-page-views-2026-09-26-5b7a2e",
+    "blogger_new":"science-philosophy-blogger-new-post-reads-2026-09-30-b4e71c",
+    "app":"science-philosophy-grokme-app-reads-2026-09-30-a91f4e"
 }
-
 def api(path):
     req=Request("https://api.github.com"+path,headers={
         "Accept":"application/vnd.github+json",
@@ -44,12 +45,12 @@ def counter_value(key):
         return 0
 
 meta=api(f"/repos/{repo}")
-source_web_reads=counter_value(COUNTERS["source"])
-pages_web_reads=counter_value(COUNTERS["pages"])
-source_page_views=counter_value(COUNTERS["source_views"])
-pages_page_views=counter_value(COUNTERS["pages_views"])
-web_reads=source_web_reads+pages_web_reads
-page_views=source_page_views+pages_page_views
+website_web_reads=counter_value(COUNTERS["website_web"])
+github_reads=counter_value(COUNTERS["github"])
+website_page_views=counter_value(COUNTERS["website_views"])
+github_page_views=counter_value(COUNTERS["github_views"])
+blogger_new_reads=counter_value(COUNTERS["blogger_new"])
+app_reads=counter_value(COUNTERS["app"])
 
 baseline={}
 if (STATS/"read-baseline.json").exists():
@@ -57,19 +58,21 @@ if (STATS/"read-baseline.json").exists():
         baseline=json.loads((STATS/"read-baseline.json").read_text(encoding="utf-8"))
     except Exception:
         baseline={}
-raw_authoritative=baseline.get("authoritative_net_reads")
-try:
-    authoritative_net_reads=int(raw_authoritative) if raw_authoritative not in (None,"") else None
-except Exception:
-    authoritative_net_reads=None
 
-raw_baseline=baseline.get("blogger_net_reads")
-try:
-    blogger_net_reads=int(raw_baseline) if raw_baseline not in (None,"") else None
-except Exception:
-    blogger_net_reads=None
+def baseline_int(key):
+    try:
+        return int(baseline.get(key,0) or 0)
+    except Exception:
+        return 0
 
-net_reads=authoritative_net_reads if authoritative_net_reads is not None else ((blogger_net_reads+web_reads) if blogger_net_reads is not None else None)
+blogger_post_reads=baseline_int("blogger_post_reads_baseline")+blogger_new_reads
+github_total=baseline_int("github_reads_baseline")+github_reads
+website_total=baseline_int("website_web_reads_baseline")+website_web_reads
+app_total=baseline_int("website_app_reads_baseline")+app_reads
+net_reads=blogger_post_reads+github_total+website_total+app_total
+web_reads=website_total+github_total
+page_views=baseline_int("website_page_views_baseline")+website_page_views+baseline_int("github_pages_page_views_baseline")+github_page_views
+
 now=datetime.now(timezone.utc).isoformat()
 
 traffic={
@@ -91,22 +94,19 @@ s={
         "size_kb":meta.get("size",0)},
     "traffic":traffic,
     "reads":{
-        "source_web_reads":source_web_reads,
-        "pages_web_reads":pages_web_reads,
+        "blogger_post_reads":blogger_post_reads,
+        "github_reads":github_total,
+        "website_web_reads":website_total,
+        "website_app_reads":app_total,
         "web_reads":web_reads,
-        "source_page_views":source_page_views,
-        "pages_page_views":pages_page_views,
         "page_views":page_views,
-        "authoritative_net_reads":authoritative_net_reads,
-        "blogger_net_reads":blogger_net_reads,
         "net_reads":net_reads,
-        "net_reads_formula":"Authoritative website net reads" if authoritative_net_reads is not None else "Blogger native net reads + verified website reads"
+        "net_reads_formula":"Blogger post reads + GitHub reads + website web reads + website app reads"
     }}
 
 LATEST.write_text(json.dumps(s,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
-fieldnames=["collected_at","source_web_reads","pages_web_reads","web_reads",
-            "blogger_net_reads","net_reads"]
+fieldnames=["collected_at","blogger_post_reads","github_reads","website_web_reads","website_app_reads","web_reads","net_reads"]
 row={k:s["reads"].get(k) for k in fieldnames if k!="collected_at"}
 row["collected_at"]=now
 exists=HISTORY.exists()
@@ -134,16 +134,15 @@ summary={
     "first_recorded_web_total":first_web,
     "latest_recorded_web_total":web_reads,
     "web_total_delta":web_reads-first_web,
-    "source_web_reads":source_web_reads,
-    "pages_web_reads":pages_web_reads,
-    "source_page_views":source_page_views,
-    "pages_page_views":pages_page_views,
+    "blogger_post_reads":blogger_post_reads,
+    "github_reads":github_total,
+    "website_web_reads":website_total,
+    "website_app_reads":app_total,
+    "web_reads":web_reads,
     "page_views":page_views,
-    "authoritative_net_reads":authoritative_net_reads,
-    "blogger_net_reads":blogger_net_reads,
     "net_reads":net_reads,
     "sync_interval_minutes":5,
-    "note":"When authoritative_net_reads is present, the website net-read total is used directly; otherwise the legacy Blogger baseline plus verified website reads is used."
+    "formula":"Blogger post reads + GitHub reads + website web reads + website app reads"
 }
 SUMMARY.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
