@@ -227,4 +227,84 @@
   }
 
   window.SciencePhilosophyLiveStats = {mount};
+})()    async function load(panel, status, refresh) {
+    refresh.disabled = true;
+    status.textContent = 'Veriler alınıyor…';
+    try {
+      const sources = await json('https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/sources.json?ts=' + Date.now());
+      const [repo, stats, sourceWeb, github, app] = await Promise.all([
+        json(CONFIG.api + '/repos/' + CONFIG.repo),
+        json(CONFIG.statsUrl + '?ts=' + Date.now()).catch(() => null),
+        getCounter(sources.counter_keys.website_web_reads),
+        getCounter(sources.counter_keys.github_reads),
+        getCounter(sources.counter_keys.website_app_reads)
+      ]);
+
+      const blogger = Number(sources.blogger_post_reads_baseline || 0) +
+        (stats?.reads?.blogger_new_reads || 0);
+      const githubTotal = Number(sources.github_reads_baseline || 0) + Number(github || 0);
+      const website = Number(sources.website_web_reads_baseline || 0) + Number(sourceWeb || 0);
+      const appTotal = Number(sources.website_app_reads_baseline || 0) + Number(app || 0);
+      const total = blogger + githubTotal + website + appTotal;
+
+      panel.innerHTML =
+        '<strong>Science & Philosophy — Live Stats</strong>' +
+        '<div id="sp-live-grid">' +
+        '<div class="sp-live-stat"><small>Blogger yazı okunmaları</small><strong>' + nf.format(blogger) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>GitHub okunmaları</small><strong>' + nf.format(githubTotal) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>Website web okunmaları</small><strong>' + nf.format(website) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>Website uygulama okunmaları</small><strong>' + nf.format(appTotal) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>TOPLAM NET OKUNMA</small><strong>' + nf.format(total) + '</strong></div>' +
+        '<div class="sp-live-stat"><small>GitHub yıldız</small><strong>' + nf.format(repo.stargazers_count ?? 0) + '</strong></div>' +
+        '</div>' +
+        '<div id="sp-live-note"><strong>Formül:</strong> Blogger yazı toplamı + GitHub okunması + website web okunması + website uygulama okunması.<br>' +
+        '<strong>Güncelleme:</strong> Sayaçlar canlı; GitHub senkronizasyonu 5 dakikada bir.<br>' +
+        '<strong>Not:</strong> Blogger geçmiş yazı toplamı, Blogger panelinden bir kez başlangıç değeri olarak girilmelidir; Blogger public feed bu tarihsel panel değerlerini yayınlamaz.</div>';
+
+      status.textContent = '● CANLI';
+      status.style.color = '#28d17c';
+    } catch(e) {
+      panel.innerHTML = '<div>Canlı istatistikler şu anda alınamadı.</div>';
+      status.textContent = '● HATA';
+      status.style.color = '#ef6b73';
+    } finally {
+      refresh.disabled = false;
+    }
+  }
+
+  function mount() {
+    if (document.getElementById('sp-live-root')) return;
+    addStyle();
+    initTracking();
+
+    const root = document.createElement('div');
+    root.id = 'sp-live-root';
+    root.innerHTML =
+      '<div id="sp-live-panel">' +
+      '<div id="sp-live-status">Hazır</div>' +
+      '<button id="sp-live-refresh" type="button">↻ Yenile</button>' +
+      '</div>' +
+      '<button id="sp-live-toggle" type="button" aria-expanded="false"><span id="sp-live-dot"></span>Live Stats</button>';
+
+    document.body.appendChild(root);
+    const panel = root.querySelector('#sp-live-panel');
+    const toggle = root.querySelector('#sp-live-toggle');
+    const refresh = root.querySelector('#sp-live-refresh');
+    const status = root.querySelector('#sp-live-status');
+
+    toggle.addEventListener('click', () => {
+      const open = panel.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      if (open) load(panel, status, refresh);
+    });
+    refresh.addEventListener('click', () => load(panel, status, refresh));
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mount, {once:true});
+  } else {
+    mount();
+  }
+
+  window.SciencePhilosophyLiveStats = {mount};
 })();
