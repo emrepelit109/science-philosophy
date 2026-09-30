@@ -1,12 +1,12 @@
 {
-  "version": 2,
+  "version": 3,
   "formula": "blogger_post_reads + github_reads + website_web_reads + website_app_reads",
   "blogger_post_reads_baseline": 23500,
   "github_reads_baseline": 0,
-  "website_web_reads_baseline": 21839,
+  "website_web_reads_baseline": 0,
   "website_app_reads_baseline": 0,
   "blogger_page_views_baseline": 0,
-  "website_page_views_baseline": 41198,
+  "website_page_views_baseline": 0,
   "github_pages_page_views_baseline": 0,
   "counter_keys": {
     "blogger_post_reads": "science-philosophy-blogger-new-post-reads-2026-09-30-b4e71c",
@@ -16,5 +16,5 @@
     "website_app_reads": "science-philosophy-grokme-app-reads-2026-09-30-a91f4e"
   },
   "sync_interval_minutes": 5,
-  "notes": "Blogger historical total starts at 23,500. New Blogger net reads are added only after 10 seconds on a page, at most once per page per browser per day."
+  "notes": "The 21,839 value was removed. It is not treated as a website historical read count. Only actual counter increments are added to the 23,500 Blogger baseline."
 }
