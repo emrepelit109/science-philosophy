@@ -2,7 +2,7 @@ name: Sync Blogger articles
 
 on:
   schedule:
-    - cron: "41 */6 * * *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
 
 permissions:
