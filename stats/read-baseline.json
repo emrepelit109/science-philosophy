@@ -1,11 +1,12 @@
 {
-  "blogger_post_reads_baseline": 0,
-  "github_reads_baseline": 0,
+  "blogger_post_reads_baseline": 23500,
+  "blogger_page_views_baseline": 0,
   "website_web_reads_baseline": 21839,
   "website_app_reads_baseline": 0,
   "website_page_views_baseline": 41198,
+  "github_pages_net_read_baseline": 0,
   "github_pages_page_views_baseline": 0,
-  "source": "science-philosophy.grok.me",
-  "description": "Unified net-read formula: Blogger post read total + GitHub reads + website web reads + website app reads. blogger_post_reads_baseline must be set once to the current sum of all Blogger post counters.",
-  "last_updated": "2026-09-30T19:30:00Z"
+  "source": "science-philosophy.grok.me + emrepelit7337.blogspot.com",
+  "description": "Unified net-read formula: Blogger historical total + new Blogger net reads + GitHub reads + website web reads + website app reads.",
+  "last_updated": "2026-09-30T20:48:00Z"
 }
