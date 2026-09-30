@@ -1,10 +1,11 @@
 {
-  "authoritative_net_reads": 21839,
-  "website_net_read_baseline": 21839,
+  "blogger_post_reads_baseline": 0,
+  "github_reads_baseline": 0,
+  "website_web_reads_baseline": 21839,
+  "website_app_reads_baseline": 0,
   "website_page_views_baseline": 41198,
-  "github_pages_net_read_baseline": 0,
   "github_pages_page_views_baseline": 0,
   "source": "science-philosophy.grok.me",
-  "description": "Website counters start from the displayed baseline values. New website/GitHub Pages page views and 10-second net reads are added to these baselines.",
-  "last_updated": "2026-09-26T17:55:00+03:00"
+  "description": "Unified net-read formula: Blogger post read total + GitHub reads + website web reads + website app reads. blogger_post_reads_baseline must be set once to the current sum of all Blogger post counters.",
+  "last_updated": "2026-09-30T19:30:00Z"
 }
