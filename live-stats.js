@@ -1,125 +1,93 @@
 (() => {
   'use strict';
-
   const CONFIG = {
     repo: 'emrepelit109/science-philosophy',
-    blog: 'https://emrepelit7337.blogspot.com',
     api: 'https://api.github.com',
-    statsUrl: 'https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/latest.json',
-    readBaselineUrl: 'https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/read-baseline.json',
     counterBase: 'https://countapi.mileshilliard.com/api/v1',
+    baselineUrl: 'https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/read-baseline.json',
     counters: {
+      bloggerNet: 'science-philosophy-blogger-new-post-reads-2026-09-30-b4e71c',
+      bloggerViews: 'science-philosophy-blogger-page-views-2026-09-30-c73a2d',
       sourceNet: 'science-philosophy-grokme-web-reads-2026-09-26-7c2f9a',
       sourceViews: 'science-philosophy-grokme-page-views-2026-09-26-8e4d1c',
       pagesNet: 'science-philosophy-github-pages-web-reads-2026-09-26-41a6d2',
-      pagesViews: 'science-philosophy-github-pages-page-views-2026-09-26-5b7a2e'
+      pagesViews: 'science-philosophy-github-pages-page-views-2026-09-26-5b7a2e',
+      appNet: 'science-philosophy-grokme-app-reads-2026-09-30-a91f4e'
     },
     minimumReadSeconds: 10,
-    perPagePerDay: true
+    perPagePerDay: true,
+    refreshMs: 30000
   };
-
   const nf = new Intl.NumberFormat('tr-TR');
-
-  function esc(v) {
-    return String(v ?? '—').replace(/[&<>"']/g, ch => ({
-      '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-    }[ch]));
-  }
 
   async function json(url) {
     const r = await fetch(url, {cache:'no-store'});
     if (!r.ok) throw new Error('HTTP ' + r.status);
     return r.json();
   }
-
-  function trackedHost() {
-    const h = window.location.hostname;
-    if (h === 'science-philosophy.grok.me' || h === 'www.science-philosophy.grok.me') {
-      return 'source';
-    }
+  function hostType() {
+    const h = location.hostname;
+    if (h === 'emrepelit7337.blogspot.com' || h.endsWith('.blogspot.com')) return 'blogger';
+    if (h === 'science-philosophy.grok.me' || h === 'www.science-philosophy.grok.me') return 'source';
     if (h === 'emrepelit109.github.io') return 'pages';
     return null;
   }
-
-  function counterKey(kind) {
-    const host = trackedHost();
-    if (!host) return null;
-    return CONFIG.counters[host + (kind === 'views' ? 'Views' : 'Net')];
+  function keyFor(kind) {
+    const t = hostType();
+    return t ? CONFIG.counters[t + (kind === 'views' ? 'Views' : 'Net')] : null;
   }
-
   function storageKey() {
-    const day = new Date().toISOString().slice(0,10);
-    return 'sp:netread:' + day + ':' + (location.pathname || '/');
+    return 'sp:netread:' + new Date().toISOString().slice(0,10) + ':' + (location.pathname || '/');
   }
-
   function alreadyRead() {
-    if (!CONFIG.perPagePerDay) return false;
-    try { return localStorage.getItem(storageKey()) === '1'; } catch(e) { return false; }
+    try { return localStorage.getItem(storageKey()) === '1'; } catch (_) { return false; }
   }
-
   function markRead() {
-    try { localStorage.setItem(storageKey(), '1'); } catch(e) {}
+    try { localStorage.setItem(storageKey(),'1'); } catch (_) {}
   }
-
   async function hit(kind) {
-    const key = counterKey(kind);
+    const key = keyFor(kind);
     if (!key) return null;
-    const result = await json(CONFIG.counterBase + '/hit/' + encodeURIComponent(key));
-    const value = Number(result.value);
-    return Number.isFinite(value) ? value : null;
+    const j = await json(CONFIG.counterBase + '/hit/' + encodeURIComponent(key));
+    const v = Number(j.value);
+    return Number.isFinite(v) ? v : null;
   }
-
   async function getCounter(key) {
     try {
-      const result = await json(CONFIG.counterBase + '/get/' + encodeURIComponent(key));
-      const value = Number(result.value);
-      return Number.isFinite(value) ? value : 0;
-    } catch(e) {
-      return null;
-    }
+      const j = await json(CONFIG.counterBase + '/get/' + encodeURIComponent(key));
+      const v = Number(j.value);
+      return Number.isFinite(v) ? v : 0;
+    } catch (_) { return 0; }
   }
-
   function initTracking() {
-    if (window.__spTrackingStarted || !trackedHost()) return;
+    if (window.__spTrackingStarted || !hostType()) return;
     window.__spTrackingStarted = true;
-
-    // Every opened website page increments the page-view counter immediately.
     hit('views').catch(() => {});
-
-    // A net read requires at least 10 seconds of visible time.
     if (alreadyRead()) return;
 
-    let visibleStarted = Date.now();
-    let accumulated = 0;
-    let timer = null;
-    let counted = false;
-
+    let started = Date.now(), accumulated = 0, timer = null, counted = false;
     function countNet() {
       if (counted || alreadyRead() || document.hidden) return;
       counted = true;
       hit('net').then(markRead).catch(() => { counted = false; });
     }
-
     function schedule() {
       if (timer) clearTimeout(timer);
-      const remaining = Math.max(0, CONFIG.minimumReadSeconds * 1000 - accumulated);
-      timer = setTimeout(countNet, remaining);
+      timer = setTimeout(countNet, Math.max(0, CONFIG.minimumReadSeconds*1000-accumulated));
     }
-
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
-        accumulated += Date.now() - visibleStarted;
-        if (timer) { clearTimeout(timer); timer = null; }
+        accumulated += Date.now()-started;
+        if (timer) clearTimeout(timer);
+        timer = null;
       } else {
-        visibleStarted = Date.now();
-        if (accumulated >= CONFIG.minimumReadSeconds * 1000) countNet();
+        started = Date.now();
+        if (accumulated >= CONFIG.minimumReadSeconds*1000) countNet();
         else schedule();
       }
     }, {passive:true});
-
     schedule();
   }
-
   function addStyle() {
     if (document.getElementById('sp-live-style')) return;
     const s = document.createElement('style');
@@ -127,8 +95,8 @@
     s.textContent =
       '#sp-live-root{position:fixed;right:18px;bottom:18px;z-index:2147483647;font-family:system-ui,-apple-system,Segoe UI,sans-serif}' +
       '#sp-live-toggle{border:0;border-radius:999px;padding:12px 16px;background:#111827;color:#fff;font-weight:800;box-shadow:0 8px 28px #0005;cursor:pointer;border:1px solid #3b82f6;display:inline-flex;align-items:center;gap:8px}' +
-      '#sp-live-dot{width:8px;height:8px;border-radius:50%;background:#28d17c;box-shadow:0 0 0 4px #28d17c22}' +
-      '#sp-live-panel{display:none;width:min(420px,calc(100vw - 36px));margin-bottom:10px;background:#0f1629;color:#eef2ff;border:1px solid #34446e;border-radius:16px;padding:14px;box-shadow:0 16px 45px #0007}' +
+      '#sp-live-dot{width:8px;height:8px;border-radius:50%;background:#28d17c}' +
+      '#sp-live-panel{display:none;width:min(440px,calc(100vw - 36px));margin-bottom:10px;background:#0f1629;color:#eef2ff;border:1px solid #34446e;border-radius:16px;padding:14px;box-shadow:0 16px 45px #0007}' +
       '#sp-live-panel.open{display:block}' +
       '#sp-live-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}' +
       '.sp-live-stat{padding:10px;border:1px solid #263555;border-radius:10px;background:#121b30}' +
@@ -136,175 +104,66 @@
       '.sp-live-stat strong{display:block;margin-top:3px;font-size:1rem}' +
       '#sp-live-note{margin-top:10px;color:#aeb9d6;font-size:.78rem;line-height:1.45}' +
       '#sp-live-refresh{margin-top:10px;width:100%;border:1px solid #34446e;background:#1d2945;color:#dfe8ff;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}' +
-      '@media(max-width:560px){#sp-live-root{right:12px;bottom:12px}#sp-live-panel{width:min(380px,calc(100vw - 24px))}}';
+      '@media(max-width:560px){#sp-live-root{right:12px;bottom:12px}#sp-live-panel{width:min(390px,calc(100vw - 24px))}}';
     document.head.appendChild(s);
   }
-
-  async function load(panel, status, refresh) {
-    refresh.disabled = true;
-    status.textContent = 'Veriler alınıyor…';
+  async function load(panel,status,refresh) {
+    refresh.disabled=true; status.textContent='Veriler alınıyor…';
     try {
-      const c = CONFIG.counters;
-      const [repo, stats, baseline, sourceNet, sourceViews, pagesNet, pagesViews] = await Promise.all([
-        json(CONFIG.api + '/repos/' + CONFIG.repo),
-        json(CONFIG.statsUrl + '?ts=' + Date.now()).catch(() => null),
-        json(CONFIG.readBaselineUrl + '?ts=' + Date.now()).catch(() => ({})),
-        getCounter(c.sourceNet), getCounter(c.sourceViews),
-        getCounter(c.pagesNet), getCounter(c.pagesViews)
+      const [b,live] = await Promise.all([
+        json(CONFIG.baselineUrl+'?ts='+Date.now()).catch(()=>({})),
+        Promise.all([
+          getCounter(CONFIG.counters.bloggerNet),getCounter(CONFIG.counters.bloggerViews),
+          getCounter(CONFIG.counters.sourceNet),getCounter(CONFIG.counters.sourceViews),
+          getCounter(CONFIG.counters.pagesNet),getCounter(CONFIG.counters.pagesViews),
+          getCounter(CONFIG.counters.appNet)
+        ])
       ]);
-
-      const sn = sourceNet ?? Number(stats?.reads?.source_web_reads ?? 0);
-      const sv = sourceViews ?? Number(stats?.reads?.source_page_views ?? 0);
-      const pn = pagesNet ?? Number(stats?.reads?.pages_web_reads ?? 0);
-      const pv = pagesViews ?? Number(stats?.reads?.pages_page_views ?? 0);
-      const webNet = Number(baseline?.website_net_read_baseline ?? baseline?.authoritative_net_reads ?? 0) + sn +
-        Number(baseline?.github_pages_net_read_baseline ?? 0) + pn;
-      const totalViews = Number(baseline?.website_page_views_baseline ?? 0) + sv +
-        Number(baseline?.github_pages_page_views_baseline ?? 0) + pv;
-      const net = Number(stats?.reads?.net_reads ?? baseline?.authoritative_net_reads ?? 0) + sn + pn;
+      const [bn,bv,sn,sv,pn,pv,an]=live;
+      const bloggerNet=Number(b.blogger_post_reads_baseline||0)+bn;
+      const websiteNet=Number(b.website_web_reads_baseline||0)+sn;
+      const pagesNet=Number(b.github_pages_net_read_baseline||0)+pn;
+      const appNet=Number(b.website_app_reads_baseline||0)+an;
+      const totalNet=bloggerNet+websiteNet+pagesNet+appNet;
+      const bloggerViews=Number(b.blogger_page_views_baseline||0)+bv;
+      const websiteViews=Number(b.website_page_views_baseline||0)+sv;
+      const pagesViews=Number(b.github_pages_page_views_baseline||0)+pv;
+      const totalViews=bloggerViews+websiteViews+pagesViews;
 
       panel.innerHTML =
-        '<strong>Science & Philosophy — Live Stats</strong>' +
-        '<div id="sp-live-grid">' +
-        '<div class="sp-live-stat"><small>Website görüntüleme</small><strong>' + nf.format(Number(baseline?.website_page_views_baseline ?? 0) + sv) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>GitHub Pages görüntüleme</small><strong>' + nf.format(Number(baseline?.github_pages_page_views_baseline ?? 0) + pv) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>Toplam görüntüleme</small><strong>' + nf.format(totalViews) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>Website net okunma</small><strong>' + nf.format(Number(baseline?.website_net_read_baseline ?? baseline?.authoritative_net_reads ?? 0) + sn) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>GitHub Pages net okunma</small><strong>' + nf.format(Number(baseline?.github_pages_net_read_baseline ?? 0) + pn) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>Birleşik web net okunma</small><strong>' + nf.format(webNet) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>Senkronize net okunma</small><strong>' + (Number.isFinite(net) ? nf.format(net) : '—') + '</strong></div>' +
-        '<div class="sp-live-stat"><small>GitHub yıldız</small><strong>' + nf.format(repo.stargazers_count ?? 0) + '</strong></div>' +
-        '</div>' +
-        '<div id="sp-live-note">' +
-        '<strong>Görüntüleme:</strong> 41.198 başlangıç değerinin üzerine her yeni sayfa açılışında +1.<br>' +
-        '<strong>Net okunma:</strong> Sayfa en az 10 saniye görünür kaldığında +1. Aynı sayfa/tarayıcı için günde en fazla 1 net okuma.<br>' +
-        '<strong>Otomatik senkron:</strong> 5 dakika aralıkla.' +
-        '</div>';
-
-      status.textContent = '● CANLI';
-      status.style.color = '#28d17c';
-    } catch(e) {
-      panel.innerHTML = '<div>Canlı istatistikler şu anda alınamadı.</div>';
-      status.textContent = '● HATA';
-      status.style.color = '#ef6b73';
-    } finally {
-      refresh.disabled = false;
-    }
+        '<strong>Science & Philosophy — Live Stats</strong>'+
+        '<div id="sp-live-grid">'+
+        '<div class="sp-live-stat"><small>Blogger okunmaları</small><strong>'+nf.format(bloggerNet)+'</strong></div>'+
+        '<div class="sp-live-stat"><small>Website net okunma</small><strong>'+nf.format(websiteNet)+'</strong></div>'+
+        '<div class="sp-live-stat"><small>GitHub Pages okunma</small><strong>'+nf.format(pagesNet)+'</strong></div>'+
+        '<div class="sp-live-stat"><small>Uygulama okunmaları</small><strong>'+nf.format(appNet)+'</strong></div>'+
+        '<div class="sp-live-stat"><small>BİRLEŞİK NET OKUNMA</small><strong>'+nf.format(totalNet)+'</strong></div>'+
+        '<div class="sp-live-stat"><small>TOPLAM GÖRÜNTÜLEME</small><strong>'+nf.format(totalViews)+'</strong></div>'+
+        '<div class="sp-live-stat"><small>Blogger görüntüleme</small><strong>'+nf.format(bloggerViews)+'</strong></div>'+
+        '<div class="sp-live-stat"><small>Website görüntüleme</small><strong>'+nf.format(websiteViews)+'</strong></div>'+
+        '</div>'+
+        '<div id="sp-live-note"><strong>Net okuma:</strong> en az 10 saniye görünür kalırsa +1.<br>'+
+        '<strong>Görüntüleme:</strong> sayfa açılışında anında +1.<br>'+
+        '<strong>Birleşik formül:</strong> Blogger + Website + GitHub Pages + Uygulama.<br>'+
+        '<strong>Senkron:</strong> canlı sayaçlar anında; GitHub istatistik dosyaları 5 dakikada bir.</div>';
+      status.textContent='● CANLI · '+new Date().toLocaleTimeString('tr-TR');
+      status.style.color='#28d17c';
+    } catch (_) {
+      panel.innerHTML='<div>Canlı istatistikler şu anda alınamadı.</div>';
+      status.textContent='● HATA'; status.style.color='#ef6b73';
+    } finally { refresh.disabled=false; }
   }
-
   function mount() {
     if (document.getElementById('sp-live-root')) return;
-    addStyle();
-    initTracking();
-
-    const root = document.createElement('div');
-    root.id = 'sp-live-root';
-    root.innerHTML =
-      '<div id="sp-live-panel">' +
-      '<div id="sp-live-status">Hazır</div>' +
-      '<button id="sp-live-refresh" type="button">↻ Yenile</button>' +
-      '</div>' +
-      '<button id="sp-live-toggle" type="button" aria-expanded="false"><span id="sp-live-dot"></span>Live Stats</button>';
-
+    addStyle(); initTracking();
+    const root=document.createElement('div'); root.id='sp-live-root';
+    root.innerHTML='<div id="sp-live-panel"><div id="sp-live-status">Hazır</div><button id="sp-live-refresh" type="button">↻ Yenile</button></div><button id="sp-live-toggle" type="button" aria-expanded="false"><span id="sp-live-dot"></span>Live Stats</button>';
     document.body.appendChild(root);
-    const panel = root.querySelector('#sp-live-panel');
-    const toggle = root.querySelector('#sp-live-toggle');
-    const refresh = root.querySelector('#sp-live-refresh');
-    const status = root.querySelector('#sp-live-status');
-
-    toggle.addEventListener('click', () => {
-      const open = panel.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-      if (open) load(panel, status, refresh);
-    });
-    refresh.addEventListener('click', () => load(panel, status, refresh));
+    const panel=root.querySelector('#sp-live-panel'),toggle=root.querySelector('#sp-live-toggle'),refresh=root.querySelector('#sp-live-refresh'),status=root.querySelector('#sp-live-status');
+    toggle.addEventListener('click',()=>{const open=panel.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));if(open)load(panel,status,refresh);});
+    refresh.addEventListener('click',()=>load(panel,status,refresh));
+    setInterval(()=>{if(panel.classList.contains('open'))load(panel,status,refresh);},CONFIG.refreshMs);
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mount, {once:true});
-  } else {
-    mount();
-  }
-
-  window.SciencePhilosophyLiveStats = {mount};
-})()    async function load(panel, status, refresh) {
-    refresh.disabled = true;
-    status.textContent = 'Veriler alınıyor…';
-    try {
-      const sources = await json('https://raw.githubusercontent.com/emrepelit109/science-philosophy/main/stats/sources.json?ts=' + Date.now());
-      const [repo, stats, sourceWeb, github, app] = await Promise.all([
-        json(CONFIG.api + '/repos/' + CONFIG.repo),
-        json(CONFIG.statsUrl + '?ts=' + Date.now()).catch(() => null),
-        getCounter(sources.counter_keys.website_web_reads),
-        getCounter(sources.counter_keys.github_reads),
-        getCounter(sources.counter_keys.website_app_reads)
-      ]);
-
-      const blogger = Number(sources.blogger_post_reads_baseline || 0) +
-        (stats?.reads?.blogger_new_reads || 0);
-      const githubTotal = Number(sources.github_reads_baseline || 0) + Number(github || 0);
-      const website = Number(sources.website_web_reads_baseline || 0) + Number(sourceWeb || 0);
-      const appTotal = Number(sources.website_app_reads_baseline || 0) + Number(app || 0);
-      const total = blogger + githubTotal + website + appTotal;
-
-      panel.innerHTML =
-        '<strong>Science & Philosophy — Live Stats</strong>' +
-        '<div id="sp-live-grid">' +
-        '<div class="sp-live-stat"><small>Blogger yazı okunmaları</small><strong>' + nf.format(blogger) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>GitHub okunmaları</small><strong>' + nf.format(githubTotal) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>Website web okunmaları</small><strong>' + nf.format(website) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>Website uygulama okunmaları</small><strong>' + nf.format(appTotal) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>TOPLAM NET OKUNMA</small><strong>' + nf.format(total) + '</strong></div>' +
-        '<div class="sp-live-stat"><small>GitHub yıldız</small><strong>' + nf.format(repo.stargazers_count ?? 0) + '</strong></div>' +
-        '</div>' +
-        '<div id="sp-live-note"><strong>Formül:</strong> Blogger yazı toplamı + GitHub okunması + website web okunması + website uygulama okunması.<br>' +
-        '<strong>Güncelleme:</strong> Sayaçlar canlı; GitHub senkronizasyonu 5 dakikada bir.<br>' +
-        '<strong>Not:</strong> Blogger geçmiş yazı toplamı, Blogger panelinden bir kez başlangıç değeri olarak girilmelidir; Blogger public feed bu tarihsel panel değerlerini yayınlamaz.</div>';
-
-      status.textContent = '● CANLI';
-      status.style.color = '#28d17c';
-    } catch(e) {
-      panel.innerHTML = '<div>Canlı istatistikler şu anda alınamadı.</div>';
-      status.textContent = '● HATA';
-      status.style.color = '#ef6b73';
-    } finally {
-      refresh.disabled = false;
-    }
-  }
-
-  function mount() {
-    if (document.getElementById('sp-live-root')) return;
-    addStyle();
-    initTracking();
-
-    const root = document.createElement('div');
-    root.id = 'sp-live-root';
-    root.innerHTML =
-      '<div id="sp-live-panel">' +
-      '<div id="sp-live-status">Hazır</div>' +
-      '<button id="sp-live-refresh" type="button">↻ Yenile</button>' +
-      '</div>' +
-      '<button id="sp-live-toggle" type="button" aria-expanded="false"><span id="sp-live-dot"></span>Live Stats</button>';
-
-    document.body.appendChild(root);
-    const panel = root.querySelector('#sp-live-panel');
-    const toggle = root.querySelector('#sp-live-toggle');
-    const refresh = root.querySelector('#sp-live-refresh');
-    const status = root.querySelector('#sp-live-status');
-
-    toggle.addEventListener('click', () => {
-      const open = panel.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-      if (open) load(panel, status, refresh);
-    });
-    refresh.addEventListener('click', () => load(panel, status, refresh));
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', mount, {once:true});
-  } else {
-    mount();
-  }
-
-  window.SciencePhilosophyLiveStats = {mount};
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',mount,{once:true}); else mount();
+  window.SciencePhilosophyLiveStats={mount};
 })();
