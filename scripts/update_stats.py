@@ -154,18 +154,15 @@ bridge={
         "forks":meta.get("forks_count",0),
         "open_issues":meta.get("open_issues_count",0)
     },
-    "web_reads":{
-        "source_site":source_web_reads,
-        "github_pages":pages_web_reads,
-        "total":web_reads
+    "reads":{
+        "blogger_post_reads":blogger_post_reads,
+        "github_reads":github_total,
+        "website_web_reads":website_total,
+        "website_app_reads":app_total,
+        "net_reads":net_reads,
+        "page_views":page_views
     },
-    "blogger":{
-        "site":"https://emrepelit7337.blogspot.com",
-        "authoritative_net_reads":authoritative_net_reads,
-        "native_net_reads":blogger_net_reads,
-        "synchronized_net_reads":net_reads,
-        "formula":"Authoritative website net reads" if authoritative_net_reads is not None else "Blogger native net reads + website reads",
-        "native_counter_write":"not_supported"
-    }
+    "formula":"Blogger post reads + GitHub reads + website web reads + website app reads",
+    "native_blogger_counter_write":"not_supported_by_public_blogger_feed"
 }
 BRIDGE.write_text(json.dumps(bridge,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
