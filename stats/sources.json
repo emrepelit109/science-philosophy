@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "formula": "blogger_post_reads + github_reads + website_web_reads + website_app_reads",
+  "blogger_post_reads_baseline": 0,
+  "github_reads_baseline": 0,
+  "website_web_reads_baseline": 21839,
+  "website_app_reads_baseline": 0,
+  "counter_keys": {
+    "website_web_reads": "science-philosophy-grokme-web-reads-2026-09-26-7c2f9a",
+    "github_reads": "science-philosophy-github-pages-web-reads-2026-09-26-41a6d2",
+    "website_app_reads": "science-philosophy-grokme-app-reads-2026-09-30-a91f4e"
+  },
+  "sync_interval_minutes": 5,
+  "notes": "Set blogger_post_reads_baseline once to the current sum of all Blogger post read/view counters. Blogger public feeds do not expose historical per-post counters."
+}
