@@ -1,0 +1,9 @@
+{
+  "formula": "blogger_post_reads + github_repository_reads + website_web_reads + website_app_reads",
+  "blogger_post_reads_baseline": 21839,
+  "github_repository_reads_baseline": 0,
+  "website_web_reads_baseline": 0,
+  "website_app_reads_baseline": 0,
+  "description": "The displayed net-read total is the sum of the four components. The baseline values are starting values only; the scheduled sync replaces/extends them with current measurements.",
+  "updated_at": "2026-09-30T22:00:00+03:00"
+}
