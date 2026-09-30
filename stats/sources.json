@@ -1,15 +1,20 @@
 {
-  "version": 1,
+  "version": 2,
   "formula": "blogger_post_reads + github_reads + website_web_reads + website_app_reads",
-  "blogger_post_reads_baseline": 0,
+  "blogger_post_reads_baseline": 23500,
   "github_reads_baseline": 0,
   "website_web_reads_baseline": 21839,
   "website_app_reads_baseline": 0,
+  "blogger_page_views_baseline": 0,
+  "website_page_views_baseline": 41198,
+  "github_pages_page_views_baseline": 0,
   "counter_keys": {
+    "blogger_post_reads": "science-philosophy-blogger-new-post-reads-2026-09-30-b4e71c",
+    "blogger_page_views": "science-philosophy-blogger-page-views-2026-09-30-c73a2d",
     "website_web_reads": "science-philosophy-grokme-web-reads-2026-09-26-7c2f9a",
     "github_reads": "science-philosophy-github-pages-web-reads-2026-09-26-41a6d2",
     "website_app_reads": "science-philosophy-grokme-app-reads-2026-09-30-a91f4e"
   },
   "sync_interval_minutes": 5,
-  "notes": "Set blogger_post_reads_baseline once to the current sum of all Blogger post read/view counters. Blogger public feeds do not expose historical per-post counters."
+  "notes": "Blogger historical total starts at 23,500. New Blogger net reads are added only after 10 seconds on a page, at most once per page per browser per day."
 }
