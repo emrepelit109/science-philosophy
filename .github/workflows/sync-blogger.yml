@@ -18,6 +18,8 @@ jobs:
         env:
           BLOGGER_URL: https://emrepelit7337.blogspot.com
         run: python scripts/sync_blogger.py
+      - name: Restructure articles into claim/counterclaim/evidence panels
+        run: python scripts/restructure_articles.py
       - name: Commit synced articles
         run: |
           git config user.name "github-actions[bot]"
