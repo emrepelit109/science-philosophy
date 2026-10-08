@@ -2,6 +2,8 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [Beweist die Tatsache, dass LLMs menschliches Verhalten nachahmen, dass sie ein „Bewusstsein“ besitzen?](./beweist-die-tatsache-dass-llms-menschliches-verhalten-nachahmen-dass-sie-ein-bewusstsein-besitzen-67641283.html) — 2026-10-08
+- [Le fait que les LLM imitent le comportement humain prouve-t-il qu'ils sont dotés de « conscience » ?](./le-fait-que-les-llm-imitent-le-comportement-humain-prouve-t-il-quils-sont-dotés-de-conscience-79744525.html) — 2026-10-08
 - [¿El hecho de que los LLM imiten el comportamiento humano demuestra que tienen "conciencia"?](./el-hecho-de-que-los-llm-imiten-el-comportamiento-humano-demuestra-que-tienen-conciencia-54199161.html) — 2026-10-08
 - [Does the Fact That LLMs Mimic Human Behavior Show They Have "Consciousness"?](./does-the-fact-that-llms-mimic-human-behavior-show-they-have-consciousness-49486799.html) — 2026-10-08
 - [ LLM’lerin İnsan Davranışını Taklit Etmesi Onların “Şuur” Sahibi Olduklarını Gösterir mi](./llmlerin-insan-davranışını-taklit-etmesi-onların-şuur-sahibi-olduklarını-gösterir-mi-93638348.html) — 2026-10-08
