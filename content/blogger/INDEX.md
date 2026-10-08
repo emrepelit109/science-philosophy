@@ -2,6 +2,9 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [¿El hecho de que los LLM imiten el comportamiento humano demuestra que tienen "conciencia"?](./el-hecho-de-que-los-llm-imiten-el-comportamiento-humano-demuestra-que-tienen-conciencia-54199161.html) — 2026-10-08
+- [Does the Fact That LLMs Mimic Human Behavior Show They Have "Consciousness"?](./does-the-fact-that-llms-mimic-human-behavior-show-they-have-consciousness-49486799.html) — 2026-10-08
+- [ LLM’lerin İnsan Davranışını Taklit Etmesi Onların “Şuur” Sahibi Olduklarını Gösterir mi](./llmlerin-insan-davranışını-taklit-etmesi-onların-şuur-sahibi-olduklarını-gösterir-mi-93638348.html) — 2026-10-08
 - [ La structure de simulation du temps et la perception neuronale du temps](./la-structure-de-simulation-du-temps-et-la-perception-neuronale-du-temps-83967531.html) — 2026-09-28
 - [Die Simulationsstruktur der Zeit und die neuronale Zeitwahrnehmung](./die-simulationsstruktur-der-zeit-und-die-neuronale-zeitwahrnehmung-09274702.html) — 2026-09-28
 - [La estructura de simulación del tiempo y la percepción neuronal del tiempo](./la-estructura-de-simulación-del-tiempo-y-la-percepción-neuronal-del-tiempo-38427364.html) — 2026-09-28
