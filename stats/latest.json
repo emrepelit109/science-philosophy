@@ -1,5 +1,5 @@
 {
-  "collected_at": "2026-10-09T10:51:15.647844+00:00",
+  "collected_at": "2026-10-09T11:08:30.678249+00:00",
   "repository": {
     "full_name": "emrepelit109/science-philosophy",
     "stargazers_count": 0,
@@ -18,11 +18,11 @@
   "reads": {
     "blogger_post_reads": 23500,
     "github_reads": 0,
-    "website_web_reads": 0,
+    "website_web_reads": 2,
     "website_app_reads": 0,
-    "web_reads": 0,
-    "page_views": 0,
-    "net_reads": 23500,
+    "web_reads": 2,
+    "page_views": 7,
+    "net_reads": 23502,
     "net_reads_formula": "Blogger post reads + GitHub reads + website web reads + website app reads"
   }
 }
