@@ -2,6 +2,7 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [Evren Her Zaman Tekil Bir Olguydu ve İlelebet de Öyle Kalacak](./evren-her-zaman-tekil-bir-olguydu-ve-ilelebet-de-öyle-kalacak-75656566.html) — 2026-10-13
 - [Beweist die Tatsache, dass LLMs menschliches Verhalten nachahmen, dass sie ein „Bewusstsein“ besitzen?](./beweist-die-tatsache-dass-llms-menschliches-verhalten-nachahmen-dass-sie-ein-bewusstsein-besitzen-67641283.html) — 2026-10-08
 - [Le fait que les LLM imitent le comportement humain prouve-t-il qu'ils sont dotés de « conscience » ?](./le-fait-que-les-llm-imitent-le-comportement-humain-prouve-t-il-quils-sont-dotés-de-conscience-79744525.html) — 2026-10-08
 - [¿El hecho de que los LLM imiten el comportamiento humano demuestra que tienen "conciencia"?](./el-hecho-de-que-los-llm-imiten-el-comportamiento-humano-demuestra-que-tienen-conciencia-54199161.html) — 2026-10-08
