@@ -1,6 +1,6 @@
 {
   "repository": "emrepelit109/science-philosophy",
-  "collected_at": "2026-10-13T12:34:03.269743+00:00",
+  "collected_at": "2026-10-13T13:05:56.743416+00:00",
   "github": {
     "stargazers": 0,
     "forks": 0,
@@ -8,10 +8,10 @@
   },
   "reads": {
     "blogger_post_reads": 23502,
-    "github_reads": 0,
+    "github_reads": 2,
     "website_web_reads": 2,
     "website_app_reads": 3,
-    "net_reads": 23507,
+    "net_reads": 23509,
     "page_views": 7
   },
   "formula": "Blogger post reads + GitHub reads + website web reads + website app reads",
