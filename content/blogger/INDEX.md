@@ -2,6 +2,9 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [Wenn sich Gehirn-Computer-Schnittstellen bis zum angestrebten Punkt entwickeln, kann man dann noch von geistiger Autonomie sprechen?](./wenn-sich-gehirn-computer-schnittstellen-bis-zum-angestrebten-punkt-entwickeln-kann-man-dann-noch-vo-93348219.html) — 2026-10-21
+- [Si las Interfaces Cerebro-Computadora se Desarrollan Hasta el Nivel Previsto, ¿Se Puede Hablar de Autonomía Mental?](./si-las-interfaces-cerebro-computadora-se-desarrollan-hasta-el-nivel-previsto-se-puede-hablar-de-auto-79584655.html) — 2026-10-21
+- [If Brain-Computer Interfaces Develop to Their Targeted Point, Can We Still Speak of Mental Autonomy?](./if-brain-computer-interfaces-develop-to-their-targeted-point-can-we-still-speak-of-mental-autonomy-16311603.html) — 2026-10-21
 - [Beyin Bilgisayar Arayüzleri Hedeflenen Noktaya Kadar Gelişirse Zihinsel Özerklikten Bahsedilebilir Mi?](./beyin-bilgisayar-arayüzleri-hedeflenen-noktaya-kadar-gelişirse-zihinsel-özerklikten-bahsedilebilir-m-45572207.html) — 2026-10-21
 - [L’Univers a toujours été un phénomène singulier et le restera pour toujours](./lunivers-a-toujours-été-un-phénomène-singulier-et-le-restera-pour-toujours-88287611.html) — 2026-10-13
 - [Das Universum war schon immer ein einzigartiges Phänomen, und das wird es für immer bleiben](./das-universum-war-schon-immer-ein-einzigartiges-phänomen-und-das-wird-es-für-immer-bleiben-66013611.html) — 2026-10-13
