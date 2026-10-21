@@ -2,6 +2,7 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [Si les interfaces cerveau-machine se développent jusqu'au niveau visé, peut-on encore parler d'autonomie mentale?](./si-les-interfaces-cerveau-machine-se-développent-jusquau-niveau-visé-peut-on-encore-parler-dautonomi-05014283.html) — 2026-10-21
 - [Wenn sich Gehirn-Computer-Schnittstellen bis zum angestrebten Punkt entwickeln, kann man dann noch von geistiger Autonomie sprechen?](./wenn-sich-gehirn-computer-schnittstellen-bis-zum-angestrebten-punkt-entwickeln-kann-man-dann-noch-vo-93348219.html) — 2026-10-21
 - [Si las Interfaces Cerebro-Computadora se Desarrollan Hasta el Nivel Previsto, ¿Se Puede Hablar de Autonomía Mental?](./si-las-interfaces-cerebro-computadora-se-desarrollan-hasta-el-nivel-previsto-se-puede-hablar-de-auto-79584655.html) — 2026-10-21
 - [If Brain-Computer Interfaces Develop to Their Targeted Point, Can We Still Speak of Mental Autonomy?](./if-brain-computer-interfaces-develop-to-their-targeted-point-can-we-still-speak-of-mental-autonomy-16311603.html) — 2026-10-21
