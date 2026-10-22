@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-22T22:59:43.271784+00:00",
-  "observations": 1472,
+  "generated_at": "2026-10-22T23:32:16.250810+00:00",
+  "observations": 1473,
   "first_recorded_web_total": 0,
   "latest_recorded_web_total": 4,
   "web_total_delta": 4,
@@ -9,7 +9,7 @@
   "website_web_reads": 2,
   "website_app_reads": 3,
   "web_reads": 4,
-  "page_views": 7,
+  "page_views": 5,
   "net_reads": 23509,
   "sync_interval_minutes": 5,
   "formula": "Blogger post reads + GitHub reads + website web reads + website app reads"
