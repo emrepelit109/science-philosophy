@@ -1,16 +1,16 @@
 {
-  "generated_at": "2026-10-23T14:12:41.723706+00:00",
-  "observations": 1496,
+  "generated_at": "2026-10-23T14:56:15.248179+00:00",
+  "observations": 1497,
   "first_recorded_web_total": 0,
   "latest_recorded_web_total": 4,
   "web_total_delta": 4,
   "blogger_post_reads": 23502,
   "github_reads": 2,
   "website_web_reads": 2,
-  "website_app_reads": 3,
+  "website_app_reads": 0,
   "web_reads": 4,
   "page_views": 7,
-  "net_reads": 23509,
+  "net_reads": 23506,
   "sync_interval_minutes": 5,
   "formula": "Blogger post reads + GitHub reads + website web reads + website app reads"
 }
