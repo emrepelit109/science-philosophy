@@ -2,6 +2,11 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [Imaginons que nous déléguions tout le travail aux LLM, et après ??](./imaginons-que-nous-déléguions-tout-le-travail-aux-llm-et-après-93355248.html) — 2026-10-27
+- [Imaginemos que delegamos todo el trabajo a los LLM, ¿y después qué??](./imaginemos-que-delegamos-todo-el-trabajo-a-los-llm-y-después-qué-65780236.html) — 2026-10-27
+- [Stellen wir uns vor, wir übertragen alle Aufgaben an LLMs – und was dann??](./stellen-wir-uns-vor-wir-übertragen-alle-aufgaben-an-llms-und-was-dann-00622951.html) — 2026-10-27
+- [Let’s Imagine We Delegate All Work to LLMs, So What Next??](./lets-imagine-we-delegate-all-work-to-llms-so-what-next-23039123.html) — 2026-10-27
+- [Bütün İşleri LLM’lere Yüklediğimizi Düşünelim, E Peki Sonra??](./bütün-işleri-llmlere-yüklediğimizi-düşünelim-e-peki-sonra-09103619.html) — 2026-10-27
 - [Si les interfaces cerveau-machine se développent jusqu'au niveau visé, peut-on encore parler d'autonomie mentale?](./si-les-interfaces-cerveau-machine-se-développent-jusquau-niveau-visé-peut-on-encore-parler-dautonomi-05014283.html) — 2026-10-21
 - [Wenn sich Gehirn-Computer-Schnittstellen bis zum angestrebten Punkt entwickeln, kann man dann noch von geistiger Autonomie sprechen?](./wenn-sich-gehirn-computer-schnittstellen-bis-zum-angestrebten-punkt-entwickeln-kann-man-dann-noch-vo-93348219.html) — 2026-10-21
 - [Si las Interfaces Cerebro-Computadora se Desarrollan Hasta el Nivel Previsto, ¿Se Puede Hablar de Autonomía Mental?](./si-las-interfaces-cerebro-computadora-se-desarrollan-hasta-el-nivel-previsto-se-puede-hablar-de-auto-79584655.html) — 2026-10-21
