@@ -2,6 +2,8 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [The Origin of Destiny: Everything Had Actually Already Happened, Yet Retrieving and Utilizing Information from the Entropic Flow Comes at a Cost](./the-origin-of-destiny-everything-had-actually-already-happened-yet-retrieving-and-utilizing-informat-84801585.html) — 2026-11-01
+- [Kaderin Kökeni: Aslında Her Şey Olup Bitmişti Ama Entropik Akıştan Bilgi Getirmenin ve Kullanmanın da Bir Maliyeti Var](./kaderin-kökeni-aslında-her-şey-olup-bitmişti-ama-entropik-akıştan-bilgi-getirmenin-ve-kullanmanın-da-03072777.html) — 2026-11-01
 - [Imaginons que nous déléguions tout le travail aux LLM, et après ??](./imaginons-que-nous-déléguions-tout-le-travail-aux-llm-et-après-93355248.html) — 2026-10-27
 - [Imaginemos que delegamos todo el trabajo a los LLM, ¿y después qué??](./imaginemos-que-delegamos-todo-el-trabajo-a-los-llm-y-después-qué-65780236.html) — 2026-10-27
 - [Stellen wir uns vor, wir übertragen alle Aufgaben an LLMs – und was dann??](./stellen-wir-uns-vor-wir-übertragen-alle-aufgaben-an-llms-und-was-dann-00622951.html) — 2026-10-27
