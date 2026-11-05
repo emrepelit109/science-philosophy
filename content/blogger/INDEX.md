@@ -2,6 +2,9 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [Puede que existan los extraterrestres, pero es dudoso que los estemos buscando en el lugar correcto](./puede-que-existan-los-extraterrestres-pero-es-dudoso-que-los-estemos-buscando-en-el-lugar-correcto-64831077.html) — 2026-11-06
+- [Aliens May Exist, But Whether We Are Looking for Them in the Right Place Is Doubtful](./aliens-may-exist-but-whether-we-are-looking-for-them-in-the-right-place-is-doubtful-96229080.html) — 2026-11-06
+- [Uzaylılar Olabilir Ama Onları Doğru Yerde mi Arıyoruz Orası Şüpheli](./uzaylılar-olabilir-ama-onları-doğru-yerde-mi-arıyoruz-orası-şüpheli-83454003.html) — 2026-11-06
 - [The Origin of Destiny: Everything Had Actually Already Happened, Yet Retrieving and Utilizing Information from the Entropic Flow Comes at a Cost](./the-origin-of-destiny-everything-had-actually-already-happened-yet-retrieving-and-utilizing-informat-84801585.html) — 2026-11-01
 - [Kaderin Kökeni: Aslında Her Şey Olup Bitmişti Ama Entropik Akıştan Bilgi Getirmenin ve Kullanmanın da Bir Maliyeti Var](./kaderin-kökeni-aslında-her-şey-olup-bitmişti-ama-entropik-akıştan-bilgi-getirmenin-ve-kullanmanın-da-03072777.html) — 2026-11-01
 - [Imaginons que nous déléguions tout le travail aux LLM, et après ??](./imaginons-que-nous-déléguions-tout-le-travail-aux-llm-et-après-93355248.html) — 2026-10-27
