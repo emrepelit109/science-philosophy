@@ -2,6 +2,7 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [ “Geçmiş Zaman” Mevhumu Yok Olduysa “Şimdiki Zaman” Gerçek Olabilir mi?](./geçmiş-zaman-mevhumu-yok-olduysa-şimdiki-zaman-gerçek-olabilir-mi-08488579.html) — 2026-11-09
 - [Puede que existan los extraterrestres, pero es dudoso que los estemos buscando en el lugar correcto](./puede-que-existan-los-extraterrestres-pero-es-dudoso-que-los-estemos-buscando-en-el-lugar-correcto-64831077.html) — 2026-11-06
 - [Aliens May Exist, But Whether We Are Looking for Them in the Right Place Is Doubtful](./aliens-may-exist-but-whether-we-are-looking-for-them-in-the-right-place-is-doubtful-96229080.html) — 2026-11-06
 - [Uzaylılar Olabilir Ama Onları Doğru Yerde mi Arıyoruz Orası Şüpheli](./uzaylılar-olabilir-ama-onları-doğru-yerde-mi-arıyoruz-orası-şüpheli-83454003.html) — 2026-11-06
