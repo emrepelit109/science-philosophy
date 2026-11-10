@@ -2,6 +2,8 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [Si la Noción del “Tiempo Pasado” Ha Desaparecido, ¿Puede Ser Real el “Tiempo Presente”?](./si-la-noción-del-tiempo-pasado-ha-desaparecido-puede-ser-real-el-tiempo-presente-31504831.html) — 2026-11-10
+- [If the Notion of “Past Time” Has Vanished, Can the “Present Time” Be Real?](./if-the-notion-of-past-time-has-vanished-can-the-present-time-be-real-30662042.html) — 2026-11-10
 - [ “Geçmiş Zaman” Mevhumu Yok Olduysa “Şimdiki Zaman” Gerçek Olabilir mi?](./geçmiş-zaman-mevhumu-yok-olduysa-şimdiki-zaman-gerçek-olabilir-mi-08488579.html) — 2026-11-09
 - [Puede que existan los extraterrestres, pero es dudoso que los estemos buscando en el lugar correcto](./puede-que-existan-los-extraterrestres-pero-es-dudoso-que-los-estemos-buscando-en-el-lugar-correcto-64831077.html) — 2026-11-06
 - [Aliens May Exist, But Whether We Are Looking for Them in the Right Place Is Doubtful](./aliens-may-exist-but-whether-we-are-looking-for-them-in-the-right-place-is-doubtful-96229080.html) — 2026-11-06
