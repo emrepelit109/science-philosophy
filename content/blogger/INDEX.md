@@ -2,6 +2,7 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [Peygamberlerin Geliş Sırası Gerçekten Belli miydi, Neye Göre Belirlenmiştir ve Elest’te Nasıl Bir Düzenleme Yapılmıştır](./peygamberlerin-geliş-sırası-gerçekten-belli-miydi-neye-göre-belirlenmiştir-ve-elestte-nasıl-bir-düze-29770088.html) — 2026-11-10
 - [Si la Noción del “Tiempo Pasado” Ha Desaparecido, ¿Puede Ser Real el “Tiempo Presente”?](./si-la-noción-del-tiempo-pasado-ha-desaparecido-puede-ser-real-el-tiempo-presente-31504831.html) — 2026-11-10
 - [If the Notion of “Past Time” Has Vanished, Can the “Present Time” Be Real?](./if-the-notion-of-past-time-has-vanished-can-the-present-time-be-real-30662042.html) — 2026-11-10
 - [ “Geçmiş Zaman” Mevhumu Yok Olduysa “Şimdiki Zaman” Gerçek Olabilir mi?](./geçmiş-zaman-mevhumu-yok-olduysa-şimdiki-zaman-gerçek-olabilir-mi-08488579.html) — 2026-11-09
