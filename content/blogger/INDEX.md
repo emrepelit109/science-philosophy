@@ -2,6 +2,8 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [The Conventional Monotony of Human Comprehension, the Silicon-Based Equivalent of Biological Processes, and the Incomprehensibility of Human Beings](./the-conventional-monotony-of-human-comprehension-the-silicon-based-equivalent-of-biological-processe-70019936.html) — 2026-11-14
+- [İnsan Kavrayışının Genelgeçer Tekdüzeliği, Biyolojik Süreçlerin Silikon Tabanlı Eşdeğeri ve İnsanların Anlaşılmazlığı](./insan-kavrayışının-genelgeçer-tekdüzeliği-biyolojik-süreçlerin-silikon-tabanlı-eşdeğeri-ve-insanları-60308262.html) — 2026-11-14
 - [Was the Arrival Order of the Prophets Really Pre-Determined, On What Basis Was It Decided, and What Kind of Arrangement Was Made in the Realm of Elest?](./was-the-arrival-order-of-the-prophets-really-pre-determined-on-what-basis-was-it-decided-and-what-ki-36319456.html) — 2026-11-11
 - [Peygamberlerin Geliş Sırası Gerçekten Belli miydi, Neye Göre Belirlenmiştir ve Elest’te Nasıl Bir Düzenleme Yapılmıştır](./peygamberlerin-geliş-sırası-gerçekten-belli-miydi-neye-göre-belirlenmiştir-ve-elestte-nasıl-bir-düze-29770088.html) — 2026-11-10
 - [Si la Noción del “Tiempo Pasado” Ha Desaparecido, ¿Puede Ser Real el “Tiempo Presente”?](./si-la-noción-del-tiempo-pasado-ha-desaparecido-puede-ser-real-el-tiempo-presente-31504831.html) — 2026-11-10
