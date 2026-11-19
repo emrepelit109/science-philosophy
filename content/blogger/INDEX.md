@@ -2,6 +2,8 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [The Fundamental Difference Between a QPU and the Heart](./the-fundamental-difference-between-a-qpu-and-the-heart-60549163.html) — 2026-11-19
+- [QPU ile Kalp Arasındaki Temel Fark](./qpu-ile-kalp-arasındaki-temel-fark-57833989.html) — 2026-11-19
 - [The Conventional Monotony of Human Comprehension, the Silicon-Based Equivalent of Biological Processes, and the Incomprehensibility of Human Beings](./the-conventional-monotony-of-human-comprehension-the-silicon-based-equivalent-of-biological-processe-70019936.html) — 2026-11-14
 - [İnsan Kavrayışının Genelgeçer Tekdüzeliği, Biyolojik Süreçlerin Silikon Tabanlı Eşdeğeri ve İnsanların Anlaşılmazlığı](./insan-kavrayışının-genelgeçer-tekdüzeliği-biyolojik-süreçlerin-silikon-tabanlı-eşdeğeri-ve-insanları-60308262.html) — 2026-11-14
 - [Was the Arrival Order of the Prophets Really Pre-Determined, On What Basis Was It Decided, and What Kind of Arrangement Was Made in the Realm of Elest?](./was-the-arrival-order-of-the-prophets-really-pre-determined-on-what-basis-was-it-decided-and-what-ki-36319456.html) — 2026-11-11
