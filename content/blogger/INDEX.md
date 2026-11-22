@@ -2,6 +2,8 @@
 
 Kaynak: https://emrepelit7337.blogspot.com
 
+- [The Most Practical Way for a Human to Understand the Creator](./the-most-practical-way-for-a-human-to-understand-the-creator-74378326.html) — 2026-11-23
+- [İnsanın Yaratıcı’yı Anlamak İçin En Pratik Yolu](./insanın-yaratıcıyı-anlamak-için-en-pratik-yolu-66606425.html) — 2026-11-23
 - [The Fundamental Difference Between a QPU and the Heart](./the-fundamental-difference-between-a-qpu-and-the-heart-60549163.html) — 2026-11-19
 - [QPU ile Kalp Arasındaki Temel Fark](./qpu-ile-kalp-arasındaki-temel-fark-57833989.html) — 2026-11-19
 - [The Conventional Monotony of Human Comprehension, the Silicon-Based Equivalent of Biological Processes, and the Incomprehensibility of Human Beings](./the-conventional-monotony-of-human-comprehension-the-silicon-based-equivalent-of-biological-processe-70019936.html) — 2026-11-14
